@@ -109,8 +109,75 @@ def abc089_d():
 
 
 def abc091_a():
-    pass
+    _instr = str(input()).split()
+    _a = int(_instr[0])
+    _b = int(_instr[1])
+    _c = int(_instr[2])
+    if _a + _b >= _c:
+        print("Yes")
+    else:
+        print("No")
 
+
+def abc091_b():
+    from collections import Counter
+    _strs = []
+    _strt = []
+    _max = 0
+    _n = int(input())
+    for i in range(_n):
+        _strs.append(str(input()))
+    _m = int(input())
+    for i in range(_m):
+        _strt.append(str(input()))
+    _strs2 = list(set(_strs))
+    for element in _strs2:
+        _score = Counter(_strs)[element] - Counter(_strt)[element]
+        if _score > _max:
+            _max = _score
+    print(_max)
+
+
+def abc091_c():
+    from operator import itemgetter
+    _reds = []
+    _blues = []
+    _count = 0
+
+    _n = int(input())
+
+    for i in range(_n):
+        _instr = str(input()).split()
+        _reds.append(list(map(int, _instr)))
+
+    for i in range(_n):
+        _instr = str(input()).split()
+        _blues.append(list(map(int, _instr)))
+
+    _reds.sort()
+    _blues.sort(key=itemgetter(1))
+
+    for i in range(len(_reds)):
+        _num = 0
+        _blue2=[]
+        while _reds[i][1] < _blues[_num][1]:
+            _blue2.append(_blues[_num])
+            _num += 1
+        _blue2.sort()
+        if len(_blue2) > 0:
+            if _reds[i][0] < _blue2[0][0]:
+                _count += 1
+                _blues.remove(_blue2[0])
+        """for j in range(len(_blues)):
+            if _reds[i][0] >= _blues[j][0]:
+                continue
+            elif _reds[i][1] < _blues[j][1]:
+                _count += 1
+                del _blues[j]
+                break
+            else:
+                continue"""
+    print(_count)
 
 
 
