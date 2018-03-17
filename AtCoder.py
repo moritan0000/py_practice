@@ -25,12 +25,12 @@ def agc021_a():
         print(_topdig - 1 + 9 * (_digit - 1))
 
 
-def acbc089_a():
+def abc089_a():
     _num = int(input())
     print(_num // 3)
 
 
-def acbc089_b():
+def abc089_b():
     _num = int(input())
     del _num
     _colors = str(input())
@@ -40,7 +40,7 @@ def acbc089_b():
         print("Four")
 
 
-def acbc089_c():
+def abc089_c():
     _num = int(input())
     _namelist = []
     _countM = 0
@@ -74,7 +74,7 @@ def acbc089_c():
           _countR * _countC * _countH)
 
 
-def acbc089_d():
+def abc089_d():
     _hwd = str(input()).split()
     _hwd = list(map(int, _hwd))
     _area = []
@@ -106,5 +106,11 @@ def acbc089_d():
             _nowx = _nextx
             _nowy = _nexty
         print(_mpcount)
+
+
+def abc091_a():
+    pass
+
+
 
 
