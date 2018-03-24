@@ -29,5 +29,3 @@ plt.ylabel("y")
 plt.title("sinx, cosx")
 plt.legend()
 plt.show()
-
-
