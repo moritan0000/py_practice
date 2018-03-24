@@ -30,4 +30,3 @@ plt.title("sinx, cosx")
 plt.legend()
 plt.show()
 
-
