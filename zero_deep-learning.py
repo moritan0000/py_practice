@@ -169,7 +169,7 @@ a = np.array([0.3, 2.9, 4.0])
 y = softmax(a)
 print(y, "SUM =", np.sum(y), "\n")
 
-from dataset.mnist import load_mnist
+from dlfs.dataset.mnist import load_mnist
 
 (x_train, t_train), (x_test, t_test) = \
     load_mnist(flatten=True, normalize=False)
