@@ -1,13 +1,13 @@
-def ac_practice():
+def practiceA():
     _a = int(input())
-    _bc = str(input()).split()
+    _bc = input().split()
     _b = int(_bc[0])
     _c = int(_bc[1])
     _s = str(input())
     print("{} {}".format(_a + _b + _c, _s))
 
 
-def agc021_a():
+def agc021A():
     # 1~inputまでの数字で最大の桁和を出力
     _num = int(input())
     _num2 = _num
@@ -25,12 +25,61 @@ def agc021_a():
         print(_topdig - 1 + 9 * (_digit - 1))
 
 
-def abc089_a():
+def abc081A():
+    s = input()
+    s = map(int, s)
+    print(sum(s))
+
+
+def abc081B():
+    n = int(input())
+    a = input().split()
+    a = [int(x) for x in a]
+    counts = []
+
+    for num in a:
+        tmp = 0
+        while num % 2 == 0:
+            tmp += 1
+            num = num / 2
+        if tmp == 0:
+            print(0)
+            return 0
+        else:
+            counts.append(tmp)
+    print(min(counts))
+
+
+def abc086A():
+    s = input().split()
+    a = int(s[0])
+    b = int(s[1])
+    if a * b % 2 == 0:
+        print("Even")
+    else:
+        print("Odd")
+
+
+def abc087B():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    x = int(input())
+    count = 0
+    for i in range(a + 1):
+        for j in range(b + 1):
+            for k in range(c + 1):
+                if 500 * i + 100 * j + 50 * k == x:
+                    count += 1
+    print(count)
+
+
+def abc089A():
     _num = int(input())
     print(_num // 3)
 
 
-def abc089_b():
+def abc089B():
     _num = int(input())
     del _num
     _colors = str(input())
@@ -40,7 +89,7 @@ def abc089_b():
         print("Four")
 
 
-def abc089_c():
+def abc089C():
     _num = int(input())
     _namelist = []
     _countM = 0
@@ -74,8 +123,8 @@ def abc089_c():
           _countR * _countC * _countH)
 
 
-def abc089_d():
-    _hwd = str(input()).split()
+def abc089D():
+    _hwd = input().split()
     _hwd = list(map(int, _hwd))
     _area = []
     _lrs = []
@@ -108,7 +157,7 @@ def abc089_d():
         print(_mpcount)
 
 
-def abc091_a():
+def abc091A():
     _instr = str(input()).split()
     _a = int(_instr[0])
     _b = int(_instr[1])
@@ -119,7 +168,7 @@ def abc091_a():
         print("No")
 
 
-def abc091_b():
+def abc091B():
     from collections import Counter
     _strs = []
     _strt = []
@@ -138,7 +187,7 @@ def abc091_b():
     print(_max)
 
 
-def abc091_c():
+def abc091C():
     from operator import itemgetter
     _reds = []
     _blues = []
@@ -159,7 +208,7 @@ def abc091_c():
 
     for i in range(len(_reds)):
         _num = 0
-        _blue2=[]
+        _blue2 = []
         while _reds[i][1] < _blues[_num][1]:
             _blue2.append(_blues[_num])
             _num += 1
@@ -178,6 +227,3 @@ def abc091_c():
             else:
                 continue"""
     print(_count)
-
-
-
