@@ -25,6 +25,19 @@ def agc021A():
         print(_topdig - 1 + 9 * (_digit - 1))
 
 
+def abc049C():
+    s = input()
+    s = s.replace("eraser", "")
+    s = s.replace("erase", "")
+    s = s.replace("dreamer", "")
+    s = s.replace("dream", "")
+    # この順番に削除すること
+    if s == "":
+        print("YES")
+    else:
+        print("NO")
+
+
 def abc081A():
     s = input()
     s = map(int, s)
@@ -50,6 +63,45 @@ def abc081B():
     print(min(counts))
 
 
+def abc083B():
+    s = input().split()
+    n = int(s[0])
+    a = int(s[1])
+    b = int(s[2])
+    sum = 0
+    for i in range(1, n + 1):
+        tmp = i
+        digsum = 0
+        while i:
+            digsum += i % 10
+            i //= 10
+        if a <= digsum <= b:
+            sum += tmp
+    print(sum)
+
+
+def abc085B():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(int(input()))
+    d = list(set(d))
+    print(len(d))
+
+
+def abc085C():
+    s = input().split()
+    n = int(s[0])
+    y = int(s[1])
+
+    for i in range(y // 10000 + 1):
+        for j in range((y - 10000 * i) // 5000 + 1):
+            if 10000 * i + 5000 * j + 1000 * (n - i - j) == y:
+                print(i, j, n - i - j)
+                return 0
+    print(-1, -1, -1)
+
+
 def abc086A():
     s = input().split()
     a = int(s[0])
@@ -58,6 +110,25 @@ def abc086A():
         print("Even")
     else:
         print("Odd")
+
+
+def abc086C():
+    import numpy as np
+    n = int(input())
+    txys = np.empty((n, 3))
+    for i in range(n):
+        s = input().split()
+        txys[i] = (list(map(int, s)))
+    cur = np.array([0, 0, 0])
+    for ele in txys:
+        tmp = ele - cur
+        if tmp[0] >= abs(tmp[1]) + abs(tmp[2]) \
+                and (tmp[0] - abs(tmp[1]) - abs(tmp[2])) % 2 == 0:
+            cur = ele
+        else:
+            print("No")
+            return 0
+    print("Yes")
 
 
 def abc087B():
@@ -72,6 +143,17 @@ def abc087B():
                 if 500 * i + 100 * j + 50 * k == x:
                     count += 1
     print(count)
+
+
+def abc088B():
+    n = int(input())
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    a = a[::-1]
+    alice = a[::2]
+    bob = a[1::2]
+    print(sum(alice) - sum(bob))
 
 
 def abc089A():
