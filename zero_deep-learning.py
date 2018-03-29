@@ -250,8 +250,12 @@ def cross_entropy_error(y, t):
         t = t.reshape(1, t.size)
         y = y.reshape(1, y.size)
 
+    # 教師データがone-hot-vectorの場合、正解ラベルのインデックスに変換
+    if t.size == y.size:
+        t = t.argmax(axis=1)
+
     batch_size = y.shape[0]
-    return -np.sum(t * np.log(y + 1e-7)) / batch_size
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
 
 t = np.array([0, 0, 1, 0, 0, 0, 0, 0, 0, 0])
@@ -286,18 +290,22 @@ def function_2(x):
 
 
 def numerical_gradient(f, x):
-    h = 1e-4
+    h = 1e-4  # 0.0001
     grad = np.zeros_like(x)
 
-    for idx in range(x.size):
+    it = np.nditer(x, flags=['multi_index'], op_flags=['readwrite'])
+    while not it.finished:
+        idx = it.multi_index
         tmp_val = x[idx]
-        x[idx] = tmp_val + h  # f(x+h)
-        fxh1 = f(x)
-        x[idx] = tmp_val - h  # f(x-h)
-        fxh2 = f(x)
+        x[idx] = float(tmp_val) + h
+        fxh1 = f(x)  # f(x+h)
 
+        x[idx] = tmp_val - h
+        fxh2 = f(x)  # f(x-h)
         grad[idx] = (fxh1 - fxh2) / (2 * h)
-        x[idx] = tmp_val
+
+        x[idx] = tmp_val  # 値を元に戻す
+        it.iternext()
 
     return grad
 
@@ -324,6 +332,7 @@ step_num = 100
 x, x_history = gradient_descent(function_2, init_x, lr=lr, step_num=step_num)
 print(x)
 
+"""
 plt.plot([-5, 5], [0, 0], '--b')
 plt.plot([0, 0], [-5, 5], '--b')
 plt.plot(x_history[:, 0], x_history[:, 1], 'o')
@@ -332,3 +341,149 @@ plt.ylim(-4.5, 4.5)
 plt.xlabel("X0")
 plt.ylabel("X1")
 plt.show()
+"""
+
+
+class simpleNet:
+    def __init__(self):
+        self.W = np.random.randn(2, 3)
+
+    def predict(self, x):
+        return np.dot(x, self.W)
+
+    def loss(self, x, t):
+        z = self.predict(x)
+        y = softmax(z)
+        loss = cross_entropy_error(y, t)
+
+        return loss
+
+
+net = simpleNet()
+print(net.W)
+x = np.array([0.6, 0.9])
+p = net.predict(x)
+print(p, np.argmax(p))
+t = np.array([0, 0, 1])
+print(net.loss(x, t))
+
+
+def f(W):
+    return net.loss(x, t)
+
+
+dW = numerical_gradient(f, net.W)
+print(dW)
+
+from dlfs.common.functions import *
+
+
+class TwoLayerNet:
+
+    def __init__(self, input_size, hidden_size, output_size, weight_init_std=0.01):
+        # 重みの初期化
+        self.params = {}
+        self.params['W1'] = weight_init_std * np.random.randn(input_size, hidden_size)
+        self.params['b1'] = np.zeros(hidden_size)
+        self.params['W2'] = weight_init_std * np.random.randn(hidden_size, output_size)
+        self.params['b2'] = np.zeros(output_size)
+
+    def predict(self, x):
+        W1, W2 = self.params['W1'], self.params['W2']
+        b1, b2 = self.params['b1'], self.params['b2']
+
+        a1 = np.dot(x, W1) + b1
+        z1 = sigmoid(a1)
+        a2 = np.dot(z1, W2) + b2
+        y = softmax(a2)
+
+        return y
+
+    # x:入力データ, t:教師データ
+    def loss(self, x, t):
+        y = self.predict(x)
+
+        return cross_entropy_error(y, t)
+
+    def accuracy(self, x, t):
+        y = self.predict(x)
+        y = np.argmax(y, axis=1)
+        t = np.argmax(t, axis=1)
+
+        accuracy = np.sum(y == t) / float(x.shape[0])
+        return accuracy
+
+    # x:入力データ, t:教師データ
+    def numerical_gradient(self, x, t):
+        loss_W = lambda W: self.loss(x, t)
+
+        grads = {}
+        grads['W1'] = numerical_gradient(loss_W, self.params['W1'])
+        grads['b1'] = numerical_gradient(loss_W, self.params['b1'])
+        grads['W2'] = numerical_gradient(loss_W, self.params['W2'])
+        grads['b2'] = numerical_gradient(loss_W, self.params['b2'])
+
+        return grads
+
+    def gradient(self, x, t):
+        W1, W2 = self.params['W1'], self.params['W2']
+        b1, b2 = self.params['b1'], self.params['b2']
+        grads = {}
+
+        batch_num = x.shape[0]
+
+        # forward
+        a1 = np.dot(x, W1) + b1
+        z1 = sigmoid(a1)
+        a2 = np.dot(z1, W2) + b2
+        y = softmax(a2)
+
+        # backward
+        dy = (y - t) / batch_num
+        grads['W2'] = np.dot(z1.T, dy)
+        grads['b2'] = np.sum(dy, axis=0)
+
+        da1 = np.dot(dy, W2.T)
+        dz1 = sigmoid_grad(a1) * da1
+        grads['W1'] = np.dot(x.T, dz1)
+        grads['b1'] = np.sum(dz1, axis=0)
+
+        return grads
+
+
+def dlfs452():
+    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
+
+    train_loss_list = []
+
+    # Hyper parameters
+    iter_num = 10000
+    train_size = x_train.shape[0]
+    batch_size = 100
+    learning_rate = 0.01
+
+    network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
+
+    for i in range(iter_num):
+        # get mini batch
+        batch_mask = np.random.choice(train_size, batch_size)
+        x_batch = x_train[batch_mask]
+        t_batch = t_train[batch_mask]
+
+        grad = network.gradient(x_batch, t_batch)  # Faster than .numerical_gradient
+
+        for key in ("W1", "b1", "W2", "b2"):
+            network.params[key] -= learning_rate * grad[key]
+
+        loss = network.loss(x_batch, t_batch)
+        train_loss_list.append(loss)
+
+    plt.plot([i for i in range(iter_num)], train_loss_list)
+    plt.xlim(0, iter_num)
+    plt.ylim(0)
+    plt.xlabel("Iteration")
+    plt.ylabel("Loss")
+    plt.show()
+
+
+dlfs452()
