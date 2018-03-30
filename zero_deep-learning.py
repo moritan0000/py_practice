@@ -455,6 +455,9 @@ def dlfs452():
     (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
 
     train_loss_list = []
+    train_acc_list = []
+    test_acc_list = []
+    iter_per_epoch = max(train_size / batch_size, 1)
 
     # Hyper parameters
     iter_num = 10000
@@ -485,5 +488,3 @@ def dlfs452():
     plt.ylabel("Loss")
     plt.show()
 
-
-dlfs452()
