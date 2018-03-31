@@ -25,6 +25,55 @@ def agc021A():
         print(_topdig - 1 + 9 * (_digit - 1))
 
 
+def agc022A():
+    from collections import OrderedDict
+    S = input()
+    alfa_list = [chr(i) for i in range(97, 97 + 26)]
+    alfa_dict = OrderedDict()
+
+    # {"a":0, ...}
+    for i in range(26):
+        alfa_dict[alfa_list[i]] = i
+
+    S_max = "zyxwvutsrqponmlkjihgfedcba"
+    S_min = "abcdefghijklmnopqrstuvwxyz"
+
+    if S == S_max:
+        print(-1)
+
+    elif len(S) < 26:
+        for i in range(len(S)):
+            del alfa_dict[S[i]]
+
+        remainings = [k for k, v in alfa_dict.items()]
+        out = S + remainings[0]
+        print(out)
+        return 0
+
+    else:
+        alfa_dict2 = alfa_dict.copy()
+        for i in range(26):
+            tmp = alfa_dict[S[i]]
+            del alfa_dict[S[i]]
+
+            if S[i] != S_min[i]:
+                remainings = [k for k, v in alfa_dict.items() if v > alfa_dict2[S[i - 1]]]
+
+                if S[i:] == S_max[:26 - i]:
+                    out = S[:i - 1] + remainings[0]
+                    print(out)
+                    return 0
+                else:
+                    out = S[:i + 1] + remainings[1]
+                    print(out)
+                    return 0
+
+        print("abcdefghijklmnopqrstuvwxz")
+
+
+agc022A()
+
+
 def abc049C():
     s = input()
     s = s.replace("eraser", "")
