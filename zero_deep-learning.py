@@ -457,7 +457,6 @@ def dlfs452():
     train_loss_list = []
     train_acc_list = []
     test_acc_list = []
-    iter_per_epoch = max(train_size / batch_size, 1)
 
     # Hyper parameters
     iter_num = 10000
