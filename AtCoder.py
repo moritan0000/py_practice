@@ -71,9 +71,6 @@ def agc022A():
         print("abcdefghijklmnopqrstuvwxz")
 
 
-agc022A()
-
-
 def abc049C():
     s = input()
     s = s.replace("eraser", "")
