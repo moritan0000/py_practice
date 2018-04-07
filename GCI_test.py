@@ -1,1 +1,1 @@
-
+# Global Consumption Intelligent test
