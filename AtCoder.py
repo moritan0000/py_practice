@@ -71,6 +71,20 @@ def agc022A():
         print("abcdefghijklmnopqrstuvwxz")
 
 
+def arc094C():
+    abc = input().split()
+    abc = list(map(int, abc))
+    abc.sort()
+
+    count = abc[2] - abc[1]
+    diff = abc[2] - (abc[0] + count)
+    count += [diff // 2 + 2, diff // 2][diff % 2 == 0]
+
+    print(count)
+
+
+
+
 def abc049C():
     s = input()
     s = s.replace("eraser", "")
