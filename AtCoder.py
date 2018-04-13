@@ -83,8 +83,6 @@ def arc094C():
     print(count)
 
 
-
-
 def abc049C():
     s = input()
     s = s.replace("eraser", "")
@@ -92,15 +90,11 @@ def abc049C():
     s = s.replace("dreamer", "")
     s = s.replace("dream", "")
     # この順番に削除すること
-    if s == "":
-        print("YES")
-    else:
-        print("NO")
+    print(["NO", "YES"][s == ""])
 
 
 def abc081A():
-    s = input()
-    s = map(int, s)
+    s = map(int, input())
     print(sum(s))
 
 
