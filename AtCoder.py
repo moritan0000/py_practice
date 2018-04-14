@@ -160,10 +160,7 @@ def abc086A():
     s = input().split()
     a = int(s[0])
     b = int(s[1])
-    if a * b % 2 == 0:
-        print("Even")
-    else:
-        print("Odd")
+    print(["Even", "Odd"][a * b % 2])
 
 
 def abc086C():
