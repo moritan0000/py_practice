@@ -360,3 +360,92 @@ def abc091C():
             else:
                 continue"""
     print(_count)
+
+
+def abc094A():
+    a, b, x = map(int, input().split())
+    print(["NO", "YES"][a <= x <= (a + b)])
+
+
+def abc094B():
+    n = input().split()
+    n = list(map(int, n))
+    a = input().split()
+    a = list(map(int, a))
+    count = 0
+    for i in a:
+        if n[2] > i:
+            count += 1
+    print(min(count, n[1] - count))
+
+
+def abc094C():
+    n = int(input())
+    x = input().split()
+    x = list(map(int, x))
+    y = x.copy()
+    y.sort()
+    nums = y[int(n / 2 - 1): int(n / 2 + 1)]
+    for i in range(n):
+        tf = nums[0] >= x[i]
+        print(nums[tf])
+
+
+def abc094D():
+    import numpy as np
+    def nCr(n, r):
+        """
+        Calculate the number of combination (nCr = nPr/r!).
+        The parameters need to meet the condition of n >= r >= 0.
+        It returns 1 if r == 0, which means there is one pattern
+        to choice 0 items out of the number of n.
+        """
+
+        # 10C7 = 10C3
+        r = min(r, n - r)
+
+        # Calculate the numerator.
+        numerator = 1
+        for i in range(n, n - r, -1):
+            numerator *= i
+
+        # Calculate the denominator. Should use math.factorial?
+        denominator = 1
+        for i in range(r, 1, -1):
+            denominator *= i
+
+        return numerator // denominator
+
+    n = int(input())
+    a = list(map(float, input().split()))
+    a.sort()
+
+    if len(a) == 2:
+        print(a[1], a[0])
+        return 0
+
+    a = np.array(a)
+    ai = int(a[-1])
+
+    if n % 2 == 0:
+        r = ai / 2
+        b = a.copy() - r
+        j = np.argmin(abs(b))
+        print(int(ai), int(a[j]))
+        return 0
+    else:
+        r1 = (ai - 1) / 2
+        r2 = (ai + 1) / 2
+        b1 = a.copy() - r1
+        b2 = a.copy() - r2
+
+        j1 = np.argmin(abs(b1))
+        j2 = np.argmin(abs(b2))
+        # j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
+        if abs(a[j1] - r1) == abs(a[j2] - r2):
+            j = np.argmax([nCr(ai, int(a[j1])), nCr(ai, int(a[j2]))])
+        else:
+            j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
+        aj = [a[j1], a[j2]][j]
+        print(int(ai), int(aj))
+        return 0
