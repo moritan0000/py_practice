@@ -1,10 +1,8 @@
 def practiceA():
-    _a = int(input())
-    _bc = input().split()
-    _b = int(_bc[0])
-    _c = int(_bc[1])
-    _s = str(input())
-    print("{} {}".format(_a + _b + _c, _s))
+    a = int(input())
+    b, c = map(int, input().split())
+    s = input()
+    print(a + b + c, s)
 
 
 def agc021A():
@@ -72,8 +70,7 @@ def agc022A():
 
 
 def arc094C():
-    abc = input().split()
-    abc = list(map(int, abc))
+    abc = list(map(int, input().split()))
     abc.sort()
 
     count = abc[2] - abc[1]

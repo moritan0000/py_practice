@@ -1,11 +1,15 @@
-def prime_number():
+def prime_number(n):
     import numpy as np
-    n = int(input())
-    if n == 2 or n == 3:
-        print(n)
-        return 0
+    nums = np.array([2, 3, 5, 7] + [i for i in range(11, n, 2) if n >= 11 and (i % 3) * (i % 5) * (i % 7) > 0])
+    ans = np.array([],dtype=int)
 
-    divnums = [i for i in range(3, n, 2)]
+    for val in nums:
+        mod = val % nums
+        if np.sum(mod == 0) == 1:
+            ans = np.append(ans, val)
+
+    return ans
 
 
-prime_number()
+n = 1000
+print(prime_number(n))
