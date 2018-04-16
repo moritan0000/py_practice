@@ -1,6 +1,3 @@
-# Global Consumer Intelligent test
-import re
-
 A = {'t': 64, 'j': 53, 'q': 47, 'h': 58, 'y': 64, 'a': 75, 'f': 65}
 
 
