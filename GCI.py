@@ -1,7 +1,25 @@
+import numpy as np
+import numpy.random as random
+
+import scipy as sp
+import scipy.linalg as linalg
+from scipy.optimize import minimize_scalar
+
+import pandas as pd
+from pandas import Series, DataFrame
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+import seaborn as sns
+from timeit import timeit
+
+
 def prime_number(n):
     import numpy as np
-    nums = np.array([2, 3, 5, 7] + [i for i in range(11, n, 2) if n >= 11 and (i % 3) * (i % 5) * (i % 7) > 0])
-    ans = np.array([],dtype=int)
+
+    nums = np.array([2, 3, 5, 7] + [i for i in range(11, n, 2) if i % 3 > 0 and i % 5 > 0 and i % 7 > 0])
+    ans = np.array([], dtype=int)
 
     for val in nums:
         mod = val % nums
@@ -12,4 +30,110 @@ def prime_number(n):
 
 
 n = 1000
-print(prime_number(n))
+# print(prime_number(n))
+# print(timeit("prime_number(n)", globals=globals(),number=10000))
+
+# ----------Chapter2
+
+random.seed(0)
+a = random.randn(16).reshape(4, 4) * 10
+print(linalg.det(a))
+print(linalg.inv(a))
+print(np.dot(a, linalg.inv(a)))
+eig_value, eig_vector = linalg.eig(a)
+print(eig_value)
+print(eig_vector)
+
+
+def sample_function(x):
+    return x ** 2 + 2 * x + 1
+
+
+print(sp.optimize.newton(sample_function, 0))
+print(minimize_scalar(sample_function, method="Brent"))
+
+sample_pandas_data = pd.Series([12, 23, 34, 45, 56, 67, 78, 89, 90, 121],
+                               index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+print(sample_pandas_data)
+
+attri_data1 = {'ID': ['100', '101', '102', '103', '104'],
+               'city': ['Tokyo', 'Osaka', 'Kyoto', 'Hokkaidao', 'Tokyo'],
+               'birth_year': [1990, 1989, 1992, 1997, 1982],
+               'name': ['Hiroshi', 'Akiko', 'Yuki', 'Satoru', 'Steeve']}
+
+attri_data_frame1 = DataFrame(attri_data1, index=["a", "b", "c", "d", "e"])
+print(attri_data_frame1)
+print(attri_data_frame1[["ID", "city"]].T)
+print(attri_data_frame1[attri_data_frame1['city'].isin(["Tokyo", "Osaka"])])
+print(attri_data_frame1.drop(['birth_year'], axis=1))
+
+attri_data2 = {'ID': ['100', '101', '102', '105', '107'],
+               'math': [50, 43, 33, 76, 98],
+               'English': [90, 30, 20, 50, 30],
+               'sex': ['M', 'F', 'F', 'M', 'M']}
+
+attri_data_frame2 = DataFrame(attri_data2)
+print(attri_data_frame2)
+
+print(pd.merge(attri_data_frame1, attri_data_frame2, "outer"))
+print(attri_data_frame2.groupby("sex")["math"].mean())
+
+
+def scatter():
+    # 散布図
+    random.seed(0)
+    x = np.random.randn(300)
+    y = np.sin(x) + np.random.randn(300)
+
+    plt.plot(x, y, "o")
+    # plt.scatter(x, y)
+
+    plt.title("Title Name")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.grid(True)
+    plt.show()
+
+
+def renzoku():
+    # 連続曲線
+    np.random.seed(0)
+    numpy_data_x = np.arange(1000)
+
+    numpy_random_data_y = np.random.randn(1000).cumsum()
+
+    plt.plot(numpy_data_x, numpy_random_data_y, label="Label")
+    plt.legend()
+
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.grid(True)
+    plt.show()
+
+
+def sindouble():
+    # sin関数
+
+    # 2行1列のグラフの1つ目
+    plt.subplot(2, 1, 1)
+    x = np.linspace(-10, 10, 100)
+    plt.plot(x, np.sin(x))
+
+    # 2行1列のグラフの2つ目
+    plt.subplot(2, 1, 2)
+    y = np.linspace(-10, 10, 100)
+    plt.plot(y, np.sin(2 * y))
+
+    plt.grid(True)
+    plt.show()
+
+
+def hist():
+    # histogram
+    random.seed(0)
+    plt.hist(np.random.randn(10 ** 5) * 10 + 50, bins=60, range=(20, 80))
+    plt.grid(True)
+    plt.show()
+
+
+hist()

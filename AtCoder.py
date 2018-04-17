@@ -97,8 +97,7 @@ def abc081A():
 
 def abc081B():
     n = int(input())
-    a = input().split()
-    a = [int(x) for x in a]
+    a = list(map(int, input().split()))
     counts = []
 
     for num in a:
@@ -115,10 +114,7 @@ def abc081B():
 
 
 def abc083B():
-    s = input().split()
-    n = int(s[0])
-    a = int(s[1])
-    b = int(s[2])
+    n, a, b = map(int, input().split())
     sum = 0
     for i in range(1, n + 1):
         tmp = i
@@ -141,9 +137,7 @@ def abc085B():
 
 
 def abc085C():
-    s = input().split()
-    n = int(s[0])
-    y = int(s[1])
+    n, y = map(int, input().split())
 
     for i in range(y // 10000 + 1):
         for j in range((y - 10000 * i) // 5000 + 1):
@@ -154,9 +148,7 @@ def abc085C():
 
 
 def abc086A():
-    s = input().split()
-    a = int(s[0])
-    b = int(s[1])
+    a, b = map(int, input().split())
     print(["Even", "Odd"][a * b % 2])
 
 
@@ -205,18 +197,13 @@ def abc088B():
 
 
 def abc089A():
-    _num = int(input())
-    print(_num // 3)
+    print(int(input()) // 3)
 
 
 def abc089B():
-    _num = int(input())
-    del _num
-    _colors = str(input())
-    if _colors.find("Y") == -1:
-        print("Three")
-    else:
-        print("Four")
+    num = int(input())
+    colors = input()
+    print(["Four", "Three"][colors.find("Y") == -1])
 
 
 def abc089C():
@@ -288,14 +275,8 @@ def abc089D():
 
 
 def abc091A():
-    _instr = str(input()).split()
-    _a = int(_instr[0])
-    _b = int(_instr[1])
-    _c = int(_instr[2])
-    if _a + _b >= _c:
-        print("Yes")
-    else:
-        print("No")
+    a, b, c = map(int, input().split())
+    print(["No", "Yes"][a + b >= c])
 
 
 def abc091B():
@@ -365,10 +346,8 @@ def abc094A():
 
 
 def abc094B():
-    n = input().split()
-    n = list(map(int, n))
-    a = input().split()
-    a = list(map(int, a))
+    n = list(map(int, input().split()))
+    a = list(map(int, input().split()))
     count = 0
     for i in a:
         if n[2] > i:
@@ -378,8 +357,7 @@ def abc094B():
 
 def abc094C():
     n = int(input())
-    x = input().split()
-    x = list(map(int, x))
+    x = list(map(int, input().split()))
     y = x.copy()
     y.sort()
     nums = y[int(n / 2 - 1): int(n / 2 + 1)]
