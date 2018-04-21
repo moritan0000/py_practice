@@ -11,6 +11,7 @@ from pandas import Series, DataFrame
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
+import math
 import seaborn as sns
 from timeit import timeit
 
@@ -33,7 +34,7 @@ n = 1000
 # print(prime_number(n))
 # print(timeit("prime_number(n)", globals=globals(),number=10000))
 
-# ----------Chapter2
+# ---------- Chapter2
 
 random.seed(0)
 a = random.randn(16).reshape(4, 4) * 10
@@ -111,29 +112,59 @@ def renzoku():
     plt.show()
 
 
-def sindouble():
-    # sin関数
+def sin_and_cos():
+    plt.subplot(2, 2, 1)
+    x1 = np.linspace(-10, 10, 100)
+    plt.plot(x1, np.sin(x1))
 
-    # 2行1列のグラフの1つ目
-    plt.subplot(2, 1, 1)
-    x = np.linspace(-10, 10, 100)
-    plt.plot(x, np.sin(x))
+    plt.subplot(2, 2, 2)
+    x2 = np.linspace(-10, 10, 100)
+    plt.plot(x2, np.sin(2 * x2))
 
-    # 2行1列のグラフの2つ目
-    plt.subplot(2, 1, 2)
-    y = np.linspace(-10, 10, 100)
-    plt.plot(y, np.sin(2 * y))
+    plt.subplot(2, 2, 3)
+    x3 = np.linspace(-10, 10, 100)
+    plt.plot(x3, np.sin(x3))
+
+    plt.subplot(2, 2, 4)
+    x4 = np.linspace(-10, 10, 100)
+    plt.plot(x4, np.sin(2 * x4))
 
     plt.grid(True)
     plt.show()
 
 
 def hist():
-    # histogram
     random.seed(0)
+    plt.subplot(3, 1, 1)
     plt.hist(np.random.randn(10 ** 5) * 10 + 50, bins=60, range=(20, 80))
+
+    plt.subplot(3, 1, 2)
+    plt.hist(random.uniform(0.0, 1.0, 1000), bins=100)
+
+    plt.subplot(3, 1, 3)
+    plt.hist(random.uniform(0.0, 1.0, 1000), bins=100)
+
     plt.grid(True)
     plt.show()
 
 
-hist()
+def monte_carlo():
+    random.seed(0)
+    n = 1000000
+    x = random.uniform(-1.0, 1.0, n)
+    y = random.uniform(-1.0, 1.0, n)
+
+    r = np.sqrt(x ** 2 + y ** 2)
+    mask = r < 1
+    print("pi =", np.sum(mask) * 4 / n)
+
+    plt.subplot(2, 1, 1)
+    plt.scatter(x[mask], y[mask])
+
+    plt.subplot(2, 1, 2)
+    plt.scatter(x[mask == 0], y[mask == 0])
+
+    plt.show()
+
+monte_carlo()
+    # ---------- Chapter3

@@ -424,3 +424,47 @@ def abc094D():
         aj = [a[j1], a[j2]][j]
         print(int(ai), int(aj))
         return 0
+
+
+def abc095A():
+    s = input()
+    print(700 + 100 * s.count("o"))
+
+
+def abc095B():
+    n, x = map(int, input().split())
+    m = []
+    for i in range(n):
+        m.append(int(input()))
+
+    x -= sum(m)
+    count = x // min(m)
+    print(n + count)
+
+
+def abc095C():
+    a, b, c, x, y = map(int, input().split())
+
+    diff = abs(x - y)
+    price1 = [(a + b) * min(x, y), 2 * c * min(x, y)][a + b >= c * 2] + diff * [a, b][x < y]
+    print(min(price1, max(x, y) * c * 2))
+
+
+def abc095Dx():
+    import numpy as np
+    n, c = map(int, input().split())
+    x = np.zeros((n, 1))
+    v = np.zeros((n, 1))
+
+    for i in range(n):
+        x[i], v[i] = map(int, input().split())
+
+    for i in range(n):
+        xr = x[i:]
+        xr = [min(xr[i]-xr[0], xr[0]+ c - xr[i]) for i in range(n)]
+        vr = v[i:]
+        xl = x[:i]
+        vl = v[:i]
+
+        print(xr)
+
