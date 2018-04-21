@@ -368,7 +368,8 @@ def abc094C():
 
 def abc094D():
     import numpy as np
-    def nCr(n, r):
+
+    def ncr(n, r):
         """
         Calculate the number of combination (nCr = nPr/r!).
         The parameters need to meet the condition of n >= r >= 0.
@@ -418,7 +419,7 @@ def abc094D():
         j2 = np.argmin(abs(b2))
         # j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
         if abs(a[j1] - r1) == abs(a[j2] - r2):
-            j = np.argmax([nCr(ai, int(a[j1])), nCr(ai, int(a[j2]))])
+            j = np.argmax([ncr(ai, int(a[j1])), ncr(ai, int(a[j2]))])
         else:
             j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
         aj = [a[j1], a[j2]][j]
