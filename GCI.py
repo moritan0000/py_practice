@@ -42,9 +42,9 @@ input_data = {'key_1': 100,
 
 
 def homework1(input_data):
-    return sum(input_data.values())
+    my_result = sum(input_data.values())
+    return my_result
 
-print(homework1(input_data))
 
 # ---------- Chapter2
 
@@ -178,4 +178,16 @@ def monte_carlo():
 
     plt.show()
 
-    # ---------- Chapter3
+
+A = np.array([[3, 2, 1],
+              [5, 3, 7],
+              [1, 1, 1]])
+
+
+def homework2(A):
+    my_result = linalg.det(A)
+    return my_result
+
+
+print(homework2(A))
+# ---------- Chapter3
