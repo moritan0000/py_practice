@@ -34,6 +34,18 @@ n = 1000
 # print(prime_number(n))
 # print(timeit("prime_number(n)", globals=globals(),number=10000))
 
+input_data = {'key_1': 100,
+              'key_2': 100,
+              'key_3': 300,
+              'key_4': 400,
+              'key_5': 500}
+
+
+def homework1(input_data):
+    return sum(input_data.values())
+
+print(homework1(input_data))
+
 # ---------- Chapter2
 
 random.seed(0)
@@ -166,5 +178,4 @@ def monte_carlo():
 
     plt.show()
 
-monte_carlo()
     # ---------- Chapter3
