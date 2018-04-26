@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import sklearn as sl
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
@@ -8,7 +9,7 @@ from sklearn import linear_model
 gci_competitions_path = "../../../../weblab/weblab_datascience/competitions/"
 
 
-def wine_quality_1():
+def wine_quality_normalization():
     clf = linear_model.LinearRegression()
 
     data = pd.read_csv(gci_competitions_path + "wine_quality/train.csv")
@@ -25,7 +26,7 @@ def wine_quality_1():
     print("Intercept:", clf.intercept_)
 
 
-wine_quality_1()
+wine_quality_normalization()
 
 
 def wine_quality_2():
