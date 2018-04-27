@@ -9,27 +9,26 @@ from sklearn import linear_model
 gci_competitions_path = "../../../../weblab/weblab_datascience/competitions/"
 
 
-def wine_quality_normalization():
+def wine_quality_with_normalization():
     clf = linear_model.LinearRegression()
 
-    data = pd.read_csv(gci_competitions_path + "wine_quality/train.csv")
-    data_norm = data.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
+    sample = pd.read_csv(gci_competitions_path + "wine_quality/train.csv")
+    sample_norm = sample.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
+    test_data = pd.read_csv(gci_competitions_path + "wine_quality/test.csv")
 
-    predictor_var = data_norm.drop("quality", axis=1)
-    X = predictor_var.values
-    Y = data_norm["quality"].values
+    predictor_var = sample_norm.drop("quality", axis=1)
 
-    clf.fit(X, Y)
+    clf.fit(predictor_var.values, sample_norm["quality"])
 
-    print(pd.DataFrame({"Name": predictor_var.columns,
-                        "Coefficients": clf.coef_}))
+    print(pd.DataFrame.from_dict({"Name": predictor_var.columns,
+                                  "Coefficients": clf.coef_}))
     print("Intercept:", clf.intercept_)
 
 
-wine_quality_normalization()
+wine_quality_with_normalization()
 
 
-def wine_quality_2():
+def wine_quality_wo_norm():
     train_data = np.loadtxt(gci_competitions_path + "wine_quality/train.csv",
                             delimiter=",", skiprows=1, dtype=float)
     test_data = np.loadtxt(gci_competitions_path + "wine_quality/test.csv",
