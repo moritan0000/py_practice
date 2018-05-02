@@ -376,19 +376,12 @@ def abc094D():
         It returns 1 if r == 0, which means there is one pattern
         to choice 0 items out of the number of n.
         """
-
-        # 10C7 = 10C3
         r = min(r, n - r)
-
-        # Calculate the numerator.
         numerator = 1
-        for i in range(n, n - r, -1):
-            numerator *= i
-
-        # Calculate the denominator. Should use math.factorial?
         denominator = 1
-        for i in range(r, 1, -1):
-            denominator *= i
+        for i in range(r):
+            numerator *= (n - i)
+            denominator *= (i + 1)
 
         return numerator // denominator
 
