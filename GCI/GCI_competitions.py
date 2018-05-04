@@ -11,22 +11,28 @@ gci_competitions_path = "../../../../weblab/weblab_datascience/competitions/"
 
 
 def wine_quality_with_normalization():
+    train = pd.read_csv(gci_competitions_path + "wine_quality/train.csv")
+    train_predictor = train.drop("quality", axis=1)
+    train_predictor_norm = train_predictor.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
+
+    test = pd.read_csv(gci_competitions_path + "wine_quality/test.csv")
+    test_predictor = test.drop("id", axis=1)
+    test_predictor_norm = test_predictor.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
+
     clf = linear_model.LinearRegression()
+    clf.fit(train_predictor_norm.values, train["quality"])
 
-    sample = pd.read_csv(gci_competitions_path + "wine_quality/train.csv")
-    sample_norm = sample.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
-    test_data = pd.read_csv(gci_competitions_path + "wine_quality/test.csv")
+    test_result = clf.predict(test_predictor_norm.values)
+    out = pd.DataFrame.from_dict({"quality": test_result})
 
-    predictor_var = sample_norm.drop("quality", axis=1)
-
-    clf.fit(predictor_var.values, sample_norm["quality"])
-
-    print(pd.DataFrame.from_dict({"Name": predictor_var.columns,
+    print(pd.DataFrame.from_dict({"Name": train_predictor.columns,
                                   "Coefficients": clf.coef_}))
     print("Intercept:", clf.intercept_)
+    print(out)
+    out.to_csv(gci_competitions_path + "wine_quality/submit.csv", index=False)
 
 
-wine_quality_with_normalization()
+#wine_quality_with_normalization()
 
 
 def wine_quality_wo_norm():
