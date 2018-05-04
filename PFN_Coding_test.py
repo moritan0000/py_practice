@@ -1,11 +1,11 @@
 # Problem No. 1
 import numpy as np
 
-x = [[1],
+x = [[-1],
      [2],
-     [3],
+     [-3],
      [4],
-     [5]]
+     [-5]]
 
 y = [[11],
      [12],
@@ -55,27 +55,29 @@ print("A dot x:", all(np.dot(A, x) == multiply_matrix_and_vector(A, x)))
 def transpose_matrix(A):
     B = []
     for i in range(len(A[0])):
-        pass
-
+        row = []
+        for j in range(len(A)):
+            row.append(A[j][i])
+        B.append(row)
     return B
 
 
-print(transpose_matrix(A))
+print("A.T:", all((np.array(A).T == transpose_matrix(A)).flatten()))
 
 
 def relu(x):
-    z = [[max(0, x[i])] for i in range(len(x))]
+    z = [[max(0, x[i][0])] for i in range(len(x))]
     return z
 
 
-print(relu(x))
+print("relu:", all(relu(x) == np.maximum(0, x)))
 
 
 def softmax(x):
     import math
-    denominator = math.exp(sum(x))
-    z = [exp(x[i]) / denominator for i in range(len(x))]
+    denominator = sum([math.exp(x[i][0]) for i in range(len(x))])
+    z = [[math.exp(x[i][0]) / denominator] for i in range(len(x))]
     return z
 
 
-print(softmax(x))
+print("softmax:", all(softmax(x) == np.exp(x) / np.sum(np.exp(x))))
