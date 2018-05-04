@@ -1,4 +1,4 @@
-# Problem No. 1
+# ----------Problem No. 1----------
 import numpy as np
 
 x = [[-1],
@@ -49,7 +49,7 @@ def multiply_matrix_and_vector(A, x):
     return B
 
 
-print("A dot x:", all(np.dot(A, x) == multiply_matrix_and_vector(A, x)))
+print("A * x:", all(np.dot(A, x) == multiply_matrix_and_vector(A, x)))
 
 
 def transpose_matrix(A):
@@ -81,3 +81,5 @@ def softmax(x):
 
 
 print("softmax:", all(softmax(x) == np.exp(x) / np.sum(np.exp(x))))
+
+# ----------Problem No. 2----------
