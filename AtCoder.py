@@ -1,11 +1,11 @@
-def practiceA():
+def practice_a():
     a = int(input())
     b, c = map(int, input().split())
     s = input()
     print(a + b + c, s)
 
 
-def agc021A():
+def agc021_a():
     # 1~inputまでの数字で最大の桁和を出力
     _num = int(input())
     _num2 = _num
@@ -23,7 +23,7 @@ def agc021A():
         print(_topdig - 1 + 9 * (_digit - 1))
 
 
-def agc022A():
+def agc022_a():
     from collections import OrderedDict
     S = input()
     alfa_list = [chr(i) for i in range(97, 97 + 26)]
@@ -69,7 +69,7 @@ def agc022A():
         print("abcdefghijklmnopqrstuvwxz")
 
 
-def arc094C():
+def arc094_c():
     abc = list(map(int, input().split()))
     abc.sort()
 
@@ -80,7 +80,7 @@ def arc094C():
     print(count)
 
 
-def abc049C():
+def abc049_c():
     s = input()
     s = s.replace("eraser", "")
     s = s.replace("erase", "")
@@ -90,12 +90,12 @@ def abc049C():
     print(["NO", "YES"][s == ""])
 
 
-def abc081A():
+def abc081_a():
     s = map(int, input())
     print(sum(s))
 
 
-def abc081B():
+def abc081_b():
     n = int(input())
     a = list(map(int, input().split()))
     counts = []
@@ -113,7 +113,7 @@ def abc081B():
     print(min(counts))
 
 
-def abc083B():
+def abc083_b():
     n, a, b = map(int, input().split())
     sum = 0
     for i in range(1, n + 1):
@@ -127,7 +127,7 @@ def abc083B():
     print(sum)
 
 
-def abc085B():
+def abc085_b():
     n = int(input())
     d = []
     for i in range(n):
@@ -136,7 +136,7 @@ def abc085B():
     print(len(d))
 
 
-def abc085C():
+def abc085_c():
     n, y = map(int, input().split())
 
     for i in range(y // 10000 + 1):
@@ -147,12 +147,12 @@ def abc085C():
     print(-1, -1, -1)
 
 
-def abc086A():
+def abc086_a():
     a, b = map(int, input().split())
     print(["Even", "Odd"][a * b % 2])
 
 
-def abc086C():
+def abc086_c():
     import numpy as np
     n = int(input())
     txys = np.empty((n, 3))
@@ -171,7 +171,7 @@ def abc086C():
     print("Yes")
 
 
-def abc087B():
+def abc087_b():
     a = int(input())
     b = int(input())
     c = int(input())
@@ -185,7 +185,7 @@ def abc087B():
     print(count)
 
 
-def abc088B():
+def abc088_b():
     n = int(input())
     a = input().split()
     a = [int(i) for i in a]
@@ -196,17 +196,17 @@ def abc088B():
     print(sum(alice) - sum(bob))
 
 
-def abc089A():
+def abc089_a():
     print(int(input()) // 3)
 
 
-def abc089B():
+def abc089_b():
     num = int(input())
     colors = input()
     print(["Four", "Three"][colors.find("Y") == -1])
 
 
-def abc089C():
+def abc089_c():
     _num = int(input())
     _namelist = []
     _countM = 0
@@ -228,19 +228,19 @@ def abc089C():
             _countC += 1
         elif _name[0] == "H":
             _countH += 1
-    print(_countM * _countA * _countR + \
-          _countM * _countA * _countC + \
-          _countM * _countA * _countH + \
-          _countM * _countR * _countC + \
-          _countM * _countR * _countH + \
-          _countM * _countC * _countH + \
-          _countA * _countR * _countC + \
-          _countA * _countR * _countH + \
-          _countA * _countC * _countH + \
+    print(_countM * _countA * _countR +
+          _countM * _countA * _countC +
+          _countM * _countA * _countH +
+          _countM * _countR * _countC +
+          _countM * _countR * _countH +
+          _countM * _countC * _countH +
+          _countA * _countR * _countC +
+          _countA * _countR * _countH +
+          _countA * _countC * _countH +
           _countR * _countC * _countH)
 
 
-def abc089D():
+def abc089_d():
     _hwd = input().split()
     _hwd = list(map(int, _hwd))
     _area = []
@@ -274,12 +274,12 @@ def abc089D():
         print(_mpcount)
 
 
-def abc091A():
+def abc091_a():
     a, b, c = map(int, input().split())
     print(["No", "Yes"][a + b >= c])
 
 
-def abc091B():
+def abc091_b():
     from collections import Counter
     _strs = []
     _strt = []
@@ -298,7 +298,7 @@ def abc091B():
     print(_max)
 
 
-def abc091C():
+def abc091_c():
     from operator import itemgetter
     _reds = []
     _blues = []
@@ -340,12 +340,12 @@ def abc091C():
     print(_count)
 
 
-def abc094A():
+def abc094_a():
     a, b, x = map(int, input().split())
     print(["NO", "YES"][a <= x <= (a + b)])
 
 
-def abc094B():
+def abc094_b():
     n = list(map(int, input().split()))
     a = list(map(int, input().split()))
     count = 0
@@ -355,7 +355,7 @@ def abc094B():
     print(min(count, n[1] - count))
 
 
-def abc094C():
+def abc094_c():
     n = int(input())
     x = list(map(int, input().split()))
     y = x.copy()
@@ -366,7 +366,7 @@ def abc094C():
         print(nums[tf])
 
 
-def abc094D():
+def abc094_d():
     import numpy as np
 
     def ncr(n, r):
@@ -415,17 +415,17 @@ def abc094D():
             j = np.argmax([ncr(ai, int(a[j1])), ncr(ai, int(a[j2]))])
         else:
             j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
-        aj = [a[j1], a[j2]][j]
+        aj = [a[j1], a[j2]][j[0]]
         print(int(ai), int(aj))
         return 0
 
 
-def abc095A():
+def abc095_a():
     s = input()
     print(700 + 100 * s.count("o"))
 
 
-def abc095B():
+def abc095_b():
     n, x = map(int, input().split())
     m = []
     for i in range(n):
@@ -436,7 +436,7 @@ def abc095B():
     print(n + count)
 
 
-def abc095C():
+def abc095_c():
     a, b, c, x, y = map(int, input().split())
 
     diff = abs(x - y)
@@ -444,7 +444,7 @@ def abc095C():
     print(min(price1, max(x, y) * c * 2))
 
 
-def abc095Dx():
+def abc095_dx():
     import numpy as np
     n, c = map(int, input().split())
     x = np.zeros((n, 1))
@@ -455,10 +455,37 @@ def abc095Dx():
 
     for i in range(n):
         xr = x[i:]
-        xr = [min(xr[i]-xr[0], xr[0]+ c - xr[i]) for i in range(n)]
+        xr = [min(xr[i] - xr[0], xr[0] + c - xr[i]) for i in range(n)]
         vr = v[i:]
         xl = x[:i]
         vl = v[:i]
 
         print(xr)
 
+
+def abc096_a():
+    pass
+
+
+print(abc096_a())
+
+
+def abc096_b():
+    pass
+
+
+print(abc096_b())
+
+
+def abc096_c():
+    pass
+
+
+print(abc096_c())
+
+
+def abc096_d():
+    pass
+
+
+print(abc096_d())
