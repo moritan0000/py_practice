@@ -464,28 +464,54 @@ def abc095_dx():
 
 
 def abc096_a():
-    pass
-
-
-print(abc096_a())
+    a, b = map(int, input().split())
+    return (a - 1) + [0, 1][a <= b]
 
 
 def abc096_b():
-    pass
+    import numpy as np
+    abc = list(map(int, input().split()))
+    k = int(input())
+    num = np.max(abc)
+    argnum = np.argmax(abc)
+    abc.remove(abc[argnum])
 
-
-print(abc096_b())
+    return np.sum(abc) + num * (2 ** k)
 
 
 def abc096_c():
-    pass
+    import numpy as np
+    h, w = map(int, input().split())
+    c = np.zeros([h + 2, w + 2], dtype=int)
+    for i in range(h):
+        row = "." + input() + "."
+        for j in range(w + 2):
+            c[i + 1][j] = [0, 1][row[j] == "#"]
+
+    for i in range(1, h + 2):
+        for j in range(1, w + 2):
+            if c[i][j] == 1 and (np.sum([c[i - 1][j], c[i + 1][j], c[i][j - 1], c[i][j + 1]]) == 0):
+                return "No"
+    return "Yes"
 
 
-print(abc096_c())
+def abc096_dx():
+    import numpy as np
+
+    n = int(input())
+    primes = [2, 3]
+
+    for num in range(5, 55555, 2):
+        isprime = True
+        for i in range(1, len(primes)):
+            if primes[i] ** 2 > num:
+                break
+            if num % primes[i] == 0:
+                isprime = False
+                break
+        if isprime:
+            primes.append(num)
+
+    return primes
 
 
-def abc096_d():
-    pass
-
-
-print(abc096_d())
