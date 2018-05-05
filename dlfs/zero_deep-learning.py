@@ -44,10 +44,8 @@ def AND(x1, x2):
     w = np.array([0.5, 0.5])
     b = -0.7
     tmp = np.sum(w * x) + b
-    if tmp <= 0:
-        return 0
-    else:
-        return 1
+
+    return [0, 1][tmp[0] > 0]
 
 
 def NAND(x1, x2):

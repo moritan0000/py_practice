@@ -1,14 +1,5 @@
 def _if(a, b):
     # long
-    if a == 10:
-        print('OK')
-    else:
-        print('NG')
-
-    # short
-    print(['NG', 'OK'][a == 10])
-
-    # long
     if a == 10 and b == 10:
         print('both')
     elif a != 10 and b != 10:
