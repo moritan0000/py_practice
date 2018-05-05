@@ -25,44 +25,44 @@ def agc021_a():
 
 def agc022_a():
     from collections import OrderedDict
-    S = input()
-    alfa_list = [chr(i) for i in range(97, 97 + 26)]
-    alfa_dict = OrderedDict()
+    s = input()
+    alpha_list = [chr(i) for i in range(97, 97 + 26)]
+    alpha_dict = OrderedDict()
 
     # {"a":0, ...}
     for i in range(26):
-        alfa_dict[alfa_list[i]] = i
+        alpha_dict[alpha_list[i]] = i
 
-    S_max = "zyxwvutsrqponmlkjihgfedcba"
-    S_min = "abcdefghijklmnopqrstuvwxyz"
+    s_max = "zyxwvutsrqponmlkjihgfedcba"
+    s_min = "abcdefghijklmnopqrstuvwxyz"
 
-    if S == S_max:
+    if s == s_max:
         print(-1)
 
-    elif len(S) < 26:
-        for i in range(len(S)):
-            del alfa_dict[S[i]]
+    elif len(s) < 26:
+        for i in range(len(s)):
+            del alpha_dict[s[i]]
 
-        remainings = [k for k, v in alfa_dict.items()]
-        out = S + remainings[0]
+        remaining = [k for k, v in alpha_dict.items()]
+        out = s + remaining[0]
         print(out)
         return 0
 
     else:
-        alfa_dict2 = alfa_dict.copy()
+        alpha_dict2 = alpha_dict.copy()
         for i in range(26):
-            tmp = alfa_dict[S[i]]
-            del alfa_dict[S[i]]
+            tmp = alpha_dict[s[i]]
+            del alpha_dict[s[i]]
 
-            if S[i] != S_min[i]:
-                remainings = [k for k, v in alfa_dict.items() if v > alfa_dict2[S[i - 1]]]
+            if s[i] != s_min[i]:
+                remaining = [k for k, v in alpha_dict.items() if v > alpha_dict2[s[i - 1]]]
 
-                if S[i:] == S_max[:26 - i]:
-                    out = S[:i - 1] + remainings[0]
+                if s[i:] == s_max[:26 - i]:
+                    out = s[:i - 1] + remaining[0]
                     print(out)
                     return 0
                 else:
-                    out = S[:i + 1] + remainings[1]
+                    out = s[:i + 1] + remaining[1]
                     print(out)
                     return 0
 
@@ -465,18 +465,15 @@ def abc095_dx():
 
 def abc096_a():
     a, b = map(int, input().split())
-    return (a - 1) + [0, 1][a <= b]
+    return a - (a > b)
 
 
 def abc096_b():
     import numpy as np
-    abc = list(map(int, input().split()))
+    a, b, c = map(int, input().split())
     k = int(input())
-    num = np.max(abc)
-    argnum = np.argmax(abc)
-    abc.remove(abc[argnum])
 
-    return np.sum(abc) + num * (2 ** k)
+    return a + b + c + np.max([a, b, c]) * 2 ** (k - 1)
 
 
 def abc096_c():
@@ -496,22 +493,24 @@ def abc096_c():
 
 
 def abc096_dx():
-    import numpy as np
-
     n = int(input())
     primes = [2, 3]
 
     for num in range(5, 55555, 2):
-        isprime = True
+        is_prime = True
         for i in range(1, len(primes)):
             if primes[i] ** 2 > num:
                 break
             if num % primes[i] == 0:
-                isprime = False
+                is_prime = False
                 break
-        if isprime:
+        if is_prime:
             primes.append(num)
 
-    return primes
-
-
+    ans = []
+    for num in primes:
+        if num % 5 == 1:
+            ans.append(str(num))
+        if len(ans) == n:
+            break
+    return " ".join(ans)
