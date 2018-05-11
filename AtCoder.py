@@ -332,6 +332,33 @@ def abc091_c():
     return _count
 
 
+def abc093a():
+    s = input()
+    return ["No", "Yes"][(("a" in s) + ("b" in s) + ("c" in s)) == 3]
+
+
+def abc093b():
+    a, b, k = map(int, input().split())
+    if b - a + 1 <= 2 * k:
+        return [i for i in range(a, b + 1)]
+    else:
+        return [i for i in range(a, a + k)] + [i for i in range(b - k + 1, b + 1)]
+
+
+def abc093c():
+    abc = sorted(list(map(int, input().split())))
+    return abc[2] - abc[1] + (abc[1] - abc[0]) // 2 + 2 * ((abc[1] - abc[0]) % 2)
+
+
+def abc093d():
+    q = int(input())
+    ab_list = []
+    for i in range(q):
+        ab_list.append(list(map(int, input().split())))
+    for ab in ab_list:
+        pass
+
+
 def abc094_a():
     a, b, x = map(int, input().split())
     print(["NO", "YES"][a <= x <= (a + b)])

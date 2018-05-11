@@ -46,7 +46,7 @@ def homework1(input_data):
     return my_result
 
 
-# ---------- Chapter2
+# ---------- Chapter2 ----------
 
 random.seed(0)
 a = random.randn(16).reshape(4, 4) * 10
@@ -190,4 +190,5 @@ def homework2(A):
 
 
 print(homework2(A))
-# ---------- Chapter3
+
+# ---------- Chapter3 ----------
