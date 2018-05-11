@@ -47,7 +47,7 @@ def print_list():
         print(list_0[_num].capitalize())
 
 
-def fizzbuzz():
+def fizz_buzz():
     for i in range(1, 101):
         if i % 15 == 0:
             print("FizzBuzz")
@@ -112,15 +112,15 @@ def onikuoishii():
     生成された数字を20文字/行ずつ表示し、次行に"お肉おいしい!"と表示して終了
     マシンパワーを食うので注意
     """
-    _num = ""
+    num_str = ""
     while True:
         _randstr = str(random.randint(0, 10, 1))
-        _num += _randstr[1:2]
-        if _num.endswith("0290141"):
-            for i in range(0, len(_num) // 20 + 1):
-                print(_num[i * 20:i * 20 + 20])
+        num_str += _randstr[1:2]
+        if num_str.endswith("0290141"):
+            for i in range(0, len(num_str) // 20 + 1):
+                print(num_str[i * 20:i * 20 + 20])
             print("お肉おいしい!")
-            print("number count:", len(_num))
+            print("number count:", len(num_str))
             break
 
 
@@ -157,9 +157,9 @@ class EmailPerson(Person):
 
 
 bob = EmailPerson("Bob", "bob@gmail.com")
-drbob = MDPerson("Bob")
+dr_bob = MDPerson("Bob")
 print(bob.name, bob.email)
-print(drbob.name)
+print(dr_bob.name)
 
 
 def print_string():
@@ -223,7 +223,7 @@ fout.close()
 print(len(py_easter))
 
 py_easter = ""
-with  open("py_easter.txt", "rt") as fin:
+with open("py_easter.txt", "rt") as fin:
     chunk = 100
     while True:
         fragment = fin.read(chunk)
@@ -261,8 +261,8 @@ villians = [
     ['Ernst', 'Blofeld']
 ]
 with open("villians.csv", "wt", newline="") as fout:
-    csvout = csv.writer(fout)
-    csvout.writerows(villians)
+    csv_out = csv.writer(fout)
+    csv_out.writerows(villians)
 
 with open("villians.csv", "rt") as fin:
     cin = csv.reader(fin)

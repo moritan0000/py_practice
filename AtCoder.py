@@ -2,25 +2,25 @@ def practice_a():
     a = int(input())
     b, c = map(int, input().split())
     s = input()
-    print(a + b + c, s)
+    return a + b + c, s
 
 
 def agc021_a():
     # 1~inputまでの数字で最大の桁和を出力
-    _num = int(input())
-    _num2 = _num
+    n = int(input())
+    n_2 = n
     _digit = 0
     # _numの桁数を求める
-    while _num2:
+    while n_2:
         _digit += 1
-        _num2 //= 10
-    _topdig = _num // 10 ** (_digit - 1)
+        n_2 //= 10
+    top_dig = n // 10 ** (_digit - 1)
     # _numが X999...999の場合は_numが桁和最大
-    if (_num - _topdig * 10 ** (_digit - 1)) == 10 ** (_digit - 1) - 1:
-        print(_topdig + 9 * (_digit - 1))
+    if (n - top_dig * 10 ** (_digit - 1)) == 10 ** (_digit - 1) - 1:
+        print(top_dig + 9 * (_digit - 1))
     # それ以外は(X-1)999...999が桁和最大
     else:
-        print(_topdig - 1 + 9 * (_digit - 1))
+        print(top_dig - 1 + 9 * (_digit - 1))
 
 
 def agc022_a():
@@ -51,8 +51,8 @@ def agc022_a():
     else:
         alpha_dict2 = alpha_dict.copy()
         for i in range(26):
-            tmp = alpha_dict[s[i]]
-            del alpha_dict[s[i]]
+            # tmp = alpha_dict[s[i]]
+            # del alpha_dict[s[i]]
 
             if s[i] != s_min[i]:
                 remaining = [k for k, v in alpha_dict.items() if v > alpha_dict2[s[i - 1]]]
@@ -77,7 +77,7 @@ def arc094_c():
     diff = abc[2] - (abc[0] + count)
     count += [diff // 2 + 2, diff // 2][diff % 2 == 0]
 
-    print(count)
+    return count
 
 
 def abc049_c():
@@ -87,16 +87,15 @@ def abc049_c():
     s = s.replace("dreamer", "")
     s = s.replace("dream", "")
     # この順番に削除すること
-    print(["NO", "YES"][s == ""])
+    return ["NO", "YES"][s == ""]
 
 
 def abc081_a():
-    s = map(int, input())
-    print(sum(s))
+    return sum(map(int, input()))
 
 
 def abc081_b():
-    n = int(input())
+    input()
     a = list(map(int, input().split()))
     counts = []
 
@@ -110,21 +109,21 @@ def abc081_b():
             return 0
         else:
             counts.append(tmp)
-    print(min(counts))
+    return min(counts)
 
 
 def abc083_b():
     n, a, b = map(int, input().split())
-    sum = 0
+    num_sum = 0
     for i in range(1, n + 1):
         tmp = i
-        digsum = 0
+        dig_sum = 0
         while i:
-            digsum += i % 10
+            dig_sum += i % 10
             i //= 10
-        if a <= digsum <= b:
-            sum += tmp
-    print(sum)
+        if a <= dig_sum <= b:
+            num_sum += tmp
+    return num_sum
 
 
 def abc085_b():
@@ -133,7 +132,7 @@ def abc085_b():
     for i in range(n):
         d.append(int(input()))
     d = list(set(d))
-    print(len(d))
+    return len(d)
 
 
 def abc085_c():
@@ -142,14 +141,13 @@ def abc085_c():
     for i in range(y // 10000 + 1):
         for j in range((y - 10000 * i) // 5000 + 1):
             if 10000 * i + 5000 * j + 1000 * (n - i - j) == y:
-                print(i, j, n - i - j)
-                return 0
-    print(-1, -1, -1)
+                return i, j, n - i - j
+    return -1, -1, -1
 
 
 def abc086_a():
     a, b = map(int, input().split())
-    print(["Even", "Odd"][a * b % 2])
+    return ["Even", "Odd"][a * b % 2]
 
 
 def abc086_c():
@@ -166,136 +164,130 @@ def abc086_c():
                 and (tmp[0] - abs(tmp[1]) - abs(tmp[2])) % 2 == 0:
             cur = ele
         else:
-            print("No")
-            return 0
-    print("Yes")
+            return "No"
+    return "Yes"
 
 
 def abc087_b():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    x = int(input())
+    a, b, c, x = map(int, input())
     count = 0
     for i in range(a + 1):
         for j in range(b + 1):
             for k in range(c + 1):
                 if 500 * i + 100 * j + 50 * k == x:
                     count += 1
-    print(count)
+    return count
 
 
 def abc088_b():
-    n = int(input())
-    a = input().split()
-    a = [int(i) for i in a]
+    input()
+    a = list(map(int, input().split()))
     a.sort()
     a = a[::-1]
     alice = a[::2]
     bob = a[1::2]
-    print(sum(alice) - sum(bob))
+    return sum(alice) - sum(bob)
 
 
 def abc089_a():
-    print(int(input()) // 3)
+    return int(input()) // 3
 
 
 def abc089_b():
-    num = int(input())
+    input()
     colors = input()
-    print(["Four", "Three"][colors.find("Y") == -1])
+    return ["Four", "Three"][colors.find("Y") == -1]
 
 
 def abc089_c():
-    _num = int(input())
-    _namelist = []
-    _countM = 0
-    _countA = 0
-    _countR = 0
-    _countC = 0
-    _countH = 0
+    num = int(input())
+    namelist = []
+    count_m = 0
+    count_a = 0
+    count_r = 0
+    count_c = 0
+    count_h = 0
 
-    for i in range(0, _num):
-        _name = str(input())
-        _namelist.append(_name)
-        if _name[0] == "M":
-            _countM += 1
-        elif _name[0] == "A":
-            _countA += 1
-        elif _name[0] == "R":
-            _countR += 1
-        elif _name[0] == "C":
-            _countC += 1
-        elif _name[0] == "H":
-            _countH += 1
-    print(_countM * _countA * _countR +
-          _countM * _countA * _countC +
-          _countM * _countA * _countH +
-          _countM * _countR * _countC +
-          _countM * _countR * _countH +
-          _countM * _countC * _countH +
-          _countA * _countR * _countC +
-          _countA * _countR * _countH +
-          _countA * _countC * _countH +
-          _countR * _countC * _countH)
+    for _ in range(num):
+        name = input()
+        namelist.append(name)
+        if name[0] == "M":
+            count_m += 1
+        elif name[0] == "A":
+            count_a += 1
+        elif name[0] == "R":
+            count_r += 1
+        elif name[0] == "C":
+            count_c += 1
+        elif name[0] == "H":
+            count_h += 1
+    print(count_m * count_a * count_r +
+          count_m * count_a * count_c +
+          count_m * count_a * count_h +
+          count_m * count_r * count_c +
+          count_m * count_r * count_h +
+          count_m * count_c * count_h +
+          count_a * count_r * count_c +
+          count_a * count_r * count_h +
+          count_a * count_c * count_h +
+          count_r * count_c * count_h)
 
 
 def abc089_d():
-    _hwd = input().split()
-    _hwd = list(map(int, _hwd))
-    _area = []
-    _lrs = []
-    _nowx = 0
-    _nowy = 0
+    hwd = list(map(int, input().split()))
+    area = []
+    lrs = []
+    x_now = 0
+    y_now = 0
 
-    for i in range(0, _hwd[0]):
+    for i in range(0, hwd[0]):
         _aij = str(input()).split()
-        _area.append(list(map(int, _aij)))
+        area.append(list(map(int, _aij)))
 
     _q = int(input())
 
     for i in range(0, _q):
         _lr = str(input()).split()
-        _lrs.append(list(map(int, _lr)))
+        lrs.append(list(map(int, _lr)))
 
     for i in range(0, _q):
         _mpcount = 0
-        for i2 in range(0, int((_lrs[i][1] - _lrs[i][0]) / _hwd[2]) + 1):
-            for i3 in range(0, _hwd[0]):
-                if _lrs[i][0] + _hwd[2] * i2 in _area[i3]:
+        for i2 in range(0, int((lrs[i][1] - lrs[i][0]) / hwd[2]) + 1):
+            for i3 in range(0, hwd[0]):
+                if lrs[i][0] + hwd[2] * i2 in area[i3]:
                     if not i2:
-                        _nowx = _area[i3].index(_lrs[i][0]) + 1
-                        _nowy = i3 + 1
-                    _nextx = _area[i3].index(_lrs[i][0] + _hwd[2] * i2) + 1
+                        x_now = area[i3].index(lrs[i][0]) + 1
+                        y_now = i3 + 1
+                    _nextx = area[i3].index(lrs[i][0] + hwd[2] * i2) + 1
                     _nexty = i3 + 1
-            _mpcount += abs(_nextx - _nowx) + abs(_nexty - _nowy)
-            _nowx = _nextx
-            _nowy = _nexty
+            _mpcount += abs(_nextx - x_now) + abs(_nexty - y_now)
+            x_now = _nextx
+            y_now = _nexty
         print(_mpcount)
 
 
 def abc091_a():
     a, b, c = map(int, input().split())
-    print(["No", "Yes"][a + b >= c])
+    return ["No", "Yes"][a + b >= c]
 
 
 def abc091_b():
     from collections import Counter
-    _strs = []
-    _strt = []
+    s_str = []
+    t_str = []
     _max = 0
-    _n = int(input())
-    for i in range(_n):
-        _strs.append(str(input()))
-    _m = int(input())
-    for i in range(_m):
-        _strt.append(str(input()))
-    _strs2 = list(set(_strs))
-    for element in _strs2:
-        _score = Counter(_strs)[element] - Counter(_strt)[element]
-        if _score > _max:
-            _max = _score
-    print(_max)
+    n = int(input())
+    for i in range(n):
+        s_str.append(input())
+    m = int(input())
+    for i in range(m):
+        t_str.append(input())
+    s_str2 = list(set(s_str))
+    for element in s_str2:
+        score = Counter(s_str)[element] - Counter(t_str)[element]
+        if score > _max:
+            _max = score
+    return _max
 
 
 def abc091_c():
@@ -337,7 +329,7 @@ def abc091_c():
                 break
             else:
                 continue"""
-    print(_count)
+    return _count
 
 
 def abc094_a():
@@ -352,7 +344,7 @@ def abc094_b():
     for i in a:
         if n[2] > i:
             count += 1
-    print(min(count, n[1] - count))
+    return min(count, n[1] - count)
 
 
 def abc094_c():
@@ -369,18 +361,18 @@ def abc094_c():
 def abc094_d():
     import numpy as np
 
-    def ncr(n, r):
+    def ncr(_n, _r):
         """
         Calculate the number of combination (nCr = nPr/r!).
         The parameters need to meet the condition of n >= r >= 0.
         It returns 1 if r == 0, which means there is one pattern
         to choice 0 items out of the number of n.
         """
-        r = min(r, n - r)
+        _r = min(_r, _n - _r)
         numerator = 1
         denominator = 1
-        for i in range(r):
-            numerator *= (n - i)
+        for i in range(_r):
+            numerator *= (_n - i)
             denominator *= (i + 1)
 
         return numerator // denominator
@@ -421,8 +413,7 @@ def abc094_d():
 
 
 def abc095_a():
-    s = input()
-    print(700 + 100 * s.count("o"))
+    return 700 + 100 * input().count("o")
 
 
 def abc095_b():
@@ -433,7 +424,7 @@ def abc095_b():
 
     x -= sum(m)
     count = x // min(m)
-    print(n + count)
+    return n + count
 
 
 def abc095_c():
@@ -441,7 +432,7 @@ def abc095_c():
 
     diff = abs(x - y)
     price1 = [(a + b) * min(x, y), 2 * c * min(x, y)][a + b >= c * 2] + diff * [a, b][x < y]
-    print(min(price1, max(x, y) * c * 2))
+    return min(price1, max(x, y) * c * 2)
 
 
 def abc095_dx():
@@ -456,9 +447,6 @@ def abc095_dx():
     for i in range(n):
         xr = x[i:]
         xr = [min(xr[i] - xr[0], xr[0] + c - xr[i]) for i in range(n)]
-        vr = v[i:]
-        xl = x[:i]
-        vl = v[:i]
 
         print(xr)
 

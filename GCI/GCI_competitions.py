@@ -32,9 +32,6 @@ def wine_quality_with_normalization():
     out.to_csv(gci_competitions_path + "wine_quality/submit.csv", index=False)
 
 
-#wine_quality_with_normalization()
-
-
 def wine_quality_wo_norm():
     train_data = np.loadtxt(gci_competitions_path + "wine_quality/train.csv",
                             delimiter=",", skiprows=1, dtype=float)
