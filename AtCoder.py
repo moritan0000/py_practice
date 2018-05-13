@@ -350,7 +350,7 @@ def abc093c():
     return abc[2] - abc[1] + (abc[1] - abc[0]) // 2 + 2 * ((abc[1] - abc[0]) % 2)
 
 
-def abc093d():
+def abc093dx():
     q = int(input())
     ab_list = []
     for i in range(q):

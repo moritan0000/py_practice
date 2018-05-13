@@ -103,26 +103,28 @@ def sum_args(*args):
 
 
 run_with_positional_args(sum_args, 27, 581, 2, 21, 445, 1290, 7)
-from numpy import random
 
 
 def onikuoishii():
     """
     0~9の数字を1文字ずつランダム生成し、0290141が現れた時点で
-    生成された数字を20文字/行ずつ表示し、次行に"お肉おいしい!"と表示して終了
+    生成された数字を60文字/行ずつ表示し、次行に"お肉おいしい!"と生成数を表示して終了
     マシンパワーを食うので注意
     """
+    import random
     num_str = ""
     while True:
-        _randstr = str(random.randint(0, 10, 1))
-        num_str += _randstr[1:2]
+        num_str += str(random.randint(0, 9))
         if num_str.endswith("0290141"):
-            for i in range(0, len(num_str) // 20 + 1):
-                print(num_str[i * 20:i * 20 + 20])
+            char_num = 50
+            for i in range(0, len(num_str) // char_num + 1):
+                print(num_str[i * char_num:(i + 1) * char_num])
             print("お肉おいしい!")
-            print("number count:", len(num_str))
+            print("count:", len(num_str))
             break
 
+
+onikuoishii()
 
 import itertools
 
