@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array([1.0, 2.0, 3.0])
-y = np.array([2.0, 4.0, 6.0])
-print(x * y)
-print(x ** 5)
+a1 = np.array([1.0, 2.0, 3.0])
+a2 = np.array([2.0, 4.0, 6.0])
+print(a1 * a2)
+print(a1 ** 5)
 
 A = np.array([[1, 2],
               [3, 4],
@@ -22,7 +22,7 @@ print(A > 4)
 print(A[A > 4])
 
 
-def plot_sincos():
+def plot_sin_and_cos():
     x = np.arange(0, np.pi * 2, 0.1)
     y1 = np.sin(x)
     y2 = np.cos(x)
@@ -142,9 +142,9 @@ def forward(network, x):
 
 
 network = init_network()
-x = np.array([1.0, 0.5])
-y = forward(network, x)
-print(y, "\n")
+a1 = np.array([1.0, 0.5])
+a2 = forward(network, a1)
+print(a2, "\n")
 
 
 def softmax(a):
@@ -157,8 +157,8 @@ def softmax(a):
 
 
 a = np.array([0.3, 2.9, 4.0])
-y = softmax(a)
-print(y, "SUM =", np.sum(y), "\n")
+a2 = softmax(a)
+print(a2, "SUM =", np.sum(a2), "\n")
 
 from dlfs.dataset.mnist import load_mnist
 from PIL import Image
@@ -185,7 +185,8 @@ print(img.shape)
 img = img.reshape(28, 28)
 print(img.shape)
 
-import os, pickle
+import os
+import pickle
 
 
 def get_data():
@@ -217,19 +218,19 @@ def predict(network, x):
     return y
 
 
-x, t = get_data()
+a1, t = get_data()
 network = init_network()
 
 batch_size = 100
 accuracy_cnt = 0
 
-for i in range(0, len(x), batch_size):
-    x_batch = x[i:i + batch_size]
+for i in range(0, len(a1), batch_size):
+    x_batch = a1[i:i + batch_size]
     y_batch = predict(network, x_batch)
     p = np.argmax(y_batch, axis=1)
     accuracy_cnt += np.sum(p == t[i:i + batch_size])
 
-print("Accuracy:", str(float(accuracy_cnt) / len(x)))
+print("Accuracy:", str(float(accuracy_cnt) / len(a1)))
 
 
 def mean_squared_error(y, t):
@@ -320,8 +321,8 @@ def gradient_descent(f, init_x, lr=0.01, step_num=100):
 init_x = np.array([-3.0, 4.0])
 lr = 0.1
 step_num = 100
-x, x_history = gradient_descent(function_2, init_x, lr=lr, step_num=step_num)
-print(x)
+a1, x_history = gradient_descent(function_2, init_x, lr=lr, step_num=step_num)
+print(a1)
 
 """
 plt.plot([-5, 5], [0, 0], '--b')
@@ -335,7 +336,7 @@ plt.show()
 """
 
 
-class simpleNet:
+class SimpleNet:
     def __init__(self):
         self.W = np.random.randn(2, 3)
 
@@ -350,17 +351,17 @@ class simpleNet:
         return loss
 
 
-net = simpleNet()
+net = SimpleNet()
 print(net.W)
-x = np.array([0.6, 0.9])
-p = net.predict(x)
+a1 = np.array([0.6, 0.9])
+p = net.predict(a1)
 print(p, np.argmax(p))
 t = np.array([0, 0, 1])
-print(net.loss(x, t))
+print(net.loss(a1, t))
 
 
 def f(W):
-    return net.loss(x, t)
+    return net.loss(a1, t)
 
 
 dW = numerical_gradient(f, net.W)

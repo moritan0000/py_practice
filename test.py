@@ -124,8 +124,6 @@ def onikuoishii():
             break
 
 
-onikuoishii()
-
 import itertools
 
 
