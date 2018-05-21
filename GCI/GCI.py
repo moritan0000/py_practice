@@ -4,6 +4,7 @@ import numpy.random as random
 import scipy as sp
 import scipy.linalg as linalg
 from scipy.optimize import minimize_scalar
+from scipy import integrate
 
 import pandas as pd
 from pandas import Series, DataFrame
@@ -29,10 +30,6 @@ def prime_number(n):
 
     return ans
 
-
-n = 1000
-# print(prime_number(n))
-# print(timeit("prime_number(n)", globals=globals(),number=10000))
 
 input_data = {'key_1': 100,
               'key_2': 100,
@@ -189,6 +186,42 @@ def homework2(A):
     return my_result
 
 
-print(homework2(A))
-
 # ---------- Chapter3 ----------
+def homework5():
+    my_result = integrate.quad(lambda x: np.exp(-x ** 2), -np.inf, np.inf)[0]
+    return my_result
+
+
+url_winequality_data = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+
+
+def homework6(url_winequality_data):
+    data = pd.read_csv(url_winequality_data, sep=";")
+    sul = data["total sulfur dioxide"]
+    num = len(sul.values) // 5
+    ave = [np.mean(sul[num * i:num * (i + 1)]) for i in range(5)]
+    my_result = max(ave) + min(ave)
+    return my_result
+
+
+## init part(データの読み込みと前処理)
+file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
+online_retail_data = pd.ExcelFile(file_url)
+online_retail_data_table = online_retail_data.parse('Online Retail')
+
+online_retail_data_table['cancel_flg'] = online_retail_data_table.InvoiceNo.map(lambda x: str(x)[0])
+
+# 数字があるものとIDがNullでないものが対象
+target_online_retail_data_tb = online_retail_data_table[(online_retail_data_table.cancel_flg == '5')
+                                                        & (online_retail_data_table.CustomerID.notnull())]
+
+target_online_retail_data_tb = target_online_retail_data_tb.assign(
+    TotalPrice=target_online_retail_data_tb.Quantity * target_online_retail_data_tb.UnitPrice)
+
+
+def homework7(target_online_retail_data_tb):
+    my_result = 0
+    return my_result
+
+
+print(homework7(target_online_retail_data_tb))
