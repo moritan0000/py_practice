@@ -5,16 +5,15 @@ import scipy as sp
 import scipy.linalg as linalg
 from scipy.optimize import minimize_scalar
 from scipy import integrate
+from scipy import stats
 
 import pandas as pd
 from pandas import Series, DataFrame
 
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 
-import math
-import seaborn as sns
-from timeit import timeit
+from sklearn import linear_model
+from sklearn.datasets import load_iris
 
 
 def prime_number(n):
@@ -187,12 +186,36 @@ def homework2(A):
 
 
 # ---------- Chapter3 ----------
-def homework5():
-    my_result = integrate.quad(lambda x: np.exp(-x ** 2), -np.inf, np.inf)[0]
+
+url_winequality_data = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+
+
+def homework3(url_winequality_data):
+    df = pd.read_csv(url_winequality_data, sep=";")
+    predictor = df["volatile acidity"].values.reshape(-1, 1)
+    objective = df["quality"].values.reshape(-1, 1)
+
+    clf = linear_model.LinearRegression()
+    clf.fit(predictor, objective)
+    my_result = clf.score(predictor, objective)
     return my_result
 
 
-url_winequality_data = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+iris = load_iris()
+
+
+def homework4(iris):
+    print(iris.target_names)
+    my_result = 0
+    return my_result
+
+
+print(homework4(iris))
+
+
+def homework5():
+    my_result = integrate.quad(lambda x: np.exp(-x ** 2), -np.inf, np.inf)[0]
+    return my_result
 
 
 def homework6(url_winequality_data):
@@ -204,7 +227,7 @@ def homework6(url_winequality_data):
     return my_result
 
 
-## init part(データの読み込みと前処理)
+# init part(データの読み込みと前処理)
 file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
 online_retail_data = pd.ExcelFile(file_url)
 online_retail_data_table = online_retail_data.parse('Online Retail')
@@ -220,8 +243,16 @@ target_online_retail_data_tb = target_online_retail_data_tb.assign(
 
 
 def homework7(target_online_retail_data_tb):
-    my_result = 0
+    price_and_id = {}
+    for id in set(target_online_retail_data_tb["CustomerID"]):
+        price_and_id[str(id)[:-2]] = np.sum(
+            target_online_retail_data_tb["TotalPrice"][target_online_retail_data_tb["CustomerID"] == id])
+    total_price_per_customer = pd.DataFrame(list(price_and_id.items()), columns=["CustomerID", "TotalPrice"])
+    total_price_per_customer = total_price_per_customer.sort_values(by="TotalPrice", ascending=False)
+
+    num = len(total_price_per_customer)
+    prices = [np.sum(total_price_per_customer["TotalPrice"][num // 10 * i:num // 10 * (i + 1)]) for i in range(10)]
+    my_result = (prices / np.sum(prices))[::-1]
     return my_result
 
-
-print(homework7(target_online_retail_data_tb))
+# print(homework7(target_online_retail_data_tb))
