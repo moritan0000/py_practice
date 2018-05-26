@@ -69,6 +69,20 @@ def agc022_a():
         print("abcdefghijklmnopqrstuvwxz")
 
 
+def agc024_ax():
+    a, b, c, k = map(int, input().split())
+    if k == 0:
+        return [a - b, "Unfair"][abs(a - b) > 1e+18]
+
+    coef_sum = 2 ** (k - 1)
+    coef = [[coef_sum // 3, coef_sum // 3 + 1], [coef_sum // 3 + 1, coef_sum // 3]][coef_sum % 3 == 1]
+    a_k = coef[0] * a + coef[1] * (b + c)
+    b_k = coef[0] * b + coef[1] * (a + c)
+    ans = [a_k - b_k, "Unfair"][abs(a_k - b_k) > 1e+18]
+
+    return ans
+
+
 def arc094_c():
     abc = list(map(int, input().split()))
     abc.sort()
