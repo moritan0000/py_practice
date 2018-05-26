@@ -355,8 +355,7 @@ def abc093dx():
     ab_list = []
     for i in range(q):
         ab_list.append(list(map(int, input().split())))
-    for ab in ab_list:
-        pass
+    return 0
 
 
 def abc094_a():
@@ -529,3 +528,54 @@ def abc096_dx():
         if len(ans) == n:
             break
     return " ".join(ans)
+
+
+def abc098_a():
+    a, b = map(int, input().split())
+    return max(a + b, a - b, a * b)
+
+
+def abc098_b():
+    n = int(input())
+    s = input()
+    count_max = 0
+    if len(s) == 2:
+        return [0, 1][s[0] == s[1]]
+    for i in range(1, n - 1):
+        x = set(s[:i])
+        y = set(s[i:])
+        count = 0
+        for let in x:
+            if let in y:
+                count += 1
+        count_max = max(count, count_max)
+    return count_max
+
+
+def abc098_cx():
+    n = int(input())
+    s = input()
+    count_min = n - 1
+    w_num = s.count("W")
+    for i in range(n):
+        w_left = s[:i].count("W")
+        e_right = n - w_num - (i - w_left) - (s[i] == "E")
+        count = w_left + e_right
+        if count == 0:
+            return 0
+        count_min = min(count, count_min)
+
+    return count_min
+
+
+def abc098_dx():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for l in range(n):
+        for r in range(l, n):
+            xor = a[l]
+            for k in range(l + 1, r + 1):
+                xor ^= a[k]
+            count += sum(a[l:r + 1]) == xor
+    return count
