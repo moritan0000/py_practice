@@ -87,21 +87,58 @@ def pokemon():
         return f_to_s_list, s_to_f_list
 
     types = pd.read_csv(gci_compe_path + "pokemon/types.csv").set_index("Attack\Defense")
-
     status = pd.read_csv(gci_compe_path + "pokemon/pokemon.csv").set_index("#")
+    train = pd.read_csv(gci_compe_path + "pokemon/train.csv").set_index("id")
+
     status["Total"] = status["HP"] + status["Attack"] + status["Defense"] + \
                       status["Sp. Atk"] + status["Sp. Def"] + status["Speed"]
 
-    train = pd.read_csv(gci_compe_path + "pokemon/train.csv").set_index("id")
-    train["First_is_winner"] = 0 + (train["Winner"] == train["First_pokemon"])
-    train["F_total"] = (status.loc[train["First_pokemon"].values, "Total"]).values
-    train["S_total"] = (status.loc[train["Second_pokemon"].values, "Total"]).values
-    train["F_to_S"], train["S_to_F"] = type_calculate(train["First_pokemon"].values, train["Second_pokemon"].values)
+    X = pd.DataFrame()
+    X["F_total"] = (status.loc[train["First_pokemon"].values, "Total"]).values
+    X["S_total"] = (status.loc[train["Second_pokemon"].values, "Total"]).values
+    X["F_Legendary"] = 0 + (status.loc[train["First_pokemon"].values, "Legendary"]).values
+    X["S_Legendary"] = 0 + (status.loc[train["Second_pokemon"].values, "Legendary"]).values
+    X["F_to_S"], X["S_to_F"] = type_calculate(train["First_pokemon"].values, train["Second_pokemon"].values)
+    X["HP"] = (status.loc[train["First_pokemon"].values, "HP"]).values
+    X["Attack"] = (status.loc[train["First_pokemon"].values, "Attack"]).values
+    X["Defense"] = (status.loc[train["Second_pokemon"].values, "Defense"]).values
+    X["Sp. Atk"] = (status.loc[train["First_pokemon"].values, "Sp. Atk"]).values
+    X["Sp. Def"] = (status.loc[train["First_pokemon"].values, "Sp. Def"]).values
+    X["Speed"] = (status.loc[train["First_pokemon"].values, "Speed"]).values
+    X = X.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
+
+    y = 0 + (train["Winner"] == train["First_pokemon"])
 
     test = pd.read_csv(gci_compe_path + "pokemon/test.csv").set_index("id")
+    X_test = pd.DataFrame()
+    X_test["F_total"] = (status.loc[test["First_pokemon"].values, "Total"]).values
+    X_test["S_total"] = (status.loc[test["Second_pokemon"].values, "Total"]).values
+    X_test["F_Legendary"] = 0 + (status.loc[test["First_pokemon"].values, "Legendary"]).values
+    X_test["S_Legendary"] = 0 + (status.loc[test["Second_pokemon"].values, "Legendary"]).values
+    X_test["F_to_S"], X_test["S_to_F"] = type_calculate(test["First_pokemon"].values, test["Second_pokemon"].values)
+    X_test["HP"] = (status.loc[test["First_pokemon"].values, "HP"]).values
+    X_test["Attack"] = (status.loc[test["First_pokemon"].values, "Attack"]).values
+    X_test["Defense"] = (status.loc[test["Second_pokemon"].values, "Defense"]).values
+    X_test["Sp. Atk"] = (status.loc[test["First_pokemon"].values, "Sp. Atk"]).values
+    X_test["Sp. Def"] = (status.loc[test["First_pokemon"].values, "Sp. Def"]).values
+    X_test["Speed"] = (status.loc[test["First_pokemon"].values, "Speed"]).values
+    X_test = X_test.apply(lambda x: (x - np.mean(x, axis=0)) / np.std(x, axis=0))
 
-    # (X_train, X_validate, y_train, y_validate) = train_test_split(X, y, test_size=0.2, random_state=0)
-    print(train)
+    (X_train, X_val, y_train, y_val) = train_test_split(X, y, test_size=0.2, random_state=0)
 
+    clf = linear_model.LinearRegression()
+    clf.fit(X_train, y_train)
+    val_result = clf.predict(X_val)
+    val_result = (val_result - min(val_result) + 1e-10) / (max(val_result) - min(val_result) + 2e-10)
+    logloss_v = -sum(y_val * np.log(val_result) + (1 - y_val) * np.log(1 - val_result)) / len(y_val)
+    print("LogLoss:", logloss_v, "If Random:", -(1 * np.log(0.5) + 0 * np.log(0.5)))
 
-pokemon()
+    test_result = clf.predict(X_test)
+    test_result = (test_result - min(test_result) + 1e-10) / (max(test_result) - min(test_result) + 2e-10)
+
+    out = pd.DataFrame()
+    out["id"] = [i for i in range(len(test_result))]
+    out["probability"] = test_result
+    print(out)
+
+    out.to_csv(gci_compe_path + "pokemon/submission.csv", index=False)
