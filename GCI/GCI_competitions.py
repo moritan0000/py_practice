@@ -31,18 +31,17 @@ def wine_quality():
     print(out)
     out.to_csv(gci_compe_path + "wine_quality/submit.csv", index=False)
 
-
-# def wine_quality_wo_norm():
-#     train_data = np.loadtxt(gci_competitions_path + "wine_quality/train.csv",
-#                             delimiter=",", skiprows=1, dtype=float)
-#     test_data = np.loadtxt(gci_competitions_path + "wine_quality/test.csv",
-#                            delimiter=",", skiprows=1, dtype=float)
-#
-#     labels = train_data[:, -1:]
-#     features = train_data[:, :-1]
-#     x_train, x_test, y_train, y_test \
-#         = train_test_split(features, np.ravel(labels), test_size=0.2)
-#     features = preprocessing.minmax_scale(data[:, :-1])
+    # def wine_quality_wo_norm():
+    #     train_data = np.loadtxt(gci_competitions_path + "wine_quality/train.csv",
+    #                             delimiter=",", skiprows=1, dtype=float)
+    #     test_data = np.loadtxt(gci_competitions_path + "wine_quality/test.csv",
+    #                            delimiter=",", skiprows=1, dtype=float)
+    #
+    #     labels = train_data[:, -1:]
+    #     features = train_data[:, :-1]
+    #     x_train, x_test, y_train, y_test \
+    #         = train_test_split(features, np.ravel(labels), test_size=0.2)
+    #     features = preprocessing.minmax_scale(data[:, :-1])
 
 
 def pokemon():
