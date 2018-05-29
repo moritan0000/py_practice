@@ -1,8 +1,19 @@
+import itertools
+from pprint import pprint
+from collections import OrderedDict
+import re
+import string
+import csv
+import json
+import datetime
+import urllib.request as ur
+import requests
+
 print("Hello, world!")
-x = 7
-y = 11.0
-if 5 < x < y < 20:
-    print(x + y)
+x1 = 7
+x2 = 11.0
+if 5 < x1 < x2 < 20:
+    print(x1 + x2)
 
 # comment
 list_0 = ['apple',
@@ -38,13 +49,13 @@ if 'apple' in list_0:
 
 def print_list():
     while True:
-        _num = input("Input number 0~4 [q to quit] : ")
-        if _num == "q":
+        num = input("Input number 0~4 [q to quit] : ")
+        if num == "q":
             break
-        _num = int(_num)
-        if not 0 <= _num <= 4:
+        num = int(num)
+        if not 0 <= num <= 4:
             continue
-        print(list_0[_num].capitalize())
+        print(list_0[num].capitalize())
 
 
 def fizz_buzz():
@@ -124,23 +135,13 @@ def onikuoishii():
             break
 
 
-import itertools
-
-
-def multiply(a, b):
-    return a * b
-
-
-for item in itertools.accumulate([2, 2, 3, 5, 8, 13, 21], multiply):
+for item in itertools.accumulate([2, 2, 3, 5, 8, 13, 21], lambda x, y: x * y):
     print(item)
-
-from pprint import pprint
-from collections import OrderedDict
 
 pprint(OrderedDict(dict_0))
 
 
-class Person():
+class Person:
     def __init__(self, name):
         self.name = name
 
@@ -172,15 +173,11 @@ def print_string():
     print("{_n:d}, {_f:f}, {_s:;>20s}".format(_n=741, _f=123.4567890, _s="Good morning!"))
 
 
-import re
-
 print_string()
 
 print(re.findall("n.?", "Young Victor Frankenstein"))
 print(re.split("n", "Young Victor Frankenstein"))
 print(re.sub("n", '?', "Young Victor Frankenstein"))
-
-import string
 
 printable = string.printable
 print(printable[:50])
@@ -191,8 +188,8 @@ Have a dish of fish tonight.'''
 print(re.findall("wish|fish", source))
 print(re.findall("[wf]ish", source))
 
-for i in range(1, 256 // 16):
-    print(bytes(range((i - 1) * 16, i * 16)))
+for i1 in range(1, 256 // 16):
+    print(bytes(range((i1 - 1) * 16, i1 * 16)))
 
 py_easter = \
     '''
@@ -251,8 +248,6 @@ with open("bfile.txt", "rb") as fin:
     print(fin.seek(255))
     print(fin.seek(-1, 2))
 
-import csv
-
 villians = [
     ['Doctor', 'No'],
     ['Rosa', 'Klebb'],
@@ -296,24 +291,18 @@ menu = \
             }
         }
     }
-import json
 
 menu_json = json.dumps(menu)
 print(menu_json)
-import datetime
 
 now = datetime.datetime.now()
 print(now)
-
-import urllib.request as ur
 
 url = "https://raw.githubusercontent.com/koki0702/" \
       "introducing-python/master/dummy_api/fortune_cookie_random1.txt"
 conn = ur.urlopen(url)
 print(conn.read())
 print(conn.status)
-
-import requests
 
 url = "https://raw.githubusercontent.com/koki0702/" \
       "introducing-python/master/dummy_api/fortune_cookie_random2.txt"

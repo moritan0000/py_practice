@@ -5,7 +5,6 @@ import sklearn as sl
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
-import math
 
 gci_compe_path = "../../../../weblab/weblab_datascience/competitions/"
 

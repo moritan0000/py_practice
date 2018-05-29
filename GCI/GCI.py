@@ -35,12 +35,12 @@ print(eig_value)
 print(eig_vector)
 
 
-def sample_function(x):
+def sample_func(x):
     return x ** 2 + 2 * x + 1
 
 
-print(sp.optimize.newton(sample_function, 0))
-print(minimize_scalar(sample_function, method="Brent"))
+print(sp.optimize.newton(sample_func, 0))
+print(minimize_scalar(sample_func, method="Brent"))
 
 sample_pandas_data = Series.from_array([12, 23, 34, 45, 56, 67, 78, 89, 90, 121],
                                        index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
