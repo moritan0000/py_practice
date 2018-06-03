@@ -544,6 +544,48 @@ def abc096_dx():
     return " ".join(ans)
 
 
+def abc097_a():
+    a, b, c, d = map(int, input().split())
+    return ["No", "Yes"][(abs(a - c) <= d) or ((a - b) <= d and (c - b) <= d)]
+
+
+def abc097_b():
+    x = int(input())
+    if x == 1:
+        return 1
+
+    n = int(x ** 0.5)
+    ans = []
+    for i in range(2, n + 1):
+        tmp = i
+        while tmp * i <= x:
+            tmp *= i
+        ans.append(tmp)
+
+    return max(ans)
+
+
+def abc097_cx():
+    s = input()
+    k = int(input())
+    substr = []
+    for i in range(len(s) + 1):
+        for j in range(i + 1, len(s) + 1):
+            if s[i:j] not in substr:
+                substr.append(s[i:j])
+    substr = sorted(set(substr))
+
+    return substr[k - 1]
+
+
+def abc097_dx():
+    n, m = map(int, input().split())
+    p = map(int, input().split())
+    xy = [list(map(int, input().split())) for _ in range(m)]
+
+    return xy
+
+
 def abc098_a():
     a, b = map(int, input().split())
     return max(a + b, a - b, a * b)
@@ -593,76 +635,3 @@ def abc098_dx():
                 xor ^= a[k]
             count += sum(a[l:r + 1]) == xor
     return count
-
-
-# LINE
-def main(argv):
-    import datetime as dt
-    ini, fin, i_time = argv
-    i_time = dt.time(hour=int(i_time[:2]), minute=int(i_time[-2:]))
-    timeA = [0, 3, 5, 2, 3, 4, 3, 4, 2, 2, 3, 6, 2]
-    timeB = [0, 4, 3, 3, 2, 3]
-
-    num = [int(ini[1]), int(fin[1])]
-
-    # 路線A内の場合
-    if ini[0] == fin[0] == "A":
-        # 上り
-        if num[0] < num[1]:
-            # 到着駅が~A7の場合
-            if num[1] <= 7:
-                tmp = dt.datetime.combine(dt.date.today(), dt.time(5, 55)) + dt.timedelta(minutes=sum(timeA[:num[0]]))
-                while tmp.time() < i_time:
-                    tmp += dt.timedelta(minutes=5)
-                i_time = tmp.time()
-            # A8~の場合
-            else:
-                tmp = dt.datetime.combine(dt.date.today(), dt.time(6, 0)) + dt.timedelta(minutes=sum(timeA[:num[0]]))
-                while tmp.time() < i_time:
-                    tmp += dt.timedelta(minutes=10)
-                i_time = tmp.time()
-                pass
-        # 下り
-        else:
-            if num[1] >= 7:
-                tmp = dt.datetime.combine(dt.date.today(), dt.time(5, 52)) + dt.timedelta(minutes=sum(timeA[num[0]:]))
-                while tmp.time() < i_time:
-                    tmp += dt.timedelta(minutes=10)
-                i_time = tmp.time()
-            else:
-                if num[0] <= 7:
-                    tmp = dt.datetime.combine(dt.date.today(), dt.time(6, 6)) + dt.timedelta(
-                        minutes=sum(timeA[num[0]:]))
-                    while tmp.time() < i_time:
-                        tmp += dt.timedelta(minutes=5)
-                    i_time = tmp.time()
-                else:
-                    tmp = dt.datetime.combine(dt.date.today(), dt.time(5, 52)) + dt.timedelta(
-                        minutes=sum(timeA[num[0]:]))
-                    while tmp.time() < i_time:
-                        tmp += dt.timedelta(minutes=10)
-                    i_time = tmp.time()
-
-        mins = sum(timeA[min(num):max(num)])
-        f_time = dt.datetime.combine(dt.date.today(), i_time) + dt.timedelta(minutes=mins)
-        f_time = f_time.time()
-        print("A {} {} - {} {}".format(ini, i_time.strftime("%H:%M"), fin, f_time.strftime("%H:%M")))
-
-    elif ini[0] == fin[0] == "B":
-        if num[0] < num[1]:
-            tmp = dt.datetime.combine(dt.date.today(), dt.time(6, 0)) + dt.timedelta(minutes=sum(timeB[:num[0]]))
-            while tmp.time() < i_time:
-                tmp += dt.timedelta(minutes=6)
-            i_time = tmp.time()
-        else:
-            tmp = dt.datetime.combine(dt.date.today(), dt.time(6, 11)) + dt.timedelta(minutes=sum(timeB[num[0]:]))
-            while tmp.time() < i_time:
-                tmp += dt.timedelta(minutes=6)
-            i_time = tmp.time()
-
-        mins = sum(timeB[min(num):max(num)])
-        f_time = dt.datetime.combine(dt.date.today(), i_time) + dt.timedelta(minutes=mins)
-        f_time = f_time.time()
-        print("B {} {} - {} {}".format(ini, i_time.strftime("%H:%M"), fin, f_time.strftime("%H:%M")))
-    else:
-        pass
