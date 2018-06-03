@@ -595,6 +595,7 @@ def abc098_dx():
     return count
 
 
+# LINE
 def main(argv):
     import datetime as dt
     ini, fin, i_time = argv
@@ -663,6 +664,5 @@ def main(argv):
         f_time = dt.datetime.combine(dt.date.today(), i_time) + dt.timedelta(minutes=mins)
         f_time = f_time.time()
         print("B {} {} - {} {}".format(ini, i_time.strftime("%H:%M"), fin, f_time.strftime("%H:%M")))
-
     else:
         pass
