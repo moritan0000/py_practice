@@ -565,7 +565,7 @@ def abc097_b():
     return max(ans)
 
 
-def abc097_c():
+def abc097_cx():
     import numpy as np
     s = input()
     k = int(input())
@@ -584,7 +584,7 @@ def abc097_c():
     return substr[k - 1]
 
 
-print(abc097_c())
+print(abc097_cx())
 
 
 def abc097_dx():
