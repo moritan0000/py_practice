@@ -565,17 +565,26 @@ def abc097_b():
     return max(ans)
 
 
-def abc097_cx():
+def abc097_c():
+    import numpy as np
     s = input()
     k = int(input())
-    substr = []
-    for i in range(len(s) + 1):
-        for j in range(i + 1, len(s) + 1):
-            if s[i:j] not in substr:
-                substr.append(s[i:j])
-    substr = sorted(set(substr))
+
+    substr = [[] for _ in s]
+    substr[-1] = np.array([s[-1]])
+
+    for i in range(len(s) - 2, -1, -1):
+        # substr[i] = (np.append(np.array([s[i]], dtype=object) + np.array(substr[i + 1], dtype=object), s[i])).astype(str)
+
+        substr[i] = [s[i] + val for val in substr[i + 1]] + [s[i]]
+    # substr = np.array(substr).flatten()
+    substr = list(set([val for vals in substr for val in vals]))
+    substr.sort()
 
     return substr[k - 1]
+
+
+print(abc097_c())
 
 
 def abc097_dx():
