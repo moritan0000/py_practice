@@ -50,13 +50,13 @@ def homework3(url_winequality_data):
 iris = load_iris()
 
 
-def homework4(iris):
+def homework4x(iris):
     print(iris.target_names)
     my_result = 0
     return my_result
 
 
-# print(homework4(iris))
+# print(homework4x(iris))
 
 
 def homework5():
@@ -104,5 +104,5 @@ def homework7(target_online_retail_data_tb):
 
 # print(homework7(target_online_retail_data_tb))
 def homework8():
-    my_result = 0
+    my_result = "ZWE"
     return my_result
