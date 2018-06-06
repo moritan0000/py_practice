@@ -2,21 +2,34 @@ import numpy as np
 import numpy.random as random
 
 import scipy as sp
-from scipy import linalg
-from scipy.optimize import minimize_scalar
+import scipy.stats
+from scipy import linalg, interpolate, integrate
+from scipy.integrate import odeint
+from scipy.optimize import minimize, minimize_scalar, fsolve
 
 import pandas as pd
 from pandas import Series, DataFrame
 
+from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import seaborn as sns
+
+import math
+
+from sklearn import linear_model
 
 import requests, zipfile
 from io import StringIO
 import io
 
+import pymysql, pymysql.cursors
+
+
+# ---------- Chapter1 ----------
 
 def prime_number(n):
-    nums = np.array([2, 3, 5, 7] + [i for i in range(11, n, 2) if i % 3 > 0 and i % 5 > 0 and i % 7 > 0])
+    nums = np.array([2, 3, 5, 7] + [i for i in range(11, n + 1, 2) if i % 3 > 0 and i % 5 > 0 and i % 7 > 0])
     ans = np.array([], dtype=int)
 
     for val in nums:
@@ -153,12 +166,154 @@ def chapter_2():
         plt.show()
 
 
-# chapter_2()
-
 # ---------- Chapter3 ----------
-def chapter_3():
-    zip_file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00356/student.zip"
-    r = requests.get(zip_file_url, stream=True)
-    z = zipfile.ZipFile(io.BytesIO(r.content))
-    z.extractall("student/")
 
+def chapter_3():
+    # zip_file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00356/student.zip"
+    # r = requests.get(zip_file_url, stream=True)
+    # z = zipfile.ZipFile(io.BytesIO(r.content))
+    # z.extractall("student/")
+
+    stu_data_math = pd.read_csv("student/student-mat.csv", sep=";")
+    # print(stu_data_math.head())
+    # print(stu_data_math.info())
+
+    # plt.hist(stu_data_math["absences"])
+    # plt.ylabel("count")
+    # plt.xlabel("absences")
+    # plt.grid(True)
+    # plt.show()
+
+    print(stu_data_math.describe())
+
+    # plt.subplot(1, 2, 1)
+    # plt.boxplot([stu_data_math.G1, stu_data_math.G2, stu_data_math.G3])
+    # plt.grid(True)
+    # plt.subplot(1, 2, 2)
+    # plt.boxplot(stu_data_math.absences)
+    # plt.grid(True)
+    # plt.show()
+
+    print("Coefficient of Values", "\n", stu_data_math.std() / stu_data_math.mean())
+
+    # plt.plot(stu_data_math.G1, stu_data_math.G3, 'o')
+    # plt.ylabel("G3 grade")
+    # plt.xlabel("G1 grade")
+    # plt.grid(True)
+    # plt.show()
+
+    # print("Covariance between G1-G3", "\n", np.cov(stu_data_math["G1"], stu_data_math["G3"]))
+    # print(sp.stats.pearsonr(stu_data_math["G1"], stu_data_math["G3"]))
+    # print("Corr-coef. between G1-G3", "\n", np.corrcoef(stu_data_math["G1"], stu_data_math["G3"]))
+    # sns.pairplot(stu_data_math[["Dalc", "Walc", "G1", "G3"]])
+    # plt.grid(True)
+    # plt.show()
+
+    print(stu_data_math.groupby("Walc")["G1"].mean())
+
+    stu_por = pd.read_csv("student/student-por.csv", sep=";")
+    print(stu_por.describe())
+
+    X = stu_data_math.loc[:, ["G1"]].as_matrix()
+    Y = stu_data_math['G3'].as_matrix()
+
+    clf = linear_model.LinearRegression()
+    clf.fit(X, Y)
+
+    print("回帰係数:", clf.coef_, "切片:", clf.intercept_, "決定係数:", clf.score(X, Y))
+
+    plt.scatter(X, Y)
+    plt.plot(X, clf.predict(X))
+    plt.xlabel("G1 grade")
+    plt.ylabel("G3 grade")
+    plt.grid(True)
+    plt.show()
+
+
+# ---------- Chapter5 ----------
+
+def chapter_5():
+    # x = np.linspace(0, 10, num=11, endpoint=True)
+    # y = np.cos(-x ** 2 / 5.0)
+    # f = interpolate.interp1d(x, y, "linear")
+    # f2 = interpolate.interp1d(x, y, "cubic")
+    # xnew = np.linspace(0, 10, num=30, endpoint=True)
+    # plt.plot(x, y, "o", xnew, f(xnew), "-", xnew, f2(xnew), "--")
+    # plt.legend(["data", "linear", "cubic"], loc="best")
+    # plt.grid(True)
+    # plt.show()
+
+    A = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+    U, s, Vs = sp.linalg.svd(A)
+    m, n = A.shape
+    S = sp.linalg.diagsvd(s, m, n)
+    print("U.S.V = \n", U @ S @ Vs)
+
+    A = np.identity(5)
+    A[0, :] = 1
+    A[:, 0] = 1
+    A[0, 0] = 5
+    b = np.ones(5)
+    (LU, piv) = sp.linalg.lu_factor(A)
+    L = np.identity(5) + np.tril(LU, -1)
+    U = np.triu(LU)
+    P = np.identity(5)[piv]
+    x = sp.linalg.lu_solve((LU, piv), b)
+    print(x)
+
+    print(integrate.quad(lambda x: 4 / (1 + x ** 2), 0, 1))
+    print(integrate.dblquad(lambda t, x: np.exp(-x * t) / t ** 4, 0, np.inf, lambda x: 1, lambda x: np.inf))
+
+    def lorentz_func(v, t, p, r, b):
+        return [-p * v[0] + p * v[1], -v[0] * v[2] + r * v[0] - v[1], v[0] * v[1] - b * v[2]]
+
+    # p, r, b = 10, 28, 8 / 3
+    # v0 = [0.1, 0.1, 0.1]
+    # t = np.arange(0, 100, 0.01)
+    # v = odeint(lorentz_func, v0, t, args=(p, r, b))
+    # fig = plt.figure()
+    # ax = fig.gca(projection='3d')
+    # ax.plot(v[:, 0], v[:, 1], v[:, 2])
+    # plt.title("Lorenz")
+    # plt.grid(True)
+    # plt.show()
+
+    print(fsolve(lambda x: 2 * x ** 2 + 2 * x - 10, 1), fsolve(lambda x: 2 * x ** 2 + 2 * x - 10, -2))
+
+    x0 = [1, 5, 5, 1]
+
+    def objective(x): return x[0] * x[3] * (x[0] + x[1] + x[2]) + x[2]
+
+    def constraint1(x): return x[0] * x[1] * x[2] * x[3] - 25.0
+
+    def constraint2(x): return 40 - np.sum(x ** 2)
+
+    b = (1.0, 5.0)
+    bnds = (b, b, b, b)
+    con1 = {'type': 'ineq', 'fun': constraint1}
+    con2 = {'type': 'ineq', 'fun': constraint2}
+    cons = [con1, con2]
+    sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons)
+    print(sol)
+
+
+# ---------- Chapter9 ----------
+
+def chapter_9():
+    dbh = pymysql.connect(host='zdb',
+                          user='root',
+                          password='gci',
+                          db='TEST1',
+                          charset='utf8',
+                          cursorclass=pymysql.cursors.DictCursor)
+    stmt = dbh.cursor()
+    sql = "select * from meibo limit 10"
+    stmt.execute(sql)
+    rows = stmt.fetchall()
+    for row in rows:
+        print(row['id'], row['name'], row['age'], row['class'], row['height'])
+    stmt.close()
+    dbh.close()
+
+
+chapter_9()

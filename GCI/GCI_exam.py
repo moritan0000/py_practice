@@ -1,8 +1,7 @@
 import numpy as np
 
 import scipy as sp
-from scipy import stats
-from scipy import integrate
+from scipy import stats, integrate
 import scipy.linalg as linalg
 
 import pandas as pd
@@ -10,6 +9,11 @@ from pandas import DataFrame
 
 from sklearn import linear_model
 from sklearn.datasets import load_iris
+
+# 1, 2, 5, 7 solved in time
+# 8 waiting for scoring
+# 3, 4, 6 solved late
+# 9 unsolved
 
 input_data = {'key_1': 100,
               'key_2': 100,
@@ -50,13 +54,17 @@ def homework3(url_winequality_data):
 iris = load_iris()
 
 
-def homework4x(iris):
-    print(iris.target_names)
-    my_result = 0
+def homework4(iris):
+    iris_df = pd.DataFrame.from_dict({"target": iris["target"],
+                                      "sepal length": iris["data"][:, 0],
+                                      "sepal width": iris["data"][:, 1],
+                                      "petal length": iris["data"][:, 2],
+                                      "petal width": iris["data"][:, 3], })
+    setosa = iris_df[iris_df.target == 0]
+    versicolor = iris_df[iris_df.target == 1]
+    t, p = stats.ttest_rel(setosa["sepal length"], versicolor["sepal length"])
+    my_result = p
     return my_result
-
-
-# print(homework4x(iris))
 
 
 def homework5():
@@ -66,26 +74,29 @@ def homework5():
 
 def homework6(url_winequality_data):
     data = pd.read_csv(url_winequality_data, sep=";")
-    sul = data["total sulfur dioxide"]
-    num = len(sul.values) // 5
+    sul = data["total sulfur dioxide"].sort_values()
+    num = len(sul.values) // 5 + 1
     ave = [np.mean(sul[num * i:num * (i + 1)]) for i in range(5)]
     my_result = max(ave) + min(ave)
     return my_result
 
 
-# init part(データの読み込みと前処理)
-file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
-online_retail_data = pd.ExcelFile(file_url)
-online_retail_data_table = online_retail_data.parse('Online Retail')
+# print(homework6(url_winequality_data))
 
-online_retail_data_table['cancel_flg'] = online_retail_data_table.InvoiceNo.map(lambda x: str(x)[0])
 
-# 数字があるものとIDがNullでないものが対象
-target_online_retail_data_tb = online_retail_data_table[(online_retail_data_table.cancel_flg == '5')
-                                                        & (online_retail_data_table.CustomerID.notnull())]
-
-target_online_retail_data_tb = target_online_retail_data_tb.assign(
-    TotalPrice=target_online_retail_data_tb.Quantity * target_online_retail_data_tb.UnitPrice)
+# # init part(データの読み込みと前処理)
+# file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
+# online_retail_data = pd.ExcelFile(file_url)
+# online_retail_data_table = online_retail_data.parse('Online Retail')
+#
+# online_retail_data_table['cancel_flg'] = online_retail_data_table.InvoiceNo.map(lambda x: str(x)[0])
+#
+# # 数字があるものとIDがNullでないものが対象
+# target_online_retail_data_tb = online_retail_data_table[(online_retail_data_table.cancel_flg == '5')
+#                                                         & (online_retail_data_table.CustomerID.notnull())]
+#
+# target_online_retail_data_tb = target_online_retail_data_tb.assign(
+#     TotalPrice=target_online_retail_data_tb.Quantity * target_online_retail_data_tb.UnitPrice)
 
 
 def homework7(target_online_retail_data_tb):
@@ -102,7 +113,11 @@ def homework7(target_online_retail_data_tb):
     return my_result
 
 
-# print(homework7(target_online_retail_data_tb))
 def homework8():
     my_result = "ZWE"
+    return my_result
+
+
+def homework9():
+    my_result = 0
     return my_result

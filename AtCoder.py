@@ -578,7 +578,7 @@ def abc097_cx():
 
         substr[i] = [s[i] + val for val in substr[i + 1]] + [s[i]]
     # substr = np.array(substr).flatten()
-    substr = list(set([val for vals in substr for val in vals]))
+    substr = np.unique([val for vals in substr for val in vals])
     substr.sort()
 
     return substr[k - 1]
