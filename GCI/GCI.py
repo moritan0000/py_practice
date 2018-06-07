@@ -23,7 +23,7 @@ import requests, zipfile
 from io import StringIO
 import io
 
-import pymysql, pymysql.cursors
+import pymysql, pymysql.cursors, mysql.connector
 
 
 # ---------- Chapter1 ----------
@@ -298,22 +298,24 @@ def chapter_5():
 
 
 # ---------- Chapter9 ----------
-
 def chapter_9():
-    dbh = pymysql.connect(host='zdb',
-                          user='root',
-                          password='gci',
-                          db='TEST1',
-                          charset='utf8',
-                          cursorclass=pymysql.cursors.DictCursor)
-    stmt = dbh.cursor()
+    conn = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='nugiba8256SQ;',
+        db='TEST1',
+        charset='utf8',
+        cursorclass=pymysql.cursors.DictCursor)  # カーソルのクラスを指定できます。ここでは辞書型にしています。
+
+    stmt = conn.cursor()
     sql = "select * from meibo limit 10"
     stmt.execute(sql)
     rows = stmt.fetchall()
+
     for row in rows:
         print(row['id'], row['name'], row['age'], row['class'], row['height'])
+
     stmt.close()
-    dbh.close()
+    conn.close()
 
-
-chapter_9()
+# chapter_9()

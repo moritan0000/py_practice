@@ -140,3 +140,7 @@ def pokemon():
     print(out)
 
     out.to_csv(gci_compe_path + "pokemon/submission.csv", index=False)
+
+
+def arrest():
+    pass
