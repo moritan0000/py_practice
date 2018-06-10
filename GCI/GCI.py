@@ -305,8 +305,7 @@ def chapter_9():
         password='nugiba8256SQ;',
         db='TEST1',
         charset='utf8',
-        cursorclass=pymysql.cursors.DictCursor)  # カーソルのクラスを指定できます。ここでは辞書型にしています。
-
+        cursorclass=pymysql.cursors.DictCursor)
     stmt = conn.cursor()
     sql = "select * from meibo limit 10"
     stmt.execute(sql)

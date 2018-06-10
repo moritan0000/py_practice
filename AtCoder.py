@@ -584,9 +584,6 @@ def abc097_cx():
     return substr[k - 1]
 
 
-print(abc097_cx())
-
-
 def abc097_dx():
     n, m = map(int, input().split())
     p = map(int, input().split())
@@ -644,3 +641,43 @@ def abc098_dx():
                 xor ^= a[k]
             count += sum(a[l:r + 1]) == xor
     return count
+
+
+def abc099_a():
+    n = int(input())
+
+    return ["ABC", "ABD"][n >= 1000]
+
+
+def abc099_b():
+    a, b = map(int, input().split())
+    x = sum([i for i in range(b - a)])
+    return x - a
+
+
+def abc099_cx():
+    n = int(input())
+    if n == 3:
+        return 3
+    vals = [6, 9, 36, 81, 216, 729, 1296, 6561, 7776, 46656, 59049][::-1]
+
+    count = n % 3
+    n -= count
+
+    while n:
+        for val in vals:
+            if n >= val and (n - val) != 3:
+                n -= val
+                count += 1
+                break
+
+    return count
+
+
+# print(abc099_cx())
+
+
+def abc099_dx():
+    return 0
+
+# print(abc099_dx())
