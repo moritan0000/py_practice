@@ -8,12 +8,17 @@ import pandas as pd
 from pandas import DataFrame
 
 from sklearn import linear_model
+from sklearn.cross_validation import train_test_split
 from sklearn.datasets import load_iris
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
 # 1, 2, 5, 7 solved in time
-# 8 waiting for scoring
+# 8, 9, 11 waiting for scoring
 # 3, 4, 6 solved late
-# 9 unsolved
+#  unsolved
 
 input_data = {'key_1': 100,
               'key_2': 100,
@@ -37,7 +42,7 @@ def homework2(A):
     return my_result
 
 
-url_winequality_data = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+# url_winequality_data = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
 
 
 def homework3(url_winequality_data):
@@ -51,7 +56,7 @@ def homework3(url_winequality_data):
     return my_result
 
 
-iris = load_iris()
+# iris = load_iris()
 
 
 def homework4(iris):
@@ -119,5 +124,34 @@ def homework8():
 
 
 def homework9():
-    my_result = 0
+    my_result = 3367
     return my_result
+
+
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, stratify=iris.target, random_state=0)
+
+best_score = 0
+best_method = ""
+
+
+def homework11(X_train, X_test, y_train, y_test, best_score, best_method):
+    accuracies = {}
+    model_LR = LogisticRegression()
+    model_SVM = LinearSVC()
+    model_DT = DecisionTreeClassifier()
+    model_kNN = KNeighborsClassifier(n_neighbors=6)
+
+    for model in [model_LR, model_SVM, model_DT, model_kNN]:
+        model.fit(X_train, y_train)
+        score = model.score(X_test, y_test)
+        accuracies[model.__class__.__name__] = score
+        if score > best_score:
+            best_score = score
+            best_method = model.__class__.__name__
+    my_result = best_method
+    return my_result
+
+
+print(homework11(X_train, X_test, y_train, y_test, best_score, best_method))

@@ -2,7 +2,6 @@ import numpy as np
 import numpy.random as random
 
 import scipy as sp
-import scipy.stats
 from scipy import linalg, interpolate, integrate
 from scipy.integrate import odeint
 from scipy.optimize import minimize, minimize_scalar, fsolve
@@ -15,15 +14,21 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
 
-import math
+import math, requests, zipfile, io, pymysql
+from io import StringIO
 
 from sklearn import linear_model
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import LinearSVC
+from sklearn.externals.six import StringIO
+from sklearn.datasets import load_breast_cancer
+from sklearn.neighbors import KNeighborsClassifier
 
-import requests, zipfile
-from io import StringIO
-import io
-
-import pymysql, pymysql.cursors, mysql.connector
+import pydotplus
+from IPython.display import Image
 
 
 # ---------- Chapter1 ----------
@@ -297,24 +302,150 @@ def chapter_5():
     print(sol)
 
 
-# ---------- Chapter9 ----------
-def chapter_9():
-    conn = pymysql.connect(
-        host='localhost',
-        user='root',
-        password='nugiba8256SQ;',
-        db='TEST1',
-        charset='utf8',
-        cursorclass=pymysql.cursors.DictCursor)
-    stmt = conn.cursor()
-    sql = "select * from meibo limit 10"
-    stmt.execute(sql)
-    rows = stmt.fetchall()
+# ---------- Chapter11 ----------
+def calc_entropy_bin(p):
+    return -(p * np.log2(p) + (1 - p) * np.log2(1 - p))
 
-    for row in rows:
-        print(row['id'], row['name'], row['age'], row['class'], row['height'])
 
-    stmt.close()
-    conn.close()
+def chapter_11():
+    if 0:  # Linear Regression
+        # auto_data_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-85.data"
+        # s = requests.get(auto_data_url).content
+        # auto_data = pd.read_csv(io.StringIO(s.decode('utf-8')), header=None)
+        # auto_data.columns = ["symboling", "normalized-losses", "make", "fuel-type", "aspiration", "num-of-doors",
+        #                      "body-style", "drive-wheels", "engine-location", "wheel-base", "length", "width", "height",
+        #                      "curb-weight", "engine-type", "num-of-cylinders", "engine-size", "fuel-system", "bore",
+        #                      "stroke", "compression-ratio", "horsepower", "peak-rpm", "city-mpg", "highway-mpg",
+        #                      "price"]
+        # auto_data.to_csv("../../../../weblab/weblab_datascience/data/auto_data.csv", index=False)
+        auto_data = pd.read_csv("../../../../weblab/weblab_datascience/data/auto_data.csv")
+        # for col in auto_data.columns:
+        #     print(col, sum(auto_data[col].isin(["?"])))
 
-# chapter_9()
+        sub_auto_data = auto_data[["price", "horsepower", "width", "height"]]
+        sub_auto_data = sub_auto_data.replace('?', np.nan).dropna()
+        sub_auto_data = sub_auto_data.assign(price=pd.to_numeric(sub_auto_data.price))
+        sub_auto_data = sub_auto_data.assign(horsepower=pd.to_numeric(sub_auto_data.horsepower))
+        # print(sub_auto_data.corr())
+
+        model_linear = linear_model.LinearRegression()
+        model_ridge = linear_model.Ridge()
+
+        X = sub_auto_data.drop("price", axis=1)
+        Y = sub_auto_data["price"]
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.5, random_state=0)
+
+        for model in [model_linear, model_ridge]:
+            clf = model.fit(X_train, y_train)
+            print("train:", clf.__class__.__name__, clf.score(X_train, y_train))
+            print("test:", clf.__class__.__name__, clf.score(X_test, y_test))
+            print(pd.DataFrame.from_dict(({"Name": X.columns,
+                                           "Coefficients": clf.coef_})).sort_values(by='Coefficients'))
+            print(clf.intercept_)
+
+    if 0:  # Logistic Regression
+        # adult_data_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
+        # s = requests.get(adult_data_url).content
+        # adult_data = pd.read_csv(io.StringIO(s.decode('utf-8')), header=None)
+        # adult_data.columns = ["age", "workclass", "fnlwgt", "education", "education-num", "marital-status",
+        #                       "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss",
+        #                       "hours-per-week", "native-country", "flg-50K"]
+        # adult_data.to_csv("../../../../weblab/weblab_datascience/data/adult_data.csv", index=False)
+        adult_data = pd.read_csv("../../../../weblab/weblab_datascience/data/adult_data.csv")
+        adult_data["fin_flg"] = adult_data["flg-50K"].map(lambda x: 1 if x == ' >50K' else 0)
+
+        X = adult_data[["age", "fnlwgt", "education-num", "capital-gain", "capital-loss"]]
+        Y = adult_data['fin_flg']
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+
+        model = linear_model.LogisticRegression()
+
+        sc = StandardScaler()
+        sc.fit(X_train)
+        X_train_std = sc.transform(X_train)
+        X_test_std = sc.transform(X_test)
+
+        model.fit(X_train_std, y_train)
+
+        print("train result:", model.score(X_train_std, y_train))
+        print("test result:", model.score(X_test_std, y_test))
+        print(model.coef_)
+
+    if 0:  # Decision tree
+        # mush_data_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data"
+        # s = requests.get(mush_data_url).content
+        # mush_data = pd.read_csv(io.StringIO(s.decode('utf-8')), header=None)
+        # mush_data.columns = ["classes", "cap_shape", "cap_surface", "cap_color", "odor", "bruises",
+        #                      "gill_attachment", "gill_spacing", "gill_size", "gill_color", "stalk_shape",
+        #                      "stalk_root", "stalk_surface_above_ring", "stalk_surface_below_ring",
+        #                      "stalk_color_above_ring", "stalk_color_below_ring", "veil_type", "veil_color",
+        #                      "ring_number", "ring_type", "spore_print_color", "population", "habitat"]
+        # mush_data.to_csv("../../../../weblab/weblab_datascience/data/mush_data.csv", index=False)
+        mush_data = pd.read_csv("../../../../weblab/weblab_datascience/data/mush_data.csv")
+        # print(mush_data.head())
+
+        mush_data_dummy = pd.get_dummies(mush_data[['gill_color', 'gill_attachment', 'odor', 'cap_color']])
+        mush_data_dummy["flg"] = mush_data["classes"].map(lambda x: 1 if x == 'p' else 0)
+        # print(mush_data_dummy.head())
+        print(mush_data_dummy.groupby("flg")["flg"].count())
+        print(mush_data_dummy.groupby(["cap_color_c", "flg"])["flg"].count().unstack())
+
+        print(mush_data_dummy.groupby(["gill_color_b", "flg"])["flg"].count().unstack())
+
+        X = mush_data_dummy.drop("flg", axis=1)
+        Y = mush_data_dummy['flg']
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=50)
+
+        tree_model = DecisionTreeClassifier(criterion='entropy', max_depth=5, random_state=50)
+        tree_model.fit(X_train, y_train)
+
+        print("train:", tree_model.__class__.__name__, tree_model.score(X_train, y_train))
+        print("test:", tree_model.__class__.__name__, tree_model.score(X_test, y_test))
+
+        # dot_data = StringIO()
+        # tree.export_graphviz(tree_model, out_file=dot_data)
+        # graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+        # Image(graph.create_png())
+
+    if 0:  # k-NN
+        cancer = load_breast_cancer()
+        X_train, X_test, y_train, y_test = \
+            train_test_split(cancer.data, cancer.target, stratify=cancer.target, random_state=66)
+
+        training_accuracy = []
+        test_accuracy = []
+
+        neighbors_settings = range(1, 101)
+        for n_neighbors in neighbors_settings:
+            clf = KNeighborsClassifier(n_neighbors=n_neighbors)
+            clf.fit(X_train, y_train)
+
+            training_accuracy.append(clf.score(X_train, y_train))
+
+            test_accuracy.append(clf.score(X_test, y_test))
+
+        plt.plot(neighbors_settings, training_accuracy, label="training accuracy")
+        plt.plot(neighbors_settings, test_accuracy, label="test accuracy")
+        plt.ylabel("Accuracy")
+        plt.xlabel("n_neighbors")
+        plt.legend()
+        plt.show()
+
+    if 1:  # SVM
+        cancer = load_breast_cancer()
+        X_train, X_test, y_train, y_test = \
+            train_test_split(cancer.data, cancer.target, stratify=cancer.target, random_state=50)
+
+        model = LinearSVC()
+
+        sc = StandardScaler()
+        sc.fit(X_train)
+        X_train_std = sc.transform(X_train)
+        X_test_std = sc.transform(X_test)
+
+        model.fit(X_train_std, y_train)
+        print("train:", model.__class__.__name__, model.score(X_train_std, y_train))
+        print("test:", model.__class__.__name__, model.score(X_test_std, y_test))
+
+
+chapter_11()

@@ -1,10 +1,15 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import sklearn as sl
+
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import roc_auc_score
 
 gci_compe_path = "../../../../weblab/weblab_datascience/competitions/"
 
@@ -143,4 +148,36 @@ def pokemon():
 
 
 def arrest():
-    pass
+    train_data = pd.read_csv(gci_compe_path + "arrest/train.csv")
+    test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
+    # DELETE DUPLICATE
+    train_data["search_type_raw"] = train_data["search_type_raw"].map(lambda x: 0 if pd.isnull(x) else x)
+    train_data["search_type"] = train_data["search_type"].map(lambda x: 0 if pd.isnull(x) else x)
+    train_data["contraband_found"] = train_data["contraband_found"].map(lambda x: 1 if x else 0)
+    train_data = train_data.dropna()
+
+    X = train_data[["driver_age_raw", "contraband_found"]]
+    X["stop_h"] = train_data["stop_time"].map(lambda x: int(x[:2]) / 24)
+    X["d_gen"] = train_data["driver_gender"].map(lambda x: 1 if x == "M" else 0)
+
+    X_dummy = pd.get_dummies(train_data[["driver_race", "search_type", "stop_duration"]], drop_first=True)
+    X = pd.merge(X, X_dummy, left_index=True, right_index=True)
+
+    Y = train_data.is_arrested
+
+    X_train, X_val, y_train, y_val = train_test_split(X, Y, test_size=0.2, random_state=0)
+
+    model_LR = linear_model.LinearRegression()
+    model_Log = LogisticRegression()
+    model_SVM = LinearSVC()
+    model_DT = DecisionTreeClassifier()
+    model_kNN = KNeighborsClassifier()
+    for model in [model_LR, model_Log, model_SVM, model_DT, model_kNN]:
+        model.fit(X_train, y_train)
+        print(model.__class__.__name__)
+        print(model.score(X_train, y_train))
+        print(model.score(X_val, y_val))
+        print(roc_auc_score(y_val, model.predict(X_val)))
+
+
+arrest()
