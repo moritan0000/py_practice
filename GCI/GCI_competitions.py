@@ -148,36 +148,61 @@ def pokemon():
 
 
 def arrest():
+    # modify train data
     train_data = pd.read_csv(gci_compe_path + "arrest/train.csv")
-    test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
-    # DELETE DUPLICATE
-    train_data["search_type_raw"] = train_data["search_type_raw"].map(lambda x: 0 if pd.isnull(x) else x)
-    train_data["search_type"] = train_data["search_type"].map(lambda x: 0 if pd.isnull(x) else x)
-    train_data["contraband_found"] = train_data["contraband_found"].map(lambda x: 1 if x else 0)
+    train_data["search_type_raw"] = train_data["search_type_raw"].apply(lambda x: 0 if pd.isnull(x) else x)
+    train_data["search_type"] = train_data["search_type"].apply(lambda x: 0 if pd.isnull(x) else x)
     train_data = train_data.dropna()
+    train_data = train_data.drop_duplicates()
+    train_data["contraband_found"] = train_data["contraband_found"].apply(lambda x: 1 if x else 0)
+    train_data["stop_time"] = train_data["stop_time"].apply(lambda x: int(x[:2]) if x else x)
 
-    X = train_data[["driver_age_raw", "contraband_found"]]
-    X["stop_h"] = train_data["stop_time"].map(lambda x: int(x[:2]) / 24)
-    X["d_gen"] = train_data["driver_gender"].map(lambda x: 1 if x == "M" else 0)
+    train_data.info()
 
-    X_dummy = pd.get_dummies(train_data[["driver_race", "search_type", "stop_duration"]], drop_first=True)
+    X = train_data[["driver_age_raw", "contraband_found", "driver_gender"]]
+    X["driver_gender"] = X["driver_gender"].apply(lambda x: 1 if x == "M" else 0)
+    X_dummy = pd.get_dummies(train_data[["driver_race", "search_type", "stop_duration", "stop_time"]], drop_first=True)
     X = pd.merge(X, X_dummy, left_index=True, right_index=True)
-
     Y = train_data.is_arrested
 
     X_train, X_val, y_train, y_val = train_test_split(X, Y, test_size=0.2, random_state=0)
 
+    # Compare models
     model_LR = linear_model.LinearRegression()
-    model_Log = LogisticRegression()
-    model_SVM = LinearSVC()
-    model_DT = DecisionTreeClassifier()
+    model_rid = linear_model.Ridge()
+    model_Log = LogisticRegression(random_state=0, max_iter=10000)
+    model_SVM = LinearSVC(random_state=0, max_iter=1000)
+    model_DT = DecisionTreeClassifier(random_state=0)
     model_kNN = KNeighborsClassifier()
-    for model in [model_LR, model_Log, model_SVM, model_DT, model_kNN]:
+    criteria = 1
+    for model in [model_Log, model_SVM, model_DT, model_kNN]:
         model.fit(X_train, y_train)
-        print(model.__class__.__name__)
+        print("----------", model.__class__.__name__, "----------")
         print(model.score(X_train, y_train))
         print(model.score(X_val, y_val))
-        print(roc_auc_score(y_val, model.predict(X_val)))
+        roc_score = roc_auc_score(y_val, model.predict(X_val))
+        print(roc_score)
+        if roc_score < criteria:
+            selected_model = model
+            criteria = roc_score
+
+    if 1:  # Predict using test data
+        test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
+        test_data = test_data.applymap(lambda x: 0 if pd.isnull(x) else x)
+        test_data["contraband_found"] = test_data["contraband_found"].apply(lambda x: 1 if x else 0)
+        test_data["stop_time"] = test_data["stop_time"].apply(lambda x: int(x[:2]) if x else x)
+        test_data.info()
+
+        X_test = test_data[["driver_age_raw", "contraband_found", "driver_gender"]]
+        X_test["driver_gender"] = X_test["driver_gender"].apply(lambda x: 1 if x == "M" else 0)
+
+        X_test_dummy = pd.get_dummies(test_data[["driver_race", "search_type", "stop_duration", "stop_time"]],
+                                      drop_first=True)
+        X_test = pd.merge(X_test, X_test_dummy, left_index=True, right_index=True)
+
+        print("Selected model:", selected_model)
+        result = pd.DataFrame(selected_model.predict(X_test), columns=["is_arrested"])
+        result.to_csv(gci_compe_path + "arrest/submission.csv", index=False)
 
 
 arrest()
