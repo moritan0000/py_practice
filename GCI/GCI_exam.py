@@ -128,12 +128,12 @@ def homework9():
     return my_result
 
 
-iris = load_iris()
-X_train, X_test, y_train, y_test = train_test_split(
-    iris.data, iris.target, stratify=iris.target, random_state=0)
-
-best_score = 0
-best_method = ""
+# iris = load_iris()
+# X_train, X_test, y_train, y_test = train_test_split(
+#     iris.data, iris.target, stratify=iris.target, random_state=0)
+#
+# best_score = 0
+# best_method = ""
 
 
 def homework11(X_train, X_test, y_train, y_test, best_score, best_method):
@@ -154,4 +154,63 @@ def homework11(X_train, X_test, y_train, y_test, best_score, best_method):
     return my_result
 
 
-print(homework11(X_train, X_test, y_train, y_test, best_score, best_method))
+# print(homework11(X_train, X_test, y_train, y_test, best_score, best_method))
+
+import pandas as pd
+import numpy as np
+
+file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
+online_retail_data = pd.ExcelFile(file_url)
+online_retail_data_table = online_retail_data.parse('Online Retail')
+
+online_retail_data_table['cancel_flg'] = online_retail_data_table.InvoiceNo.map(lambda x: str(x)[0])
+
+target_online_retail_data_tb = online_retail_data_table[(online_retail_data_table.cancel_flg == '5')
+                                                        & (online_retail_data_table.CustomerID.notnull())]
+
+target_online_retail_data_tb = target_online_retail_data_tb.assign(
+    TotalPrice=target_online_retail_data_tb.Quantity * target_online_retail_data_tb.UnitPrice)
+
+
+def homework12(target_online_retail_data_tb):
+    my_result = 0
+    return my_result
+
+
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import cross_val_score
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+
+wine = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv", sep=";")
+
+X = wine.iloc[:, 0:10].as_matrix()
+Y = wine['quality'].as_matrix()
+
+
+def homework13(X, Y):
+    model_LR = LogisticRegression()
+    model_SVM = LinearSVC()
+    model_DT = DecisionTreeClassifier()
+    model_kNN = KNeighborsClassifier(n_neighbors=6)
+    model_RF = RandomForestClassifier()
+    best_score = 0
+
+    for model in [model_LR, model_SVM, model_DT, model_kNN, model_RF]:
+        scores = cross_val_score(model, X, Y, cv=10)
+        ave_score = np.average(scores)
+        # print(model.__class__.__name__, ave_score)
+        if ave_score > best_score:
+            best_score = ave_score
+            best_method = model.__class__.__name__
+
+    my_result = best_score
+    return my_result
+
+
+print(homework13(X, Y))

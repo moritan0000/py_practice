@@ -186,7 +186,7 @@ def arrest():
             selected_model = model
             criteria = roc_score
 
-    if 1:  # Predict using test data
+    if 0:  # Predict using test data
         test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
         test_data = test_data.applymap(lambda x: 0 if pd.isnull(x) else x)
         test_data["contraband_found"] = test_data["contraband_found"].apply(lambda x: 1 if x else 0)
@@ -205,4 +205,8 @@ def arrest():
         result.to_csv(gci_compe_path + "arrest/submission.csv", index=False)
 
 
-arrest()
+def final():
+    pass
+
+
+final()

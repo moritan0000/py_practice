@@ -24,8 +24,9 @@ from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import LinearSVC
 from sklearn.externals.six import StringIO
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_breast_cancer, make_blobs
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.cluster import KMeans
 
 import pydotplus
 from IPython.display import Image
@@ -303,9 +304,6 @@ def chapter_5():
 
 
 # ---------- Chapter11 ----------
-def calc_entropy_bin(p):
-    return -(p * np.log2(p) + (1 - p) * np.log2(1 - p))
-
 
 def chapter_11():
     if 0:  # Linear Regression
@@ -448,4 +446,95 @@ def chapter_11():
         print("test:", model.__class__.__name__, model.score(X_test_std, y_test))
 
 
-chapter_11()
+# ---------- Chapter11 ----------
+
+def chapter_12():
+    pd.set_option("display.max_columns", 20)
+    if 0:
+        if 0:
+            X, y = make_blobs(random_state=10)
+
+            kmeans = KMeans(init="random", n_clusters=3)
+            kmeans.fit(X)
+
+            y_pre = kmeans.fit_predict(X)
+
+            merge_data = pd.concat([pd.DataFrame(X[:, 0]), pd.DataFrame(X[:, 1]), pd.DataFrame(y_pre)], axis=1)
+            merge_data.columns = ["element1", "element2", "cluster"]
+
+            merge_data_cluster0 = merge_data[merge_data["cluster"] == 0]
+            merge_data_cluster1 = merge_data[merge_data["cluster"] == 1]
+            merge_data_cluster2 = merge_data[merge_data["cluster"] == 2]
+
+            ax = merge_data_cluster0.plot.scatter(x='element1', y='element2', color='red', label='cluster0');
+            merge_data_cluster1.plot.scatter(x='element1', y='element2', color='blue', label='cluster1', ax=ax);
+            merge_data_cluster2.plot.scatter(x='element1', y='element2', color='green', label='cluster2', ax=ax);
+            plt.show()
+
+        # zip_file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip"
+        # r = requests.get(zip_file_url, stream=True)
+        # z = zipfile.ZipFile(io.BytesIO(r.content))
+        # z.extractall("bank/")
+
+        banking_c_data = pd.read_csv("bank/bank-full.csv", sep=";")
+        banking_c_data.info()
+        print(banking_c_data.head())
+
+        banking_c_data_sub = banking_c_data[['age', 'balance', 'campaign', 'previous']]
+        sc = StandardScaler()
+        sc.fit(banking_c_data_sub)
+        banking_c_data_sub_std = sc.transform(banking_c_data_sub)
+
+        X = banking_c_data_sub_std
+        kmeans = KMeans(init='random', n_clusters=6, random_state=0)
+        kmeans.fit(X)
+
+        labels = kmeans.labels_
+        label_data = pd.DataFrame(labels, columns=["cl_nm"])
+        label_data_bycl = label_data.groupby("cl_nm").size()
+        print(label_data_bycl)
+
+        # plt.bar([0, 1, 2, 3, 4, 5], label_data_bycl.values)
+        # plt.ylabel("count")
+        # plt.xlabel("cluster num")
+        # plt.grid(True)
+        # plt.show()
+
+        if 0:  # determine the number of clusters
+            dist_list = []
+            for i in range(1, 20):
+                kmpp = KMeans(n_clusters=i, init='random', n_init=5, max_iter=100, random_state=0)
+                kmpp.fit(X)
+                dist_list.append(kmpp.inertia_)
+            plt.plot(range(1, 20), dist_list, marker='+')
+            plt.xlabel("Number of clusters")
+            plt.ylabel("Distortion")
+            plt.show()
+
+        merge_data = pd.concat([banking_c_data, label_data], axis=1)
+        print(merge_data.head(3))
+        absences_bins = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 100]
+        qcut_result = pd.cut(merge_data.age, absences_bins, right=False)
+        value_qcut_result = pd.value_counts(qcut_result)
+        print(value_qcut_result)
+
+        merge_data_age_cl = pd.concat([merge_data.cl_nm, qcut_result], axis=1)
+        cluster_num_age_cross_tb = pd.pivot_table(merge_data_age_cl, index=['cl_nm'], columns=['age'],
+                                                  aggfunc=lambda x: len(x), fill_value=0)
+        print(cluster_num_age_cross_tb)
+        # sns.heatmap(cluster_num_age_cross_tb.apply(lambda x: x / x.sum(), axis=1), cmap="Blues")
+        # plt.show()
+
+        merge_data_job_cl = merge_data[['cl_nm', 'job']]
+        cluster_num_job_cross_tb = pd.pivot_table(merge_data_job_cl, index=['cl_nm'], columns=['job'],
+                                                  aggfunc=lambda x: len(x), fill_value=0)
+        print(cluster_num_job_cross_tb)
+        # sns.heatmap(cluster_num_job_cross_tb.apply(lambda x: x / x.sum(), axis=1), cmap="Reds")
+        # plt.show()
+    rng_data = np.random.RandomState(1)
+    X = np.dot(rng_data.rand(2, 2), rng_data.randn(2, 200)).T
+    plt.scatter(X[:, 0], X[:, 1])
+    plt.show()
+
+
+chapter_12()
