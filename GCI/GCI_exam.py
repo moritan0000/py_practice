@@ -16,7 +16,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 # 1, 2, 5, 7 solved in time
-# 8, 9, 11 waiting for scoring
+# 8, 9, 11, 12, 13 waiting for scoring
 # 3, 4, 6 solved late
 #  unsolved
 
@@ -159,23 +159,56 @@ def homework11(X_train, X_test, y_train, y_test, best_score, best_method):
 import pandas as pd
 import numpy as np
 
+import pandas as pd
+import numpy as np
+
 file_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
 online_retail_data = pd.ExcelFile(file_url)
 online_retail_data_table = online_retail_data.parse('Online Retail')
 
 online_retail_data_table['cancel_flg'] = online_retail_data_table.InvoiceNo.map(lambda x: str(x)[0])
-
 target_online_retail_data_tb = online_retail_data_table[(online_retail_data_table.cancel_flg == '5')
                                                         & (online_retail_data_table.CustomerID.notnull())]
-
 target_online_retail_data_tb = target_online_retail_data_tb.assign(
     TotalPrice=target_online_retail_data_tb.Quantity * target_online_retail_data_tb.UnitPrice)
 
 
 def homework12(target_online_retail_data_tb):
-    my_result = 0
+    target_online_retail_data_tb["InvoiceNo"] = target_online_retail_data_tb["InvoiceNo"].astype(str)
+    target_online_retail_data_tb["StockCode"] = target_online_retail_data_tb["StockCode"].astype(str)
+
+    online_retail_data_table_sc = target_online_retail_data_tb.groupby("StockCode").size()
+    online_retail_data_table_sc = \
+        online_retail_data_table_sc[online_retail_data_table_sc > 1000].sort_values(ascending=False)
+
+    # calculate support for each combination. best_support_items = ['20725', '22383']
+    item_list = online_retail_data_table_sc.index
+    best_support = 0
+    best_support_items = []
+    for i in range(len(item_list) - 1):
+        for j in range(i + 1, len(item_list)):
+            first_item = target_online_retail_data_tb[target_online_retail_data_tb["StockCode"] == item_list[i]]
+            second_item = target_online_retail_data_tb[target_online_retail_data_tb["StockCode"] == item_list[j]]
+            merge_one_second = pd.merge(first_item, second_item, on="InvoiceNo", how="inner")
+            support = len(merge_one_second.InvoiceNo.unique()) / len(
+                target_online_retail_data_tb.InvoiceNo.unique())
+            # print("Support between {} & {}:".format(item_list[i], item_list[j]), support)
+            if support > best_support:
+                best_support = support
+                best_support_items = [item_list[i], item_list[j]]
+    # print("Best support:", best_support_items, best_support)
+
+    first_item = target_online_retail_data_tb[target_online_retail_data_tb["StockCode"] == best_support_items[0]]
+    second_item = target_online_retail_data_tb[target_online_retail_data_tb["StockCode"] == best_support_items[1]]
+    merge_one_second = pd.merge(first_item, second_item, on="InvoiceNo", how="inner")
+    a = len(merge_one_second.InvoiceNo.unique()) / len(second_item.InvoiceNo.unique())
+    b = len(first_item.InvoiceNo.unique()) / len(target_online_retail_data_tb.InvoiceNo.unique())
+    my_result = a / b
+
     return my_result
 
+
+# print(homework12(target_online_retail_data_tb))
 
 import numpy as np
 import pandas as pd
@@ -208,9 +241,9 @@ def homework13(X, Y):
         if ave_score > best_score:
             best_score = ave_score
             best_method = model.__class__.__name__
-
     my_result = best_score
+
     return my_result
 
 
-print(homework13(X, Y))
+# print(homework13(X, Y))
