@@ -680,4 +680,65 @@ def abc099_cx():
 def abc099_dx():
     return 0
 
+
 # print(abc099_dx())
+
+def abc101_a():
+    s = input()
+    ans = s.count("+") - s.count("-")
+    return ans
+
+
+def abc101_b():
+    n = int(input())
+    tmp = n
+    sn = 0
+    while tmp:
+        sn += tmp % 10
+        tmp //= 10
+    ans = ["No", "Yes"][n % sn == 0]
+    return ans
+
+
+def abc101_c():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = (n - 1) // (k - 1) + [1, 0][(n - 1) % (k - 1) == 0]
+    return ans
+
+
+def abc101_dx():
+    k = int(input())
+
+    snuke_nums = []
+    for i in range(15):
+        snuke_nums.extend([n * (10 ** i) - 1 for n in range(2, 11)])
+        if len(snuke_nums) >= k:
+            break
+
+    num = len(snuke_nums)
+    snuke_sn = [0 for i in range(num)]
+    for i in range(num):
+        tmp = snuke_nums[i]
+        sn = 0
+        while tmp:
+            sn += tmp % 10
+            tmp //= 10
+        snuke_sn[i] = snuke_nums[i] / sn
+
+    snuke_sn_sort = sorted(snuke_sn)
+
+    snuke_flag = [False for i in range(num)]
+    for i in range(num):
+        if snuke_sn[i] != snuke_sn_sort[i]:
+            snuke_flag[i] = True
+
+    snuke_ans = []
+    for i in range(num):
+        if not snuke_flag[i]:
+            snuke_ans.append(snuke_nums[i])
+
+    for i in range(k):
+        print(snuke_ans[i])
+
+# abc101_dx()
