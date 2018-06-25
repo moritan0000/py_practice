@@ -14,7 +14,11 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
 
-import math, requests, zipfile, io, pymysql
+import math
+import requests
+import zipfile
+import io
+import pymysql
 from io import StringIO
 
 from sklearn import linear_model, svm
@@ -24,7 +28,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC, SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, BaggingClassifier, AdaBoostClassifier
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.externals.six import StringIO
 from sklearn.datasets import load_breast_cancer, make_blobs
@@ -304,10 +308,10 @@ def chapter_11():
         # s = requests.get(auto_data_url).content
         # auto_data = pd.read_csv(io.StringIO(s.decode('utf-8')), header=None)
         # auto_data.columns = ["symboling", "normalized-losses", "make", "fuel-type", "aspiration", "num-of-doors",
-        #                      "body-style", "drive-wheels", "engine-location", "wheel-base", "length", "width", "height",
-        #                      "curb-weight", "engine-type", "num-of-cylinders", "engine-size", "fuel-system", "bore",
-        #                      "stroke", "compression-ratio", "horsepower", "peak-rpm", "city-mpg", "highway-mpg",
-        #                      "price"]
+        #                      "body-style", "drive-wheels", "engine-location", "wheel-base", "length", "width",
+        #                      "height", "curb-weight", "engine-type", "num-of-cylinders", "engine-size",
+        #                      "fuel-system", "bore", "stroke", "compression-ratio", "horsepower", "peak-rpm",
+        #                      "city-mpg", "highway-mpg", "price"]
         # auto_data.to_csv("../../../../weblab/weblab_datascience/data/auto_data.csv", index=False)
         auto_data = pd.read_csv("../../../../weblab/weblab_datascience/data/auto_data.csv")
         # for col in auto_data.columns:
@@ -739,7 +743,7 @@ def chapter_13():
             ax.annotate(flg, (fpr, tpr))
         # plt.show()
 
-    if 1:
+    if 0:
         X = cancer.data
         y = cancer.target
         y = label_binarize(y, classes=[0, 1])
@@ -762,5 +766,67 @@ def chapter_13():
         plt.legend(loc="best")
         plt.show()
 
+    if 0:  # jack-knife
+        random.seed(0)
+        norm_random_sample_data = random.randn(1000)
+        mean_array = np.array([])
+        for i in range(0, len(norm_random_sample_data)):
+            ind = np.ones(1000, dtype=bool)
+            extract_num = [i]
+            ind[i] = False
+            mean_array = np.append(mean_array, norm_random_sample_data[ind].mean())
+        x = (mean_array - mean_array.mean()) ** 2
+        print(np.sqrt(x.sum() * 999 / 1000))
 
-chapter_13()
+        mean_array_boot = np.array([])
+        for i in range(0, len(norm_random_sample_data)):
+            mean_array_boot = \
+                np.append(mean_array_boot, random.choice(norm_random_sample_data, 500, replace=True).mean())
+        x = (mean_array_boot - mean_array_boot.mean()) ** 2
+        print(np.sqrt(x.sum() / 1000))
+
+    if 0:  # Bagging
+        bagging = BaggingClassifier(KNeighborsClassifier(), max_samples=0.5, max_features=0.5)
+        clf = bagging
+        clf.fit(X_train, y_train)
+        print("train:", clf.__class__.__name__, clf.score(X_train, y_train))
+        print("test:", clf.__class__.__name__, clf.score(X_test, y_test))
+
+    if 0:  # Boosting
+        clf = AdaBoostClassifier(learning_rate=1.0)
+        clf.fit(X_train, y_train)
+        print("train:", clf.__class__.__name__, clf.score(X_train, y_train))
+        print("test:", clf.__class__.__name__, clf.score(X_test, y_test))  # 若干、オーバーフィッティングしている
+
+        score_list = []
+
+        for r in np.arange(0.00001, 2, 0.01):
+            clf = AdaBoostClassifier(learning_rate=r)
+            clf.fit(X_train, y_train)
+            score_list.append([r, clf.score(X_test, y_test)])
+
+        score_list_df = pd.DataFrame(score_list)
+        score_list_df.columns = ["r", "score"]
+
+        plt.plot(score_list_df.r, score_list_df.score)
+        plt.xlabel("learning rate")
+        plt.ylabel("test score")
+        plt.grid(True)
+        plt.show()
+
+    if 1:  # Random forest
+        f_model = RandomForestClassifier(random_state=0)
+        clf = f_model.fit(X_train, y_train)
+        print("train:", clf.__class__.__name__, clf.score(X_train, y_train))
+        print("test:", clf.__class__.__name__, clf.score(X_test, y_test))
+
+        importances = f_model.feature_importances_
+        indi = np.argsort(importances)[::-1]
+
+        label = cancer.feature_names
+
+        plt.bar(range(X_train.shape[1]), importances[indi])
+        plt.xticks(range(X_train.shape[1]), label[indi], rotation=90)
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()

@@ -192,7 +192,7 @@ def homework12(target_online_retail_data_tb):
             merge_one_second = pd.merge(first_item, second_item, on="InvoiceNo", how="inner")
             support = len(merge_one_second.InvoiceNo.unique()) / len(
                 target_online_retail_data_tb.InvoiceNo.unique())
-            # print("Support between {} & {}:".format(item_list[i], item_list[j]), support)
+            print("Support between {} & {}:".format(item_list[i], item_list[j]), support)
             if support > best_support:
                 best_support = support
                 best_support_items = [item_list[i], item_list[j]]
