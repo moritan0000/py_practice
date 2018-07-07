@@ -15,10 +15,9 @@ from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
-# 1, 2, 5, 7 solved in time
+# 1, 2, 5, 7,  solved in time
 # 8, 9, 11, 12, 13 waiting for scoring
 # 3, 4, 6 solved late
-#  unsolved
 
 input_data = {'key_1': 100,
               'key_2': 100,
