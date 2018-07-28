@@ -1,8 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-
-from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 from sklearn.linear_model import LogisticRegression
@@ -129,7 +126,7 @@ def pokemon():
 
     (X_train, X_val, y_train, y_val) = train_test_split(X, y, test_size=0.2, random_state=0)
 
-    clf = linear_model.LinearRegression()
+    clf = LogisticRegression()
     clf.fit(X_train, y_train)
     val_result = clf.predict(X_val)
     val_result = (val_result - min(val_result) + 1e-10) / (max(val_result) - min(val_result) + 2e-10)
@@ -186,27 +183,20 @@ def arrest():
             selected_model = model
             criteria = roc_score
 
-    if 0:  # Predict using test data
-        test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
-        test_data = test_data.applymap(lambda x: 0 if pd.isnull(x) else x)
-        test_data["contraband_found"] = test_data["contraband_found"].apply(lambda x: 1 if x else 0)
-        test_data["stop_time"] = test_data["stop_time"].apply(lambda x: int(x[:2]) if x else x)
-        test_data.info()
-
-        X_test = test_data[["driver_age_raw", "contraband_found", "driver_gender"]]
-        X_test["driver_gender"] = X_test["driver_gender"].apply(lambda x: 1 if x == "M" else 0)
-
-        X_test_dummy = pd.get_dummies(test_data[["driver_race", "search_type", "stop_duration", "stop_time"]],
-                                      drop_first=True)
-        X_test = pd.merge(X_test, X_test_dummy, left_index=True, right_index=True)
-
-        print("Selected model:", selected_model)
-        result = pd.DataFrame(selected_model.predict(X_test), columns=["is_arrested"])
-        result.to_csv(gci_compe_path + "arrest/submission.csv", index=False)
-
-
-def final():
-    pass
-
-
-final()
+    # Predict using test data
+    # test_data = pd.read_csv(gci_compe_path + "arrest/test.csv")
+    # test_data = test_data.applymap(lambda x: 0 if pd.isnull(x) else x)
+    # test_data["contraband_found"] = test_data["contraband_found"].apply(lambda x: 1 if x else 0)
+    # test_data["stop_time"] = test_data["stop_time"].apply(lambda x: int(x[:2]) if x else x)
+    # test_data.info()
+    #
+    # X_test = test_data[["driver_age_raw", "contraband_found", "driver_gender"]]
+    # X_test["driver_gender"] = X_test["driver_gender"].apply(lambda x: 1 if x == "M" else 0)
+    #
+    # X_test_dummy = pd.get_dummies(test_data[["driver_race", "search_type", "stop_duration", "stop_time"]],
+    #                               drop_first=True)
+    # X_test = pd.merge(X_test, X_test_dummy, left_index=True, right_index=True)
+    #
+    # print("Selected model:", selected_model)
+    # result = pd.DataFrame(selected_model.predict(X_test), columns=["is_arrested"])
+    # result.to_csv(gci_compe_path + "arrest/submission.csv", index=False)
