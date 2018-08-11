@@ -674,14 +674,9 @@ def abc099_cx():
     return count
 
 
-# print(abc099_cx())
-
-
 def abc099_dx():
     return 0
 
-
-# print(abc099_dx())
 
 def abc101_a():
     s = input()
@@ -742,4 +737,53 @@ def abc101_dx():
         print(snuke_ans[i])
 
 
-# abc101_dx()
+def abc105_a():
+    n, k = map(int, input().split())
+
+    return [0, 1][n % k != 0]
+
+
+# print(abc105_a())
+
+
+def abc105_b():
+    n = int(input())
+    for i in range(15):
+        for j in range(26):
+            if n == (i * 7 + j * 4):
+                return "Yes"
+    return "No"
+
+
+# print(abc105_b())
+def abc105_c():
+    n = int(input())
+    if not n:
+        return 0
+    elif n > 0:
+        n_bin = str(bin(n)[2:])
+        digit = len(n_bin)
+        for i in range(len(n_bin) - 1):
+            if i % 2:  # -2, -8...
+                if n_bin[digit - i - 1] == "2":
+                    n_bin = n_bin[:digit - i - 2] + str(int(n_bin[digit - i - 2]) + 1) + "0" + n_bin[digit - i:]
+                elif n_bin[digit - i - 1] == "1":
+                    n_bin = n_bin[:digit - i - 2] + str(int(n_bin[digit - i - 2]) + 1) + n_bin[digit - i - 1:]
+            else:
+                if n_bin[digit - i - 1] == "2":
+                    n_bin = n_bin[:digit - i - 2] + str(int(n_bin[digit - i - 2]) + 1) + "0" + n_bin[digit - i:]
+        if n_bin[0] == "2" and len(n_bin) % 2:
+            n_bin = "110" + n_bin[1:]
+
+        return n_bin
+    else:
+        0
+
+
+print(abc105_c())
+
+
+def abc105_d():
+    return 0
+
+# print(abc105_d())
