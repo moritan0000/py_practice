@@ -743,9 +743,6 @@ def abc105_a():
     return [0, 1][n % k != 0]
 
 
-# print(abc105_a())
-
-
 def abc105_b():
     n = int(input())
     for i in range(15):
@@ -755,7 +752,6 @@ def abc105_b():
     return "No"
 
 
-# print(abc105_b())
 def abc105_c():
     n = int(input())
     if not n:
@@ -777,10 +773,10 @@ def abc105_c():
 
         return n_bin
     else:
-        0
+        return 0
 
 
-print(abc105_c())
+# print(abc105_c())
 
 
 def abc105_d():
