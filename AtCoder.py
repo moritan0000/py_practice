@@ -782,4 +782,53 @@ def abc105_c():
 def abc105_d():
     return 0
 
+
 # print(abc105_d())
+
+def abc106_a():
+    a, b = map(int, input().split())
+
+    return a * b - a - b + 1
+
+
+def abc106_b():
+    n = int(input())
+    count = 0
+    for i in range(1, n + 1, 2):
+        div = 0
+        for j in range(1, i + 1, 2):
+            if i % j == 0:
+                div += 1
+        if div == 8:
+            count += 1
+
+    return count
+
+
+def abc106_c():
+    s = input()
+    k = int(input())
+
+    if s[:k].replace("1", "") == "":
+        return 1
+    else:
+        return (s.replace("1", ""))[0]
+
+
+def abc106_dx():
+    import numpy as np
+    n, m, q = map(int, input().split())
+    ls = np.zeros(m, dtype=int)
+    rs = np.zeros(m, dtype=int)
+    ps = np.zeros((q, 1), dtype=int)
+    qs = np.zeros((q, 1), dtype=int)
+    for i in range(m):
+        ls[i], rs[i] = map(int, input().split())
+    for i in range(q):
+        ps[i], qs[i] = map(int, input().split())
+
+    for i in range(q):
+        print(sum((ls >= ps[i])[rs <= qs[i]]))
+    # for count in np.sum((ls >= ps) * (rs <= qs), axis=1):
+    #     print(count)
+    return 0
