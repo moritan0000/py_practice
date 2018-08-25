@@ -806,6 +806,9 @@ def abc106_b():
 
 
 def abc106_c():
+    import sys
+    input = sys.stdin.readline
+
     s = input()
     k = int(input())
 
@@ -817,18 +820,100 @@ def abc106_c():
 
 def abc106_dx():
     import numpy as np
+    import sys
+    input = sys.stdin.readline
+
     n, m, q = map(int, input().split())
-    ls = np.zeros(m, dtype=int)
-    rs = np.zeros(m, dtype=int)
-    ps = np.zeros((q, 1), dtype=int)
-    qs = np.zeros((q, 1), dtype=int)
+    ls = np.empty(m, dtype=int)
+    rs = np.empty(m, dtype=int)
+    ps = np.empty((q, 1), dtype=int)
+    qs = np.empty((q, 1), dtype=int)
     for i in range(m):
         ls[i], rs[i] = map(int, input().split())
     for i in range(q):
         ps[i], qs[i] = map(int, input().split())
 
     for i in range(q):
-        print(sum((ls >= ps[i])[rs <= qs[i]]))
+        print(np.sum((ls >= ps[i])[rs <= qs[i]]))
     # for count in np.sum((ls >= ps) * (rs <= qs), axis=1):
     #     print(count)
     return 0
+
+
+# abc106_dx()
+
+
+def abc107_a():
+    import sys
+    input = sys.stdin.readline
+
+    n, i = map(int, input().split())
+
+    return n - i + 1
+
+
+def abc107_b():
+    import numpy as np
+
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        tmp = list(input())
+        if not tmp == ["."] * w:
+            a = np.append(a, tmp)
+    a = a.reshape((-1, w))
+
+    return a[:, np.any(a != np.array(["."] * w), axis=0)]
+
+
+# for row in abc107_b():
+#     print("".join(row))
+
+
+def abc107_c():
+    import sys
+    import numpy as np
+    input = sys.stdin.readline
+
+    n, k = map(int, input().split())
+    x = np.array(list(map(int, input().split())))
+    if x[0] >= 0:
+        return x[k - 1]
+    elif x[-1] <= 0:
+        return x[n - k]
+    else:
+        t = np.sum(x < 0)
+        if x[t] == 0:
+            k = k - 1
+            x = np.delete(x, [t])
+
+        time = np.inf
+        if t >= k:
+            time = x[t - k]
+        if (n - t) >= k:
+            time = min(time, x[t + k - 1])
+
+        for i in range(max(1, k - (n - t)), min(t + 1, k)):
+            left = -x[t - i]
+            right = x[t + k - i - 1]
+
+            tmp = min(left, right) * 2 + max(left, right)
+            if tmp < time:
+                time = tmp
+
+        return time
+
+
+print(abc107_c())
+
+
+def abc107_dx():
+    import sys
+    input = sys.stdin.readline
+
+    n = int(input())
+    a, b = map(int, input().split())
+
+    return 0
+
+# print(abc107_dx())
