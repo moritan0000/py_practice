@@ -904,9 +904,6 @@ def abc107_c():
         return time
 
 
-print(abc107_c())
-
-
 def abc107_dx():
     import sys
     input = sys.stdin.readline
@@ -916,4 +913,64 @@ def abc107_dx():
 
     return 0
 
+
 # print(abc107_dx())
+
+
+def abc108_a():
+    import sys
+    input = sys.stdin.readline
+
+    k = int(input())
+    if k % 2 == 0:
+        return int(k ** 2 / 4)
+    else:
+        return int((k // 2) * (k // 2 + 1))
+
+
+def abc108_b():
+    import sys
+    input = sys.stdin.readline
+
+    x1, y1, x2, y2 = map(int, input().split())
+
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x3 - (y3 - y2)
+    y4 = y3 + (x3 - x2)
+
+    return "{} {} {} {}".format(x3, y3, x4, y4)
+
+
+def abc108_c():
+    import sys
+    import numpy as np
+    input = sys.stdin.readline
+
+    n, k = map(int, input().split())
+
+    count = 0
+    ks = np.array([i * k for i in range(1, (3 * n) // k + 1)])
+
+    for a in range(1, n + 1):
+        tmp = ks - a
+        b_candidate = tmp[(1 <= tmp) & (tmp <= n)]
+        c_candidate = b_candidate
+        for b in b_candidate:
+            count += np.sum((b + c_candidate) % k == 0)
+
+    return count
+
+
+# print(abc108_c())
+
+
+def abc108_d():
+    import sys
+    input = sys.stdin.readline
+
+    n, i = map(int, input().split())
+
+    return 0
+
+# print(abc108_d())
