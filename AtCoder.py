@@ -972,5 +972,3 @@ def abc108_d():
     n, i = map(int, input().split())
 
     return 0
-
-# print(abc108_d())
