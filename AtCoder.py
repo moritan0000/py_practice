@@ -862,12 +862,8 @@ def abc107_b():
         if not tmp == ["."] * w:
             a = np.append(a, tmp)
     a = a.reshape((-1, w))
-
-    return a[:, np.any(a != np.array(["."] * w), axis=0)]
-
-
-# for row in abc107_b():
-#     print("".join(row))
+    for row in a[:, np.any(a != np.array(["."] * w), axis=0)]:
+        print("".join(row))
 
 
 def abc107_c():
@@ -974,6 +970,40 @@ def abc108_d():
     return 0
 
 
+def abc109_a():
+    a, b = map(int, input().split())
+    return ["No", "Yes"][a * b % 2]
+
+
+def abc109_b():
+    n = int(input())
+    words = [input() for _ in range(n)]
+    for i in range(n - 1):
+        if words[i][-1] != words[i + 1][0]:
+            return "No"
+    if len(set(words)) != len(words):
+        return "No"
+    return "Yes"
+
+
+def abc109_c():
+    import numpy as np
+    import functools
+    import fractions
+    n, x = map(int, input().split())
+    x = np.abs(np.array(list(map(int, input().split()))) - x)
+    gcd = functools.reduce(fractions.gcd, x)
+    return gcd
+
+
+def abc109_d():
+    n = int(input())
+    return 0
+
+
+# print(abc109_d())
+
+
 def tpbc_2018_a():
     s = input()
     if len(s) == 2:
@@ -1013,4 +1043,46 @@ def tpbc_2018_d():
     n = int(input())
     return 0
 
+
 # print(tpbc_2018_d())
+
+def abc113_a():
+    x, y = map(int, input().split())
+    return int(x + y / 2)
+
+
+def abc113_b():
+    import numpy as np
+    n = int(input())
+    t, a = map(int, input().split())
+    h = np.array(list(map(int, input().split())))
+    temp = np.abs(a - (t - h * 0.006))
+    return np.argmin(temp) + 1
+
+
+def abc113_c():
+    import numpy as np
+    n, m = map(int, input().split())
+    city = np.array([list(map(int, input().split())) for _ in range(m)])
+    city_sort = [[1000000] for _ in range(m)]
+    for i in range(m):
+        city_sort[city[i][0] - 1].append(city[i][1])
+    print(city_sort)
+    # for i in range(m):
+    #     city_index = np.argsort(city_sort)
+    print(city_index)
+    for i in range(m):
+        p = city[i][0]
+        x = np.where(city_sort[city[i][0] - 1] == city[i][1])
+        print('{0:06d}{0:06d}'.format(p, x))
+    return 0
+
+
+# abc113_c()
+
+
+def abc113_d():
+    n = int(input())
+    return 0
+
+# print(abc113_d())
