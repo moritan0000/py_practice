@@ -1070,7 +1070,7 @@ def abc113_c():
     print(city_sort)
     # for i in range(m):
     #     city_index = np.argsort(city_sort)
-    print(city_index)
+    # print(city_index)
     for i in range(m):
         p = city[i][0]
         x = np.where(city_sort[city[i][0] - 1] == city[i][1])
