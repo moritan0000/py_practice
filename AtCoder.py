@@ -1003,6 +1003,119 @@ def abc109_d():
 
 # print(abc109_d())
 
+def abc111_a():
+    n = int(input())
+    return 1110 - n
+
+
+def abc111_b():
+    n = int(input())
+    for i in range(1, 10):
+        if 111 * i >= n:
+            return 111 * i
+
+
+def abc111_c():
+    import collections
+
+    b_len = int(int(input()) / 2)
+    a = list(map(int, input().split()))
+    b1 = a[::2]
+    b2 = a[1::2]
+    b1_count = collections.Counter(b1).most_common()
+    b2_count = collections.Counter(b2).most_common()
+
+    if len(b1_count) == 1:
+        if len(b2_count) == 1:
+            if b1_count[0][0] == b2_count[0][0]:
+                return b_len
+            else:
+                return 0
+        else:
+            if b1_count[0][0] == b2_count[0][0]:
+                return b_len - b2_count[1][1]
+            else:
+                return b_len - b2_count[0][1]
+    elif len(b2_count) == 1:
+        if b2_count[0][0] == b1_count[0][0]:
+            return b_len - b1_count[1][1]
+        else:
+            return b_len - b1_count[0][1]
+    else:
+        if b1_count[0][0] == b2_count[0][0]:
+            return 2 * b_len - max(b1_count[0][1] + b2_count[1][1], b1_count[1][1] + b2_count[0][1])
+        else:
+            return 2 * b_len - b1_count[0][1] - b2_count[0][1]
+
+
+def abc111_d():
+    n = int(input())
+    return 0
+
+
+# print(abc111_d())
+
+def abc112_a():
+    n = int(input())
+    if n == 1:
+        return "Hello World"
+    else:
+        a = int(input())
+        b = int(input())
+        return a + b
+
+
+def abc112_b():
+    n, t_lim = map(int, input().split())
+    c = []
+    for _ in range(n):
+        ci, t = map(int, input().split())
+        if t <= t_lim:
+            c.append(ci)
+    if c:
+        return min(c)
+    else:
+        return "TLE"
+
+
+def abc112_c():
+    n = int(input())
+    x_list = [0] * n
+    y_list = [0] * n
+    h_list = [0] * n
+    for i in range(n):
+        x_list[i], y_list[i], h_list[i] = map(int, input().split())
+
+    h_max = max(h_list)
+    h_argmax = h_list.index(h_max)
+    for cx in range(101):
+        for cy in range(101):
+            flag = False
+            if h_max > 0:
+                h = h_max + abs(x_list[h_argmax] - cx) + abs(y_list[h_argmax] - cy)
+                for i in range(n):
+                    if max(h - abs(x_list[i] - cx) - abs(y_list[i] - cy), 0) != h_list[i]:
+                        flag = True
+                        break
+                if flag:
+                    continue
+                else:
+                    return "{} {} {}".format(cx, cy, h)
+            else:
+                pass
+
+    # return "{} {} {}".format(cx, cy, h)
+
+
+print(abc112_c())
+
+
+def abc112_d():
+    n = int(input())
+    return 0
+
+
+# print(abc112_d())
 
 def tpbc_2018_a():
     s = input()
