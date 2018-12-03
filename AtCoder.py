@@ -251,8 +251,8 @@ def abc089_d():
     hwd = list(map(int, input().split()))
     area = []
     lrs = []
-    x_now = 0
-    y_now = 0
+    _x_now = 0
+    _y_now = 0
 
     for i in range(0, hwd[0]):
         _aij = str(input()).split()
@@ -264,20 +264,20 @@ def abc089_d():
         _lr = str(input()).split()
         lrs.append(list(map(int, _lr)))
 
-    for i in range(0, _q):
-        _mpcount = 0
-        for i2 in range(0, int((lrs[i][1] - lrs[i][0]) / hwd[2]) + 1):
-            for i3 in range(0, hwd[0]):
-                if lrs[i][0] + hwd[2] * i2 in area[i3]:
-                    if not i2:
-                        x_now = area[i3].index(lrs[i][0]) + 1
-                        y_now = i3 + 1
-                    _nextx = area[i3].index(lrs[i][0] + hwd[2] * i2) + 1
-                    _nexty = i3 + 1
-            _mpcount += abs(_nextx - x_now) + abs(_nexty - y_now)
-            x_now = _nextx
-            y_now = _nexty
-        print(_mpcount)
+    # for i in range(0, _q):
+    #     _mpcount = 0
+    #     for i2 in range(0, int((lrs[i][1] - lrs[i][0]) / hwd[2]) + 1):
+    #         for i3 in range(0, hwd[0]):
+    #             if lrs[i][0] + hwd[2] * i2 in area[i3]:
+    #                 if not i2:
+    #                     x_now = area[i3].index(lrs[i][0]) + 1
+    #                     y_now = i3 + 1
+    #                 _nextx = area[i3].index(lrs[i][0] + hwd[2] * i2) + 1
+    #                 _nexty = i3 + 1
+    #         _mpcount += abs(_nextx - x_now) + abs(_nexty - y_now)
+    #         x_now = _nextx
+    #         y_now = _nexty
+    #     print(_mpcount)
 
 
 def abc091_a():
@@ -570,11 +570,12 @@ def abc097_cx():
     s = input()
     k = int(input())
 
-    substr = [[] for _ in s]
+    substr = [[None] * len(s)]
     substr[-1] = np.array([s[-1]])
 
     for i in range(len(s) - 2, -1, -1):
-        # substr[i] = (np.append(np.array([s[i]], dtype=object) + np.array(substr[i + 1], dtype=object), s[i])).astype(str)
+        # substr[i] =
+        # (np.append(np.array([s[i]], dtype=object) + np.array(substr[i + 1], dtype=object), s[i])).astype(str)
 
         substr[i] = [s[i] + val for val in substr[i + 1]] + [s[i]]
     # substr = np.array(substr).flatten()
@@ -589,7 +590,7 @@ def abc097_dx():
     p = map(int, input().split())
     xy = [list(map(int, input().split())) for _ in range(m)]
 
-    return xy
+    return p, xy
 
 
 def abc098_a():
@@ -697,7 +698,7 @@ def abc101_b():
 
 def abc101_c():
     n, k = map(int, input().split())
-    a = list(map(int, input().split()))
+    _ = list(map(int, input().split()))
     ans = (n - 1) // (k - 1) + [1, 0][(n - 1) % (k - 1) == 0]
     return ans
 
@@ -712,7 +713,7 @@ def abc101_dx():
             break
 
     num = len(snuke_nums)
-    snuke_sn = [0 for i in range(num)]
+    snuke_sn = [0] * num
     for i in range(num):
         tmp = snuke_nums[i]
         sn = 0
@@ -723,7 +724,7 @@ def abc101_dx():
 
     snuke_sn_sort = sorted(snuke_sn)
 
-    snuke_flag = [False for i in range(num)]
+    snuke_flag = [False] * num
     for i in range(num):
         if snuke_sn[i] != snuke_sn_sort[i]:
             snuke_flag[i] = True
@@ -806,9 +807,6 @@ def abc106_b():
 
 
 def abc106_c():
-    import sys
-    input = sys.stdin.readline
-
     s = input()
     k = int(input())
 
@@ -820,8 +818,6 @@ def abc106_c():
 
 def abc106_dx():
     import numpy as np
-    import sys
-    input = sys.stdin.readline
 
     n, m, q = map(int, input().split())
     ls = np.empty(m, dtype=int)
@@ -844,11 +840,7 @@ def abc106_dx():
 
 
 def abc107_a():
-    import sys
-    input = sys.stdin.readline
-
     n, i = map(int, input().split())
-
     return n - i + 1
 
 
@@ -867,9 +859,7 @@ def abc107_b():
 
 
 def abc107_c():
-    import sys
     import numpy as np
-    input = sys.stdin.readline
 
     n, k = map(int, input().split())
     x = np.array(list(map(int, input().split())))
@@ -901,22 +891,16 @@ def abc107_c():
 
 
 def abc107_dx():
-    import sys
-    input = sys.stdin.readline
-
     n = int(input())
     a, b = map(int, input().split())
 
-    return 0
+    return n, a, b
 
 
 # print(abc107_dx())
 
 
 def abc108_a():
-    import sys
-    input = sys.stdin.readline
-
     k = int(input())
     if k % 2 == 0:
         return int(k ** 2 / 4)
@@ -925,9 +909,6 @@ def abc108_a():
 
 
 def abc108_b():
-    import sys
-    input = sys.stdin.readline
-
     x1, y1, x2, y2 = map(int, input().split())
 
     x3 = x2 - (y2 - y1)
@@ -939,9 +920,7 @@ def abc108_b():
 
 
 def abc108_c():
-    import sys
     import numpy as np
-    input = sys.stdin.readline
 
     n, k = map(int, input().split())
 
@@ -962,12 +941,9 @@ def abc108_c():
 
 
 def abc108_d():
-    import sys
-    input = sys.stdin.readline
-
     n, i = map(int, input().split())
 
-    return 0
+    return n, i
 
 
 def abc109_a():
@@ -989,16 +965,16 @@ def abc109_b():
 def abc109_c():
     import numpy as np
     import functools
-    import fractions
+    import math
     n, x = map(int, input().split())
     x = np.abs(np.array(list(map(int, input().split()))) - x)
-    gcd = functools.reduce(fractions.gcd, x)
+    gcd = functools.reduce(math.gcd, x)
     return gcd
 
 
 def abc109_d():
     n = int(input())
-    return 0
+    return n
 
 
 # print(abc109_d())
@@ -1050,7 +1026,7 @@ def abc111_c():
 
 def abc111_d():
     n = int(input())
-    return 0
+    return n
 
 
 # print(abc111_d())
@@ -1107,12 +1083,12 @@ def abc112_c():
     # return "{} {} {}".format(cx, cy, h)
 
 
-print(abc112_c())
+# print(abc112_c())
 
 
 def abc112_d():
     n = int(input())
-    return 0
+    return n
 
 
 # print(abc112_d())
@@ -1154,7 +1130,7 @@ def tpbc_2018_c():
 
 def tpbc_2018_d():
     n = int(input())
-    return 0
+    return n
 
 
 # print(tpbc_2018_d())
@@ -1166,7 +1142,7 @@ def abc113_a():
 
 def abc113_b():
     import numpy as np
-    n = int(input())
+    _ = int(input())
     t, a = map(int, input().split())
     h = np.array(list(map(int, input().split())))
     temp = np.abs(a - (t - h * 0.006))
@@ -1196,6 +1172,63 @@ def abc113_c():
 
 def abc113_d():
     n = int(input())
-    return 0
+    return n
+
 
 # print(abc113_d())
+
+
+def abc114_a():
+    x = int(input())
+    if x in [3, 5, 7]:
+        return "YES"
+    else:
+        return "NO"
+
+
+def abc114_b():
+    s = input()
+    min_diff = 1000
+    for i in range(len(s) - 2):
+        tmp = abs(753 - int(s[i:i + 3]))
+        if tmp < min_diff:
+            min_diff = tmp
+    return min_diff
+
+
+def abc114_c():
+    import numpy as np
+    s = input()
+    n = int(s)
+    ans = 0
+
+    nums = np.array([3, 5, 7])
+    tmp = nums.copy()
+    for i in range(1, len(s)):
+        tmp = (tmp + [[3 * 10 ** i], [5 * 10 ** i], [7 * 10 ** i]]).flatten()
+        nums = np.append(nums, tmp)
+
+    for val in nums:
+        str_val = str(val)
+        if val <= n and "3" in str_val and "5" in str_val and "7" in str_val:
+            ans += 1
+
+    return ans
+
+
+def abc114_d():
+    def calc_divisor(_n):
+        div = [1, _n]
+        for _i in range(2, _n // 2 + 1):
+            if _n % _i == 0:
+                div.append(i)
+        return sorted(div)
+
+    n = int(input())
+    divisor = [1]
+    for i in range(2, n + 1):
+        divisor.extend(calc_divisor(i)[1:])
+
+    return divisor
+
+# print(abc114_d())
