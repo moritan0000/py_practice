@@ -2,7 +2,7 @@ def practice_a():
     a = int(input())
     b, c = map(int, input().split())
     s = input()
-    return a + b + c, s
+    print(a + b + c, s)
 
 
 def agc021_a():
@@ -46,7 +46,7 @@ def agc022_a():
         remaining = [k for k, v in alpha_dict.items()]
         out = s + remaining[0]
         print(out)
-        return 0
+        print(0)
 
     else:
         alpha_dict2 = alpha_dict.copy()
@@ -60,11 +60,11 @@ def agc022_a():
                 if s[i:] == s_max[:26 - i]:
                     out = s[:i - 1] + remaining[0]
                     print(out)
-                    return 0
+                    print(0)
                 else:
                     out = s[:i + 1] + remaining[1]
                     print(out)
-                    return 0
+                    print(0)
 
         print("abcdefghijklmnopqrstuvwxz")
 
@@ -72,7 +72,7 @@ def agc022_a():
 def agc024_ax():
     a, b, c, k = map(int, input().split())
     if k == 0:
-        return [a - b, "Unfair"][abs(a - b) > 1e+18]
+        print([a - b, "Unfair"][abs(a - b) > 1e+18])
 
     coef_sum = 2 ** (k - 1)
     coef = [[coef_sum // 3, coef_sum // 3 + 1], [coef_sum // 3 + 1, coef_sum // 3]][coef_sum % 3 == 1]
@@ -80,7 +80,7 @@ def agc024_ax():
     b_k = coef[0] * b + coef[1] * (a + c)
     ans = [a_k - b_k, "Unfair"][abs(a_k - b_k) > 1e+18]
 
-    return ans
+    print(ans)
 
 
 def arc094_c():
@@ -91,7 +91,7 @@ def arc094_c():
     diff = abc[2] - (abc[0] + count)
     count += [diff // 2 + 2, diff // 2][diff % 2 == 0]
 
-    return count
+    print(count)
 
 
 def abc049_c():
@@ -101,11 +101,11 @@ def abc049_c():
     s = s.replace("dreamer", "")
     s = s.replace("dream", "")
     # この順番に削除すること
-    return ["NO", "YES"][s == ""]
+    print(["NO", "YES"][s == ""])
 
 
 def abc081_a():
-    return sum(map(int, input()))
+    print(sum(map(int, input())))
 
 
 def abc081_b():
@@ -120,10 +120,10 @@ def abc081_b():
             num = num / 2
         if tmp == 0:
             print(0)
-            return 0
+            print(0)
         else:
             counts.append(tmp)
-    return min(counts)
+    print(min(counts))
 
 
 def abc083_b():
@@ -137,7 +137,7 @@ def abc083_b():
             i //= 10
         if a <= dig_sum <= b:
             num_sum += tmp
-    return num_sum
+    print(num_sum)
 
 
 def abc085_b():
@@ -146,7 +146,7 @@ def abc085_b():
     for i in range(n):
         d.append(int(input()))
     d = list(set(d))
-    return len(d)
+    print(len(d))
 
 
 def abc085_c():
@@ -155,13 +155,13 @@ def abc085_c():
     for i in range(y // 10000 + 1):
         for j in range((y - 10000 * i) // 5000 + 1):
             if 10000 * i + 5000 * j + 1000 * (n - i - j) == y:
-                return i, j, n - i - j
-    return -1, -1, -1
+                print(i, j, n - i - j)
+    print(-1, -1, -1)
 
 
 def abc086_a():
     a, b = map(int, input().split())
-    return ["Even", "Odd"][a * b % 2]
+    print(["Even", "Odd"][a * b % 2])
 
 
 def abc086_c():
@@ -178,8 +178,8 @@ def abc086_c():
                 and (tmp[0] - abs(tmp[1]) - abs(tmp[2])) % 2 == 0:
             cur = ele
         else:
-            return "No"
-    return "Yes"
+            print("No")
+    print("Yes")
 
 
 def abc087_b():
@@ -190,7 +190,7 @@ def abc087_b():
             for k in range(c + 1):
                 if 500 * i + 100 * j + 50 * k == x:
                     count += 1
-    return count
+    print(count)
 
 
 def abc088_b():
@@ -200,17 +200,17 @@ def abc088_b():
     a = a[::-1]
     alice = a[::2]
     bob = a[1::2]
-    return sum(alice) - sum(bob)
+    print(sum(alice) - sum(bob))
 
 
 def abc089_a():
-    return int(input()) // 3
+    print(int(input()) // 3)
 
 
 def abc089_b():
     input()
     colors = input()
-    return ["Four", "Three"][colors.find("Y") == -1]
+    print(["Four", "Three"][colors.find("Y") == -1])
 
 
 def abc089_c():
@@ -282,7 +282,7 @@ def abc089_d():
 
 def abc091_a():
     a, b, c = map(int, input().split())
-    return ["No", "Yes"][a + b >= c]
+    print(["No", "Yes"][a + b >= c])
 
 
 def abc091_b():
@@ -301,7 +301,7 @@ def abc091_b():
         score = Counter(s_str)[element] - Counter(t_str)[element]
         if score > _max:
             _max = score
-    return _max
+    print(_max)
 
 
 def abc091_c():
@@ -343,25 +343,25 @@ def abc091_c():
                 break
             else:
                 continue"""
-    return _count
+    print(_count)
 
 
 def abc093a():
     s = input()
-    return ["No", "Yes"][(("a" in s) + ("b" in s) + ("c" in s)) == 3]
+    print(["No", "Yes"][(("a" in s) + ("b" in s) + ("c" in s)) == 3])
 
 
 def abc093b():
     a, b, k = map(int, input().split())
     if b - a + 1 <= 2 * k:
-        return [i for i in range(a, b + 1)]
+        print([i for i in range(a, b + 1)])
     else:
-        return [i for i in range(a, a + k)] + [i for i in range(b - k + 1, b + 1)]
+        print([i for i in range(a, a + k)] + [i for i in range(b - k + 1, b + 1)])
 
 
 def abc093c():
     abc = sorted(list(map(int, input().split())))
-    return abc[2] - abc[1] + (abc[1] - abc[0]) // 2 + 2 * ((abc[1] - abc[0]) % 2)
+    print(abc[2] - abc[1] + (abc[1] - abc[0]) // 2 + 2 * ((abc[1] - abc[0]) % 2))
 
 
 def abc093dx():
@@ -369,7 +369,7 @@ def abc093dx():
     ab_list = []
     for i in range(q):
         ab_list.append(list(map(int, input().split())))
-    return 0
+    print(0)
 
 
 def abc094_a():
@@ -384,7 +384,7 @@ def abc094_b():
     for i in a:
         if n[2] > i:
             count += 1
-    return min(count, n[1] - count)
+    print(min(count, n[1] - count))
 
 
 def abc094_c():
@@ -423,7 +423,7 @@ def abc094_d():
 
     if len(a) == 2:
         print(a[1], a[0])
-        return 0
+        print(0)
 
     a = np.array(a)
     ai = int(a[-1])
@@ -433,7 +433,7 @@ def abc094_d():
         b = a.copy() - r
         j = np.argmin(abs(b))
         print(int(ai), int(a[j]))
-        return 0
+        print(0)
     else:
         r1 = (ai - 1) / 2
         r2 = (ai + 1) / 2
@@ -449,11 +449,11 @@ def abc094_d():
             j = np.argmin([abs(a[j1] - r1), abs(r2 - a[j2])])
         aj = [a[j1], a[j2]][j[0]]
         print(int(ai), int(aj))
-        return 0
+        print(0)
 
 
 def abc095_a():
-    return 700 + 100 * input().count("o")
+    print(700 + 100 * input().count("o"))
 
 
 def abc095_b():
@@ -464,7 +464,7 @@ def abc095_b():
 
     x -= sum(m)
     count = x // min(m)
-    return n + count
+    print(n + count)
 
 
 def abc095_c():
@@ -472,7 +472,7 @@ def abc095_c():
 
     diff = abs(x - y)
     price1 = [(a + b) * min(x, y), 2 * c * min(x, y)][a + b >= c * 2] + diff * [a, b][x < y]
-    return min(price1, max(x, y) * c * 2)
+    print(min(price1, max(x, y) * c * 2))
 
 
 def abc095_dx():
@@ -493,7 +493,7 @@ def abc095_dx():
 
 def abc096_a():
     a, b = map(int, input().split())
-    return a - (a > b)
+    print(a - (a > b))
 
 
 def abc096_b():
@@ -501,7 +501,7 @@ def abc096_b():
     a, b, c = map(int, input().split())
     k = int(input())
 
-    return a + b + c + np.max([a, b, c]) * 2 ** (k - 1)
+    print(a + b + c + np.max([a, b, c]) * 2 ** (k - 1))
 
 
 def abc096_c():
@@ -516,8 +516,8 @@ def abc096_c():
     for i in range(1, h + 2):
         for j in range(1, w + 2):
             if c[i][j] == 1 and (np.sum([c[i - 1][j], c[i + 1][j], c[i][j - 1], c[i][j + 1]]) == 0):
-                return "No"
-    return "Yes"
+                print("No")
+    print("Yes")
 
 
 def abc096_dx():
@@ -541,18 +541,18 @@ def abc096_dx():
             ans.append(str(num))
         if len(ans) == n:
             break
-    return " ".join(ans)
+    print(" ".join(ans))
 
 
 def abc097_a():
     a, b, c, d = map(int, input().split())
-    return ["No", "Yes"][(abs(a - c) <= d) or ((a - b) <= d and (c - b) <= d)]
+    print(["No", "Yes"][(abs(a - c) <= d) or ((a - b) <= d and (c - b) <= d)])
 
 
 def abc097_b():
     x = int(input())
     if x == 1:
-        return 1
+        print(1)
 
     n = int(x ** 0.5)
     ans = []
@@ -562,7 +562,7 @@ def abc097_b():
             tmp *= i
         ans.append(tmp)
 
-    return max(ans)
+    print(max(ans))
 
 
 def abc097_cx():
@@ -582,7 +582,7 @@ def abc097_cx():
     substr = np.unique([val for vals in substr for val in vals])
     substr.sort()
 
-    return substr[k - 1]
+    print(substr[k - 1])
 
 
 def abc097_dx():
@@ -590,12 +590,12 @@ def abc097_dx():
     p = map(int, input().split())
     xy = [list(map(int, input().split())) for _ in range(m)]
 
-    return p, xy
+    print(p, xy)
 
 
 def abc098_a():
     a, b = map(int, input().split())
-    return max(a + b, a - b, a * b)
+    print(max(a + b, a - b, a * b))
 
 
 def abc098_b():
@@ -603,7 +603,7 @@ def abc098_b():
     s = input()
     count_max = 0
     if len(s) == 2:
-        return [0, 1][s[0] == s[1]]
+        print([0, 1][s[0] == s[1]])
     for i in range(1, n - 1):
         x = set(s[:i])
         y = set(s[i:])
@@ -612,7 +612,7 @@ def abc098_b():
             if let in y:
                 count += 1
         count_max = max(count, count_max)
-    return count_max
+    print(count_max)
 
 
 def abc098_cx():
@@ -625,10 +625,10 @@ def abc098_cx():
         e_right = n - w_num - (i - w_left) - (s[i] == "E")
         count = w_left + e_right
         if count == 0:
-            return 0
+            print(0)
         count_min = min(count, count_min)
 
-    return count_min
+    print(count_min)
 
 
 def abc098_dx():
@@ -641,25 +641,25 @@ def abc098_dx():
             for k in range(l + 1, r + 1):
                 xor ^= a[k]
             count += sum(a[l:r + 1]) == xor
-    return count
+    print(count)
 
 
 def abc099_a():
     n = int(input())
 
-    return ["ABC", "ABD"][n >= 1000]
+    print(["ABC", "ABD"][n >= 1000])
 
 
 def abc099_b():
     a, b = map(int, input().split())
     x = sum([i for i in range(b - a)])
-    return x - a
+    print(x - a)
 
 
 def abc099_cx():
     n = int(input())
     if n == 3:
-        return 3
+        print(3)
     vals = [6, 9, 36, 81, 216, 729, 1296, 6561, 7776, 46656, 59049][::-1]
 
     count = n % 3
@@ -672,17 +672,69 @@ def abc099_cx():
                 count += 1
                 break
 
-    return count
+    print(count)
 
 
 def abc099_dx():
-    return 0
+    print(0)
+
+
+def abc100_a():
+    a, b = map(int, input().split())
+    print([":(", "Yay!"][max(a, b) <= 8])
+
+
+def abc100_b():
+    d, n = map(int, input().split())
+    if n <= 99:
+        print(100 ** d * n)
+    else:
+        print(100 ** (d + 1) + 100 ** d)
+
+
+def abc100_c():
+    _ = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for val in a:
+        while val % 2 == 0:
+            ans += 1
+            val /= 2
+    print(ans)
+
+
+def abc100_d():
+    import itertools
+
+    n, m = map(int, input().split())
+    x = [0] * n
+    y = [0] * n
+    z = [0] * n
+    ans = -10000000000 * 3
+    for i in range(n):
+        x[i], y[i], z[i] = map(int, input().split())
+
+    for seq in itertools.combinations([i for i in range(n)], m):
+        tmp_x = 0
+        tmp_y = 0
+        tmp_z = 0
+        for i in seq:
+            tmp_x += x[i]
+            tmp_y += y[i]
+            tmp_z += z[i]
+        tmp_sum = abs(tmp_x) + abs(tmp_y) + abs(tmp_z)
+        ans = max(tmp_sum, ans)
+
+    print(ans)
+
+
+# abc100_d()
 
 
 def abc101_a():
     s = input()
     ans = s.count("+") - s.count("-")
-    return ans
+    print(ans)
 
 
 def abc101_b():
@@ -693,14 +745,14 @@ def abc101_b():
         sn += tmp % 10
         tmp //= 10
     ans = ["No", "Yes"][n % sn == 0]
-    return ans
+    print(ans)
 
 
 def abc101_c():
     n, k = map(int, input().split())
     _ = list(map(int, input().split()))
     ans = (n - 1) // (k - 1) + [1, 0][(n - 1) % (k - 1) == 0]
-    return ans
+    print(ans)
 
 
 def abc101_dx():
@@ -738,10 +790,83 @@ def abc101_dx():
         print(snuke_ans[i])
 
 
+def abc102_a():
+    n = int(input())
+    print([n, 2 * n][n % 2])
+
+
+def abc102_b():
+    _ = int(input())
+    a = list(map(int, input().split()))
+
+    print(max(a) - min(a))
+
+
+def abc102_c():
+    n = int(input())
+    print(0)
+
+
+# abc102_c()
+def abc102_d():
+    n = int(input())
+    print(0)
+
+
+# abc102_d()
+def abc103_a():
+    n = int(input())
+    print(0)
+
+
+# abc103_a()
+def abc103_b():
+    n = int(input())
+    print(0)
+
+
+# abc103_b()
+def abc103_c():
+    n = int(input())
+    print(0)
+
+
+# abc103_c()
+def abc103_d():
+    n = int(input())
+    print(0)
+
+
+# abc103_d()
+def abc104_a():
+    n = int(input())
+    print(0)
+
+
+# abc104_a()
+def abc104_b():
+    n = int(input())
+    print(0)
+
+
+# abc104_b()
+def abc104_c():
+    n = int(input())
+    print(0)
+
+
+# abc104_c()
+def abc104_d():
+    n = int(input())
+    print(0)
+
+
+# abc104_d()
+
 def abc105_a():
     n, k = map(int, input().split())
 
-    return [0, 1][n % k != 0]
+    print([0, 1][n % k != 0])
 
 
 def abc105_b():
@@ -749,14 +874,14 @@ def abc105_b():
     for i in range(15):
         for j in range(26):
             if n == (i * 7 + j * 4):
-                return "Yes"
-    return "No"
+                print("Yes")
+    print("No")
 
 
 def abc105_c():
     n = int(input())
     if not n:
-        return 0
+        print(0)
     elif n > 0:
         n_bin = str(bin(n)[2:])
         digit = len(n_bin)
@@ -772,16 +897,16 @@ def abc105_c():
         if n_bin[0] == "2" and len(n_bin) % 2:
             n_bin = "110" + n_bin[1:]
 
-        return n_bin
+        print(n_bin)
     else:
-        return 0
+        print(0)
 
 
-# print(abc105_c())
+# abc105_c()
 
 
 def abc105_d():
-    return 0
+    print(0)
 
 
 # print(abc105_d())
@@ -789,7 +914,7 @@ def abc105_d():
 def abc106_a():
     a, b = map(int, input().split())
 
-    return a * b - a - b + 1
+    print(a * b - a - b + 1)
 
 
 def abc106_b():
@@ -803,7 +928,7 @@ def abc106_b():
         if div == 8:
             count += 1
 
-    return count
+    print(count)
 
 
 def abc106_c():
@@ -811,9 +936,9 @@ def abc106_c():
     k = int(input())
 
     if s[:k].replace("1", "") == "":
-        return 1
+        print(1)
     else:
-        return (s.replace("1", ""))[0]
+        print((s.replace("1", ""))[0])
 
 
 def abc106_dx():
@@ -833,7 +958,7 @@ def abc106_dx():
         print(np.sum((ls >= ps[i])[rs <= qs[i]]))
     # for count in np.sum((ls >= ps) * (rs <= qs), axis=1):
     #     print(count)
-    return 0
+    print(0)
 
 
 # abc106_dx()
@@ -841,7 +966,7 @@ def abc106_dx():
 
 def abc107_a():
     n, i = map(int, input().split())
-    return n - i + 1
+    print(n - i + 1)
 
 
 def abc107_b():
@@ -864,9 +989,9 @@ def abc107_c():
     n, k = map(int, input().split())
     x = np.array(list(map(int, input().split())))
     if x[0] >= 0:
-        return x[k - 1]
+        print(x[k - 1])
     elif x[-1] <= 0:
-        return x[n - k]
+        print(x[n - k])
     else:
         t = np.sum(x < 0)
         if x[t] == 0:
@@ -887,14 +1012,14 @@ def abc107_c():
             if tmp < time:
                 time = tmp
 
-        return time
+        print(time)
 
 
 def abc107_dx():
     n = int(input())
     a, b = map(int, input().split())
 
-    return n, a, b
+    print(n, a, b)
 
 
 # print(abc107_dx())
@@ -903,9 +1028,9 @@ def abc107_dx():
 def abc108_a():
     k = int(input())
     if k % 2 == 0:
-        return int(k ** 2 / 4)
+        print(int(k ** 2 / 4))
     else:
-        return int((k // 2) * (k // 2 + 1))
+        print(int((k // 2) * (k // 2 + 1)))
 
 
 def abc108_b():
@@ -916,7 +1041,7 @@ def abc108_b():
     x4 = x3 - (y3 - y2)
     y4 = y3 + (x3 - x2)
 
-    return "{} {} {} {}".format(x3, y3, x4, y4)
+    print("{} {} {} {}".format(x3, y3, x4, y4))
 
 
 def abc108_c():
@@ -934,7 +1059,7 @@ def abc108_c():
         for b in b_candidate:
             count += np.sum((b + c_candidate) % k == 0)
 
-    return count
+    print(count)
 
 
 # print(abc108_c())
@@ -943,12 +1068,12 @@ def abc108_c():
 def abc108_d():
     n, i = map(int, input().split())
 
-    return n, i
+    print(n, i)
 
 
 def abc109_a():
     a, b = map(int, input().split())
-    return ["No", "Yes"][a * b % 2]
+    print(["No", "Yes"][a * b % 2])
 
 
 def abc109_b():
@@ -956,10 +1081,10 @@ def abc109_b():
     words = [input() for _ in range(n)]
     for i in range(n - 1):
         if words[i][-1] != words[i + 1][0]:
-            return "No"
+            print("No")
     if len(set(words)) != len(words):
-        return "No"
-    return "Yes"
+        print("No")
+    print("Yes")
 
 
 def abc109_c():
@@ -969,26 +1094,26 @@ def abc109_c():
     n, x = map(int, input().split())
     x = np.abs(np.array(list(map(int, input().split()))) - x)
     gcd = functools.reduce(math.gcd, x)
-    return gcd
+    print(gcd)
 
 
 def abc109_d():
     n = int(input())
-    return n
+    print(n)
 
 
 # print(abc109_d())
 
 def abc111_a():
     n = int(input())
-    return 1110 - n
+    print(1110 - n)
 
 
 def abc111_b():
     n = int(input())
     for i in range(1, 10):
         if 111 * i >= n:
-            return 111 * i
+            print(111 * i)
 
 
 def abc111_c():
@@ -1004,29 +1129,29 @@ def abc111_c():
     if len(b1_count) == 1:
         if len(b2_count) == 1:
             if b1_count[0][0] == b2_count[0][0]:
-                return b_len
+                print(b_len)
             else:
-                return 0
+                print(0)
         else:
             if b1_count[0][0] == b2_count[0][0]:
-                return b_len - b2_count[1][1]
+                print(b_len - b2_count[1][1])
             else:
-                return b_len - b2_count[0][1]
+                print(b_len - b2_count[0][1])
     elif len(b2_count) == 1:
         if b2_count[0][0] == b1_count[0][0]:
-            return b_len - b1_count[1][1]
+            print(b_len - b1_count[1][1])
         else:
-            return b_len - b1_count[0][1]
+            print(b_len - b1_count[0][1])
     else:
         if b1_count[0][0] == b2_count[0][0]:
-            return 2 * b_len - max(b1_count[0][1] + b2_count[1][1], b1_count[1][1] + b2_count[0][1])
+            print(2 * b_len - max(b1_count[0][1] + b2_count[1][1], b1_count[1][1] + b2_count[0][1]))
         else:
-            return 2 * b_len - b1_count[0][1] - b2_count[0][1]
+            print(2 * b_len - b1_count[0][1] - b2_count[0][1])
 
 
 def abc111_d():
     n = int(input())
-    return n
+    print(n)
 
 
 # print(abc111_d())
@@ -1034,11 +1159,11 @@ def abc111_d():
 def abc112_a():
     n = int(input())
     if n == 1:
-        return "Hello World"
+        print("Hello World")
     else:
         a = int(input())
         b = int(input())
-        return a + b
+        print(a + b)
 
 
 def abc112_b():
@@ -1049,9 +1174,9 @@ def abc112_b():
         if t <= t_lim:
             c.append(ci)
     if c:
-        return min(c)
+        print(min(c))
     else:
-        return "TLE"
+        print("TLE")
 
 
 def abc112_c():
@@ -1076,11 +1201,11 @@ def abc112_c():
                 if flag:
                     continue
                 else:
-                    return "{} {} {}".format(cx, cy, h)
+                    print("{} {} {}".format(cx, cy, h))
             else:
                 pass
 
-    # return "{} {} {}".format(cx, cy, h)
+    # print("{} {} {}".format(cx, cy, h)
 
 
 # print(abc112_c())
@@ -1088,7 +1213,7 @@ def abc112_c():
 
 def abc112_d():
     n = int(input())
-    return n
+    print(n)
 
 
 # print(abc112_d())
@@ -1096,9 +1221,9 @@ def abc112_d():
 def tpbc_2018_a():
     s = input()
     if len(s) == 2:
-        return s
+        print(s)
     else:
-        return s[::-1]
+        print(s[::-1])
 
 
 def tpbc_2018_b():
@@ -1111,7 +1236,7 @@ def tpbc_2018_b():
     if k % 2 == 1:
         a //= 2
         b += a
-    return "{} {}".format(a, b)
+    print("{} {}".format(a, b))
 
 
 def tpbc_2018_c():
@@ -1121,23 +1246,23 @@ def tpbc_2018_c():
     low = a[:len(a) // 2]
     high = a[len(a) // 2:]
     if len(a) % 2 == 0:
-        return 2 * (sum(high) - sum(low)) + max(low) - min(high)
+        print(2 * (sum(high) - sum(low)) + max(low) - min(high))
     else:
         low2 = a[:len(a) // 2 + 1]
         high2 = a[len(a) // 2 + 1:]
-        return max(2 * (sum(high) - sum(low)) - high[0] - high[1], 2 * (sum(high2) - sum(low2)) + low2[-2] + low2[-1])
+        print(max(2 * (sum(high) - sum(low)) - high[0] - high[1], 2 * (sum(high2) - sum(low2)) + low2[-2] + low2[-1]))
 
 
 def tpbc_2018_d():
     n = int(input())
-    return n
+    print(n)
 
 
 # print(tpbc_2018_d())
 
 def abc113_a():
     x, y = map(int, input().split())
-    return int(x + y / 2)
+    print(int(x + y / 2))
 
 
 def abc113_b():
@@ -1146,7 +1271,7 @@ def abc113_b():
     t, a = map(int, input().split())
     h = np.array(list(map(int, input().split())))
     temp = np.abs(a - (t - h * 0.006))
-    return np.argmin(temp) + 1
+    print(np.argmin(temp) + 1)
 
 
 def abc113_c():
@@ -1164,7 +1289,7 @@ def abc113_c():
         p = city[i][0]
         x = np.where(city_sort[city[i][0] - 1] == city[i][1])
         print('{0:06d}{0:06d}'.format(p, x))
-    return 0
+    print(0)
 
 
 # abc113_c()
@@ -1172,7 +1297,7 @@ def abc113_c():
 
 def abc113_d():
     n = int(input())
-    return n
+    print(n)
 
 
 # print(abc113_d())
@@ -1181,9 +1306,9 @@ def abc113_d():
 def abc114_a():
     x = int(input())
     if x in [3, 5, 7]:
-        return "YES"
+        print("YES")
     else:
-        return "NO"
+        print("NO")
 
 
 def abc114_b():
@@ -1193,7 +1318,7 @@ def abc114_b():
         tmp = abs(753 - int(s[i:i + 3]))
         if tmp < min_diff:
             min_diff = tmp
-    return min_diff
+    print(min_diff)
 
 
 def abc114_c():
@@ -1213,7 +1338,7 @@ def abc114_c():
         if val <= n and "3" in str_val and "5" in str_val and "7" in str_val:
             ans += 1
 
-    return ans
+    print(ans)
 
 
 def abc114_d():
@@ -1222,13 +1347,66 @@ def abc114_d():
         for _i in range(2, _n // 2 + 1):
             if _n % _i == 0:
                 div.append(i)
-        return sorted(div)
+        print(sorted(div))
 
     n = int(input())
     divisor = [1]
     for i in range(2, n + 1):
         divisor.extend(calc_divisor(i)[1:])
 
-    return divisor
+    print(divisor)
+
 
 # print(abc114_d())
+
+def abc115_a():
+    d = int(input())
+
+    print("Christmas" + " Eve" * (25 - d))
+
+
+def abc115_b():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    p.sort(reverse=True)
+
+    print(p[0] // 2 + sum(p[1:n]))
+
+
+def abc115_c():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+
+    diff = h[-1] - h[0]
+    for i in range(n - k + 1):
+        if h[i + k - 1] - h[i] < diff:
+            diff = h[i + k - 1] - h[i]
+
+    print(diff)
+
+
+def abc115_d():
+    n, x = map(int, input().split())
+    l = [1] * 51
+    p = [1] * 51
+    for i in range(50):
+        l[i + 1] = 2 * l[i] + 3
+        p[i + 1] = p[i] * 2 + 1
+
+    ans = 0
+    while n:
+        if x == l[n]:
+            ans += p[n]
+            break
+        elif x > (l[n] // 2):
+            ans += p[n - 1] + 1
+            x -= (l[n - 1] + 2)
+            n -= 1
+        else:
+            x -= 1
+            n -= 1
+    if x == 1:
+        ans += 1
+
+    print(ans)
