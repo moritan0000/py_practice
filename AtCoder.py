@@ -5,6 +5,32 @@ def practice_a():
     print(a + b + c, s)
 
 
+def abc001_a():
+    n = int(input())
+    print(n)
+
+
+# abc001_a()
+def abc001_b():
+    n = int(input())
+    print(n)
+
+
+# abc001_b()
+def abc001_c():
+    n = int(input())
+    print(n)
+
+
+# abc001_c()
+def abc001_d():
+    n = int(input())
+    print(n)
+
+
+# abc001_d()
+
+
 def agc021_a():
     # 1~inputまでの数字で最大の桁和を出力
     n = int(input())
@@ -280,6 +306,38 @@ def abc089_d():
     #     print(_mpcount)
 
 
+def abc090_a():
+    c = [input() for _ in range(3)]
+    print(c[0][0] + c[1][1] + c[2][2])
+
+
+def abc090_b():
+    a, b = map(int, input().split())
+    num = 0
+    for i in range(a, b + 1):
+        s = str(i)
+        if s[0] == s[-1] and s[1] == s[-2]:
+            num += 1
+    print(num)
+
+
+def abc090_c():
+    n, m = map(int, input().split())
+    print(abs((n - 2) * (m - 2)))
+
+
+def abc090_d():
+    n, k = map(int, input().split())
+    num = 0
+    for b in range(1, n):
+        num += abs(b-k)*(n//b)
+
+    print(num)
+
+
+# abc090_d()
+
+
 def abc091_a():
     a, b, c = map(int, input().split())
     print(["No", "Yes"][a + b >= c])
@@ -344,6 +402,43 @@ def abc091_c():
             else:
                 continue"""
     print(_count)
+
+
+def abc092_a():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    print(min(a, b) + min(c, d))
+
+
+def abc092_b():
+    n = int(input())
+    d, x = map(int, input().split())
+    a = [int(input()) for _ in range(n)]
+    choco = x
+    for i in range(n):
+        choco += (d - 1) // a[i] + 1
+
+    print(choco)
+
+
+def abc092_c():
+    n = int(input())
+    a = [0] + list(map(int, input().split())) + [0]
+    money = 0
+    for i in range(n + 1):
+        money += abs(a[i] - a[i + 1])
+    for i in range(1, n + 1):
+        print(money - abs(a[i] - a[i - 1]) - abs(a[i] - a[i + 1]) + abs(a[i + 1] - a[i - 1]))
+
+
+def abc092_d():
+    a, b = map(int, input().split())
+    print(a, b)
+
+
+# abc092_d()
 
 
 def abc093a():
@@ -804,61 +899,86 @@ def abc102_b():
 
 def abc102_c():
     n = int(input())
-    print(0)
+    print(n)
 
 
 # abc102_c()
 def abc102_d():
     n = int(input())
-    print(0)
+    print(n)
 
 
 # abc102_d()
 def abc103_a():
-    n = int(input())
-    print(0)
+    a = list(map(int, input().split()))
+    cost = [abs(a[0] - a[1]), abs(a[1] - a[2]), abs(a[2] - a[0])]
+    cost.sort()
+    print(sum(cost[:-1]))
 
 
-# abc103_a()
 def abc103_b():
-    n = int(input())
-    print(0)
+    s = input()
+    t = input()
+
+    for _ in range(len(s)):
+        if s == t:
+            print("Yes")
+            return 0
+        else:
+            s = s[-1] + s[:-1]
+    print("No")
 
 
-# abc103_b()
 def abc103_c():
     n = int(input())
-    print(0)
+    a = list(map(int, input().split()))
+    print(sum(a) - n)
 
 
-# abc103_c()
 def abc103_d():
     n = int(input())
-    print(0)
+    print(n)
 
 
 # abc103_d()
 def abc104_a():
-    n = int(input())
-    print(0)
+    r = int(input())
+    if r < 1200:
+        print("ABC")
+    elif r < 2800:
+        print("ARC")
+    else:
+        print("AGC")
 
 
-# abc104_a()
 def abc104_b():
-    n = int(input())
-    print(0)
+    s = input()
+    num = s.find("C")
+    if s[0] == "A" and s[2:-1].count("C") == 1 and (s[1:num] + s[num + 1:]) == (s[1:num] + s[num + 1:]).lower():
+        print("AC")
+    else:
+        print("WA")
 
 
-# abc104_b()
 def abc104_c():
-    n = int(input())
-    print(0)
+    import itertools
+    d, g = map(int, input().split())
+    p = [0] * d
+    c = [0] * d
+    ans = 1000
+    for i in range(d):
+        p[i], c[i] = map(int, input().split())
+
+    for i in range(d + 1):
+        for seq in itertools.combinations([i for i in range(d)], i):
+            print(seq)
+    print(ans)
 
 
 # abc104_c()
 def abc104_d():
     n = int(input())
-    print(0)
+    print(n)
 
 
 # abc104_d()
@@ -1388,20 +1508,20 @@ def abc115_c():
 
 def abc115_d():
     n, x = map(int, input().split())
-    l = [1] * 51
+    digit = [1] * 51
     p = [1] * 51
     for i in range(50):
-        l[i + 1] = 2 * l[i] + 3
+        digit[i + 1] = 2 * digit[i] + 3
         p[i + 1] = p[i] * 2 + 1
 
     ans = 0
     while n:
-        if x == l[n]:
+        if x == digit[n]:
             ans += p[n]
             break
-        elif x > (l[n] // 2):
+        elif x > (digit[n] // 2):
             ans += p[n - 1] + 1
-            x -= (l[n - 1] + 2)
+            x -= (digit[n - 1] + 2)
             n -= 1
         else:
             x -= 1
@@ -1410,3 +1530,12 @@ def abc115_d():
         ans += 1
 
     print(ans)
+
+
+def angle():
+    import math
+    coordinate1 = list(map(float, input().split()))
+    coordinate2 = list(map(float, input().split()))
+    print(math.degrees(math.atan2(coordinate2[2] - coordinate1[2],
+                                  ((coordinate2[0] - coordinate1[0]) ** 2 + (
+                                          coordinate2[1] - coordinate1[1]) ** 2) ** 0.5)))
