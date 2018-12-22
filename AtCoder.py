@@ -330,7 +330,7 @@ def abc090_d():
     n, k = map(int, input().split())
     num = 0
     for b in range(1, n):
-        num += abs(b-k)*(n//b)
+        num += abs(b - k) * (n // b)
 
     print(num)
 
@@ -1530,6 +1530,54 @@ def abc115_d():
         ans += 1
 
     print(ans)
+
+
+def caddi2018b_a():
+    n = input()
+    print(n.count("2"))
+
+
+def caddi2018b_b():
+    n, h, w = map(int, input().split())
+    boards = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+
+    for i in range(n):
+        if boards[i][0] >= h and boards[i][1] >= w:
+            ans += 1
+    print(ans)
+
+
+def caddi2018b_c():
+    from collections import Counter
+    def prime_decomposition(num):
+        i = 2
+        table = []
+        while i * i <= num:
+            while num % i == 0:
+                num /= i
+                table.append(i)
+            i += 1
+        if num > 1:
+            table.append(int(num))
+        return table
+
+    n, p = map(int, input().split())
+    ans = 1
+    factors = Counter(prime_decomposition(p))
+    for val in factors:
+        ans *= val ** (factors[val] // n)
+    print(ans)
+
+
+def caddi2018b_d():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    for val in a:
+        if val % 2 == 1:
+            print("first")
+            return 0
+    print("second")
 
 
 def angle():
