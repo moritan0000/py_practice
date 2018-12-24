@@ -5,30 +5,47 @@ def practice_a():
     print(a + b + c, s)
 
 
-def abc001_a():
+# practice_a()
+
+
+def abc000_a():
     n = int(input())
-    print(n)
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
 
 
-# abc001_a()
-def abc001_b():
+# abc000_a()
+
+
+def abc000_b():
     n = int(input())
-    print(n)
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
 
 
-# abc001_b()
-def abc001_c():
+# abc000_b()
+
+
+def abc000_c():
     n = int(input())
-    print(n)
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
 
 
-# abc001_c()
-def abc001_d():
+# abc000_c()
+
+
+def abc000_d():
     n = int(input())
-    print(n)
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
 
 
-# abc001_d()
+# abc000_d()
 
 
 def agc021_a():
@@ -95,7 +112,7 @@ def agc022_a():
         print("abcdefghijklmnopqrstuvwxz")
 
 
-def agc024_ax():
+def agc024_a():
     a, b, c, k = map(int, input().split())
     if k == 0:
         print([a - b, "Unfair"][abs(a - b) > 1e+18])
@@ -120,113 +137,3637 @@ def arc094_c():
     print(count)
 
 
+def abc001_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc001_a()
+
+
+def abc001_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc001_b()
+
+
+def abc001_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc001_c()
+
+
+def abc001_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc001_d()
+
+
+def abc002_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc002_a()
+
+
+def abc002_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc002_b()
+
+
+def abc002_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc002_c()
+
+
+def abc002_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc002_d()
+
+
+def abc003_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc003_a()
+
+
+def abc003_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc003_b()
+
+
+def abc003_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc003_c()
+
+
+def abc003_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc003_d()
+
+
+def abc004_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc004_a()
+
+
+def abc004_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc004_b()
+
+
+def abc004_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc004_c()
+
+
+def abc004_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc004_d()
+
+
+def abc005_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc005_a()
+
+
+def abc005_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc005_b()
+
+
+def abc005_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc005_c()
+
+
+def abc005_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc005_d()
+
+
+def abc006_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc006_a()
+
+
+def abc006_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc006_b()
+
+
+def abc006_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc006_c()
+
+
+def abc006_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc006_d()
+
+
+def abc007_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc007_a()
+
+
+def abc007_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc007_b()
+
+
+def abc007_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc007_c()
+
+
+def abc007_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc007_d()
+
+
+def abc008_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc008_a()
+
+
+def abc008_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc008_b()
+
+
+def abc008_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc008_c()
+
+
+def abc008_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc008_d()
+
+
+def abc009_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc009_a()
+
+
+def abc009_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc009_b()
+
+
+def abc009_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc009_c()
+
+
+def abc009_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc009_d()
+
+
+def abc010_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc010_a()
+
+
+def abc010_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc010_b()
+
+
+def abc010_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc010_c()
+
+
+def abc010_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc010_d()
+
+
+def abc011_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc011_a()
+
+
+def abc011_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc011_b()
+
+
+def abc011_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc011_c()
+
+
+def abc011_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc011_d()
+
+
+def abc012_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc012_a()
+
+
+def abc012_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc012_b()
+
+
+def abc012_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc012_c()
+
+
+def abc012_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc012_d()
+
+
+def abc013_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc013_a()
+
+
+def abc013_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc013_b()
+
+
+def abc013_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc013_c()
+
+
+def abc013_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc013_d()
+
+
+def abc014_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc014_a()
+
+
+def abc014_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc014_b()
+
+
+def abc014_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc014_c()
+
+
+def abc014_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc014_d()
+
+
+def abc015_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc015_a()
+
+
+def abc015_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc015_b()
+
+
+def abc015_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc015_c()
+
+
+def abc015_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc015_d()
+
+
+def abc016_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc016_a()
+
+
+def abc016_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc016_b()
+
+
+def abc016_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc016_c()
+
+
+def abc016_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc016_d()
+
+
+def abc017_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc017_a()
+
+
+def abc017_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc017_b()
+
+
+def abc017_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc017_c()
+
+
+def abc017_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc017_d()
+
+
+def abc018_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc018_a()
+
+
+def abc018_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc018_b()
+
+
+def abc018_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc018_c()
+
+
+def abc018_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc018_d()
+
+
+def abc019_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc019_a()
+
+
+def abc019_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc019_b()
+
+
+def abc019_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc019_c()
+
+
+def abc019_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc019_d()
+
+
+def abc020_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc020_a()
+
+
+def abc020_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc020_b()
+
+
+def abc020_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc020_c()
+
+
+def abc020_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc020_d()
+
+
+def abc021_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc021_a()
+
+
+def abc021_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc021_b()
+
+
+def abc021_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc021_c()
+
+
+def abc021_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc021_d()
+
+
+def abc022_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc022_a()
+
+
+def abc022_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc022_b()
+
+
+def abc022_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc022_c()
+
+
+def abc022_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc022_d()
+
+
+def abc023_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc023_a()
+
+
+def abc023_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc023_b()
+
+
+def abc023_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc023_c()
+
+
+def abc023_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc023_d()
+
+
+def abc024_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc024_a()
+
+
+def abc024_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc024_b()
+
+
+def abc024_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc024_c()
+
+
+def abc024_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc024_d()
+
+
+def abc025_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc025_a()
+
+
+def abc025_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc025_b()
+
+
+def abc025_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc025_c()
+
+
+def abc025_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc025_d()
+
+
+def abc026_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc026_a()
+
+
+def abc026_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc026_b()
+
+
+def abc026_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc026_c()
+
+
+def abc026_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc026_d()
+
+
+def abc027_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc027_a()
+
+
+def abc027_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc027_b()
+
+
+def abc027_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc027_c()
+
+
+def abc027_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc027_d()
+
+
+def abc028_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc028_a()
+
+
+def abc028_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc028_b()
+
+
+def abc028_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc028_c()
+
+
+def abc028_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc028_d()
+
+
+def abc029_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc029_a()
+
+
+def abc029_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc029_b()
+
+
+def abc029_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc029_c()
+
+
+def abc029_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc029_d()
+
+
+def abc030_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc030_a()
+
+
+def abc030_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc030_b()
+
+
+def abc030_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc030_c()
+
+
+def abc030_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc030_d()
+
+
+def abc031_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc031_a()
+
+
+def abc031_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc031_b()
+
+
+def abc031_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc031_c()
+
+
+def abc031_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc031_d()
+
+
+def abc032_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc032_a()
+
+
+def abc032_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc032_b()
+
+
+def abc032_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc032_c()
+
+
+def abc032_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc032_d()
+
+
+def abc033_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc033_a()
+
+
+def abc033_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc033_b()
+
+
+def abc033_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc033_c()
+
+
+def abc033_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc033_d()
+
+
+def abc034_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc034_a()
+
+
+def abc034_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc034_b()
+
+
+def abc034_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc034_c()
+
+
+def abc034_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc034_d()
+
+
+def abc035_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc035_a()
+
+
+def abc035_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc035_b()
+
+
+def abc035_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc035_c()
+
+
+def abc035_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc035_d()
+
+
+def abc036_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc036_a()
+
+
+def abc036_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc036_b()
+
+
+def abc036_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc036_c()
+
+
+def abc036_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc036_d()
+
+
+def abc037_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc037_a()
+
+
+def abc037_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc037_b()
+
+
+def abc037_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc037_c()
+
+
+def abc037_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc037_d()
+
+
+def abc038_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc038_a()
+
+
+def abc038_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc038_b()
+
+
+def abc038_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc038_c()
+
+
+def abc038_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc038_d()
+
+
+def abc039_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc039_a()
+
+
+def abc039_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc039_b()
+
+
+def abc039_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc039_c()
+
+
+def abc039_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc039_d()
+
+
+def abc040_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc040_a()
+
+
+def abc040_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc040_b()
+
+
+def abc040_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc040_c()
+
+
+def abc040_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc040_d()
+
+
+def abc041_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc041_a()
+
+
+def abc041_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc041_b()
+
+
+def abc041_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc041_c()
+
+
+def abc041_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc041_d()
+
+
+def abc042_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc042_a()
+
+
+def abc042_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc042_b()
+
+
+def abc042_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc042_c()
+
+
+def abc042_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc042_d()
+
+
+def abc043_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc043_a()
+
+
+def abc043_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc043_b()
+
+
+def abc043_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc043_c()
+
+
+def abc043_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc043_d()
+
+
+def abc044_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc044_a()
+
+
+def abc044_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc044_b()
+
+
+def abc044_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc044_c()
+
+
+def abc044_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc044_d()
+
+
+def abc045_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc045_a()
+
+
+def abc045_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc045_b()
+
+
+def abc045_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc045_c()
+
+
+def abc045_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc045_d()
+
+
+def abc046_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc046_a()
+
+
+def abc046_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc046_b()
+
+
+def abc046_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc046_c()
+
+
+def abc046_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc046_d()
+
+
+def abc047_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc047_a()
+
+
+def abc047_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc047_b()
+
+
+def abc047_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc047_c()
+
+
+def abc047_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc047_d()
+
+
+def abc048_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc048_a()
+
+
+def abc048_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc048_b()
+
+
+def abc048_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc048_c()
+
+
+def abc048_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc048_d()
+
+
+def abc049_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc049_a()
+
+
+def abc049_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc049_b()
+
+
 def abc049_c():
-    s = input()
-    s = s.replace("eraser", "")
-    s = s.replace("erase", "")
-    s = s.replace("dreamer", "")
-    s = s.replace("dream", "")
-    # この順番に削除すること
-    print(["NO", "YES"][s == ""])
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc049_c()
+
+
+def abc049_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc049_d()
+
+
+def abc050_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc050_a()
+
+
+def abc050_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc050_b()
+
+
+def abc050_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc050_c()
+
+
+def abc050_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc050_d()
+
+
+def abc051_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc051_a()
+
+
+def abc051_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc051_b()
+
+
+def abc051_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc051_c()
+
+
+def abc051_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc051_d()
+
+
+def abc052_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc052_a()
+
+
+def abc052_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc052_b()
+
+
+def abc052_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc052_c()
+
+
+def abc052_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc052_d()
+
+
+def abc053_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc053_a()
+
+
+def abc053_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc053_b()
+
+
+def abc053_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc053_c()
+
+
+def abc053_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc053_d()
+
+
+def abc054_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc054_a()
+
+
+def abc054_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc054_b()
+
+
+def abc054_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc054_c()
+
+
+def abc054_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc054_d()
+
+
+def abc055_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc055_a()
+
+
+def abc055_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc055_b()
+
+
+def abc055_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc055_c()
+
+
+def abc055_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc055_d()
+
+
+def abc056_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc056_a()
+
+
+def abc056_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc056_b()
+
+
+def abc056_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc056_c()
+
+
+def abc056_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc056_d()
+
+
+def abc057_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc057_a()
+
+
+def abc057_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc057_b()
+
+
+def abc057_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc057_c()
+
+
+def abc057_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc057_d()
+
+
+def abc058_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc058_a()
+
+
+def abc058_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc058_b()
+
+
+def abc058_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc058_c()
+
+
+def abc058_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc058_d()
+
+
+def abc059_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc059_a()
+
+
+def abc059_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc059_b()
+
+
+def abc059_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc059_c()
+
+
+def abc059_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc059_d()
+
+
+def abc060_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc060_a()
+
+
+def abc060_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc060_b()
+
+
+def abc060_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc060_c()
+
+
+def abc060_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc060_d()
+
+
+def abc061_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc061_a()
+
+
+def abc061_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc061_b()
+
+
+def abc061_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc061_c()
+
+
+def abc061_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc061_d()
+
+
+def abc062_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc062_a()
+
+
+def abc062_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc062_b()
+
+
+def abc062_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc062_c()
+
+
+def abc062_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc062_d()
+
+
+def abc063_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc063_a()
+
+
+def abc063_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc063_b()
+
+
+def abc063_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc063_c()
+
+
+def abc063_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc063_d()
+
+
+def abc064_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc064_a()
+
+
+def abc064_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc064_b()
+
+
+def abc064_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc064_c()
+
+
+def abc064_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc064_d()
+
+
+def abc065_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc065_a()
+
+
+def abc065_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc065_b()
+
+
+def abc065_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc065_c()
+
+
+def abc065_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc065_d()
+
+
+def abc066_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc066_a()
+
+
+def abc066_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc066_b()
+
+
+def abc066_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc066_c()
+
+
+def abc066_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc066_d()
+
+
+def abc067_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc067_a()
+
+
+def abc067_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc067_b()
+
+
+def abc067_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc067_c()
+
+
+def abc067_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc067_d()
+
+
+def abc068_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc068_a()
+
+
+def abc068_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc068_b()
+
+
+def abc068_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc068_c()
+
+
+def abc068_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc068_d()
+
+
+def abc069_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc069_a()
+
+
+def abc069_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc069_b()
+
+
+def abc069_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc069_c()
+
+
+def abc069_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc069_d()
+
+
+def abc070_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc070_a()
+
+
+def abc070_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc070_b()
+
+
+def abc070_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc070_c()
+
+
+def abc070_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc070_d()
+
+
+def abc071_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc071_a()
+
+
+def abc071_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc071_b()
+
+
+def abc071_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc071_c()
+
+
+def abc071_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc071_d()
+
+
+def abc072_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc072_a()
+
+
+def abc072_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc072_b()
+
+
+def abc072_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc072_c()
+
+
+def abc072_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc072_d()
+
+
+def abc073_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc073_a()
+
+
+def abc073_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc073_b()
+
+
+def abc073_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc073_c()
+
+
+def abc073_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc073_d()
+
+
+def abc074_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc074_a()
+
+
+def abc074_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc074_b()
+
+
+def abc074_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc074_c()
+
+
+def abc074_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc074_d()
+
+
+def abc075_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc075_a()
+
+
+def abc075_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc075_b()
+
+
+def abc075_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc075_c()
+
+
+def abc075_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc075_d()
+
+
+def abc076_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc076_a()
+
+
+def abc076_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc076_b()
+
+
+def abc076_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc076_c()
+
+
+def abc076_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc076_d()
+
+
+def abc077_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc077_a()
+
+
+def abc077_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc077_b()
+
+
+def abc077_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc077_c()
+
+
+def abc077_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc077_d()
+
+
+def abc078_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc078_a()
+
+
+def abc078_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc078_b()
+
+
+def abc078_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc078_c()
+
+
+def abc078_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc078_d()
+
+
+def abc079_a():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc079_a()
+
+
+def abc079_b():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc079_b()
+
+
+def abc079_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc079_c()
+
+
+def abc079_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc079_d()
+
+
+def abc080_a():
+    n, a, b = map(int, input().split())
+    print(min(n * a, b))
+
+
+# abc080_a()
+
+
+def abc080_b():
+    n = x = int(input())
+    dig_sum = 0
+
+    while n:
+        dig_sum += n % 10
+        n //= 10
+
+    if x % dig_sum:
+        print("No")
+    else:
+        print("Yes")
+
+
+# abc080_b()
+
+
+def abc080_c():
+    import numpy as np
+    import itertools
+
+    n = int(input())
+    f = np.array([list(map(int, input().split())) for _ in range(n)])
+    p = np.array([list(map(int, input().split())) for _ in range(n)])
+    benefits = np.array([], dtype=int)
+
+    for i in range(1, 11):
+        for seq in itertools.combinations([i for i in range(10)], i):
+            tmp = 0
+            for j in range(n):
+                tmp += p[j][sum(f[j][np.array(seq)])]
+            benefits = np.append(benefits, tmp)
+
+    print(max(benefits))
+
+
+# abc080_c()
+
+
+def abc080_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# abc080_d()
 
 
 def abc081_a():
-    print(sum(map(int, input())))
+    s = input()
+    print(s.count("1"))
+
+
+# abc081_a()
 
 
 def abc081_b():
-    input()
+    _ = int(input())
     a = list(map(int, input().split()))
-    counts = []
-
+    ans = 100000
     for num in a:
         tmp = 0
         while num % 2 == 0:
+            num /= 2
             tmp += 1
-            num = num / 2
-        if tmp == 0:
-            print(0)
-            print(0)
+        if tmp < ans:
+            ans = tmp
+    print(ans)
+
+
+# abc081_b()
+
+
+def abc081_c():
+    from collections import Counter
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    a_count = Counter(a)
+    if len(a_count) <= k:
+        print(0)
+    else:
+        val = list(a_count.values())
+        val.sort()
+        print(sum(val[:-k]))
+
+
+# abc081_c()
+
+
+def abc081_d():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(n, a)
+
+
+# abc081_d()
+
+
+def abc082_a():
+    from math import ceil
+    a, b = map(int, input().split())
+    print(ceil((a + b) / 2))
+
+
+# abc082_a()
+
+
+def abc082_b():
+    s = sorted(input())
+    t = sorted(input(), reverse=True)
+
+    for i in range(min(len(s), len(t))):
+        if ord(s[i]) < ord(t[i]):
+            print("Yes")
+            return 0
+
+    if len(s) < len(t):
+        for c in s:
+            if c in t:
+                t.remove(c)
+            else:
+                print("No")
+                return 0
+        print("Yes")
+        return 0
+
+    print("No")
+
+
+# abc082_b()
+
+
+def abc082_c():
+    from collections import Counter
+
+    _ = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    a_count = Counter(a)
+
+    for num in a_count:
+        if num <= a_count[num]:
+            ans += (a_count[num] - num)
         else:
-            counts.append(tmp)
-    print(min(counts))
+            ans += a_count[num]
+
+    print(ans)
+
+
+# abc082_c()
+
+
+def abc082_d():
+    s = input()
+    x, y = map(int, input().split())
+
+    print(s, x, y)
+
+
+# abc082_d()
+
+
+def abc083_a():
+    a, b, c, d = map(int, input().split())
+    if a + b > c + d:
+        print("Left")
+    elif a + b < c + d:
+        print("Right")
+    else:
+        print("Balanced")
+
+
+# abc083_a()
 
 
 def abc083_b():
     n, a, b = map(int, input().split())
-    num_sum = 0
+    ans = 0
     for i in range(1, n + 1):
-        tmp = i
-        dig_sum = 0
-        while i:
-            dig_sum += i % 10
-            i //= 10
-        if a <= dig_sum <= b:
-            num_sum += tmp
-    print(num_sum)
+        tmp = 0
+        for digit in str(i):
+            tmp += int(digit)
+        if a <= tmp <= b:
+            ans += i
+    print(ans)
+
+
+# abc083_b()
+
+
+def abc083_c():
+    x, y = map(int, input().split())
+    n = 1
+    while x * 2 <= y:
+        n += 1
+        x *= 2
+    print(n)
+
+
+# abc083_c()
+
+
+def abc083_d():
+    n = int(input())
+    print(n)
+
+
+# abc083_d()
+
+
+def abc084_a():
+    m = int(input())
+    print(48 - m)
+
+
+# abc084_a()
+
+
+def abc084_b():
+    a, b = map(int, input().split())
+    s = input()
+
+    if "-" in s[:a] or s[a] != "-" or "-" in s[-b:]:
+        print("No")
+    else:
+        print("Yes")
+
+
+# abc084_b()
+
+
+def abc084_c():
+    from math import ceil
+    n = int(input())
+    c, s, f = [[None] * (n - 1) for _ in range(3)]
+    for i in range(n - 1):
+        c[i], s[i], f[i] = map(int, input().split())
+
+    for i in range(n - 1):
+        time = 0
+        for j in range(i, n - 1):
+            if time < s[j]:
+                time = s[j]
+            else:
+                time = f[j] * ceil(time / f[j])
+            time += c[j]
+        print(time)
+    print(0)
+
+
+# abc084_c()
+
+
+def abc084_d():
+    import numpy as np
+
+    def prime_list(limit):
+        if limit == 1:
+            return []
+
+        prime_nums = [2]
+        for _i in range(3, limit + 1, 2):
+            factor = False
+            for divisor in range(3, int(_i ** 0.5) + 1, 2):
+                if _i % divisor == 0:
+                    factor = True
+
+            if not factor:
+                prime_nums.append(_i)
+
+        return prime_nums
+
+    q = int(input())
+    l, r = [[None] * q for _ in range(2)]
+    for i in range(q):
+        l[i], r[i] = map(int, input().split())
+
+    primes = np.array(prime_list(max(r)))
+    for i in range(q):
+        ans = 0
+        candidates = primes[(l[i] <= primes) & (primes <= r[i])]
+        for val in candidates:
+            if (val + 1) // 2 in primes:
+                ans += 1
+        print(ans)
+
+
+# abc084_d()
+
+
+def abc085_a():
+    s = input()
+    print(s[:2] + "18" + s[4:])
+
+
+# abc085_a()
 
 
 def abc085_b():
     n = int(input())
-    d = []
-    for i in range(n):
-        d.append(int(input()))
-    d = list(set(d))
-    print(len(d))
+    d = [int(input()) for _ in range(n)]
+    print(len(set(d)))
+
+
+# abc085_b()
 
 
 def abc085_c():
     n, y = map(int, input().split())
-
-    for i in range(y // 10000 + 1):
-        for j in range((y - 10000 * i) // 5000 + 1):
+    for i in range(n + 1):
+        if 10000 * i + 5000 * (n - i) < y:
+            continue
+        for j in range(n - i + 1):
             if 10000 * i + 5000 * j + 1000 * (n - i - j) == y:
                 print(i, j, n - i - j)
-    print(-1, -1, -1)
+                return 0
+    print("-1 -1 -1")
+
+
+# abc085_c()
+
+
+def abc085_d():
+    n = int(input())
+    print(n)
+
+
+# abc085_d()
 
 
 def abc086_a():
     a, b = map(int, input().split())
-    print(["Even", "Odd"][a * b % 2])
+    if a * b % 2 == 1:
+        print("Odd")
+    else:
+        print("Even")
+
+
+# abc086_a()
+
+
+def abc086_b():
+    a, b = input().split(" ")
+    n = int(a + b)
+    if int((n ** 0.5)) ** 2 == n:
+        print("Yes")
+    else:
+        print("No")
+
+
+# abc086_b()
 
 
 def abc086_c():
-    import numpy as np
     n = int(input())
-    txys = np.empty((n, 3))
+    t = [0] * (n + 1)
+    x = [0] * (n + 1)
+    y = [0] * (n + 1)
+    for i in range(1, n + 1):
+        t[i], x[i], y[i] = map(int, input().split())
+
     for i in range(n):
-        s = input().split()
-        txys[i] = (list(map(int, s)))
-    cur = np.array([0, 0, 0])
-    for ele in txys:
-        tmp = ele - cur
-        if tmp[0] >= abs(tmp[1]) + abs(tmp[2]) \
-                and (tmp[0] - abs(tmp[1]) - abs(tmp[2])) % 2 == 0:
-            cur = ele
-        else:
+        if abs(x[i + 1] - x[i]) + abs(y[i + 1] - y[i]) > (t[i + 1] - t[i]) or \
+                abs(abs(x[i + 1] - x[i]) + abs(y[i + 1] - y[i]) - (t[i + 1] - t[i])) % 2 == 1:
             print("No")
+            return 0
     print("Yes")
 
 
+# abc086_c()
+
+
+def abc086_d():
+    n = int(input())
+    print(n)
+
+
+# abc086_d()
+
+
+def abc087_a():
+    x = int(input())
+    a = int(input())
+    b = int(input())
+    print((x - a) % b)
+
+
+# abc087_a()
+
+
 def abc087_b():
-    a, b, c, x = map(int, input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    x = int(input())
     count = 0
+
     for i in range(a + 1):
         for j in range(b + 1):
             for k in range(c + 1):
-                if 500 * i + 100 * j + 50 * k == x:
+                if (500 * i + 100 * j + 50 * k) == x:
                     count += 1
     print(count)
 
 
+# abc087_b()
+
+
+def abc087_c():
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(2)]
+    candy = 0
+
+    for i in range(n):
+        num = sum(a[0][:i + 1]) + sum(a[1][i:])
+        if num > candy:
+            candy = num
+    print(candy)
+
+
+# abc087_c()
+
+
+def abc087_d():
+    n, m = map(int, input().split())
+    print(n, m)
+
+
+# abc087_d()
+
+
+def abc088_a():
+    n = int(input())
+    a = int(input())
+    if n % 500 <= a:
+        print("Yes")
+    else:
+        print("No")
+
+
 def abc088_b():
-    input()
+    _ = int(input())
     a = list(map(int, input().split()))
-    a.sort()
-    a = a[::-1]
-    alice = a[::2]
-    bob = a[1::2]
-    print(sum(alice) - sum(bob))
+    a.sort(reverse=True)
+    print(sum(a[::2]) - sum(a[1::2]))
+
+
+def abc088_c():
+    c = [list(map(int, input().split())) for _ in range(3)]
+    print(c)
+
+
+# abc088_c()
+
+
+def abc088_d():
+    n = int(input())
+    print(n)
+
+
+# abc088_d()
 
 
 def abc089_a():
@@ -459,7 +4000,7 @@ def abc093c():
     print(abc[2] - abc[1] + (abc[1] - abc[0]) // 2 + 2 * ((abc[1] - abc[0]) % 2))
 
 
-def abc093dx():
+def abc093d():
     q = int(input())
     ab_list = []
     for i in range(q):
@@ -570,7 +4111,7 @@ def abc095_c():
     print(min(price1, max(x, y) * c * 2))
 
 
-def abc095_dx():
+def abc095_d():
     import numpy as np
     n, c = map(int, input().split())
     x = np.zeros((n, 1))
@@ -615,7 +4156,7 @@ def abc096_c():
     print("Yes")
 
 
-def abc096_dx():
+def abc096_d():
     n = int(input())
     primes = [2, 3]
 
@@ -660,7 +4201,7 @@ def abc097_b():
     print(max(ans))
 
 
-def abc097_cx():
+def abc097_c():
     import numpy as np
     s = input()
     k = int(input())
@@ -680,7 +4221,7 @@ def abc097_cx():
     print(substr[k - 1])
 
 
-def abc097_dx():
+def abc097_d():
     n, m = map(int, input().split())
     p = map(int, input().split())
     xy = [list(map(int, input().split())) for _ in range(m)]
@@ -710,7 +4251,7 @@ def abc098_b():
     print(count_max)
 
 
-def abc098_cx():
+def abc098_c():
     n = int(input())
     s = input()
     count_min = n - 1
@@ -726,7 +4267,7 @@ def abc098_cx():
     print(count_min)
 
 
-def abc098_dx():
+def abc098_d():
     n = int(input())
     a = list(map(int, input().split()))
     count = 0
@@ -751,7 +4292,7 @@ def abc099_b():
     print(x - a)
 
 
-def abc099_cx():
+def abc099_c():
     n = int(input())
     if n == 3:
         print(3)
@@ -770,7 +4311,7 @@ def abc099_cx():
     print(count)
 
 
-def abc099_dx():
+def abc099_d():
     print(0)
 
 
@@ -850,7 +4391,7 @@ def abc101_c():
     print(ans)
 
 
-def abc101_dx():
+def abc101_d():
     k = int(input())
 
     snuke_nums = []
@@ -903,12 +4444,16 @@ def abc102_c():
 
 
 # abc102_c()
+
+
 def abc102_d():
     n = int(input())
     print(n)
 
 
 # abc102_d()
+
+
 def abc103_a():
     a = list(map(int, input().split()))
     cost = [abs(a[0] - a[1]), abs(a[1] - a[2]), abs(a[2] - a[0])]
@@ -941,6 +4486,8 @@ def abc103_d():
 
 
 # abc103_d()
+
+
 def abc104_a():
     r = int(input())
     if r < 1200:
@@ -976,12 +4523,15 @@ def abc104_c():
 
 
 # abc104_c()
+
+
 def abc104_d():
     n = int(input())
     print(n)
 
 
 # abc104_d()
+
 
 def abc105_a():
     n, k = map(int, input().split())
@@ -1031,6 +4581,7 @@ def abc105_d():
 
 # print(abc105_d())
 
+
 def abc106_a():
     a, b = map(int, input().split())
 
@@ -1061,7 +4612,7 @@ def abc106_c():
         print((s.replace("1", ""))[0])
 
 
-def abc106_dx():
+def abc106_d():
     import numpy as np
 
     n, m, q = map(int, input().split())
@@ -1081,7 +4632,7 @@ def abc106_dx():
     print(0)
 
 
-# abc106_dx()
+# abc106_d()
 
 
 def abc107_a():
@@ -1135,14 +4686,14 @@ def abc107_c():
         print(time)
 
 
-def abc107_dx():
+def abc107_d():
     n = int(input())
     a, b = map(int, input().split())
 
     print(n, a, b)
 
 
-# print(abc107_dx())
+# print(abc107_d())
 
 
 def abc108_a():
@@ -1338,6 +4889,7 @@ def abc112_d():
 
 # print(abc112_d())
 
+
 def tpbc_2018_a():
     s = input()
     if len(s) == 2:
@@ -1379,6 +4931,7 @@ def tpbc_2018_d():
 
 
 # print(tpbc_2018_d())
+
 
 def abc113_a():
     x, y = map(int, input().split())
@@ -1479,10 +5032,14 @@ def abc114_d():
 
 # print(abc114_d())
 
+
 def abc115_a():
     d = int(input())
 
     print("Christmas" + " Eve" * (25 - d))
+
+
+# abc115_a()
 
 
 def abc115_b():
@@ -1491,6 +5048,9 @@ def abc115_b():
     p.sort(reverse=True)
 
     print(p[0] // 2 + sum(p[1:n]))
+
+
+# abc115_b()
 
 
 def abc115_c():
@@ -1504,6 +5064,9 @@ def abc115_c():
             diff = h[i + k - 1] - h[i]
 
     print(diff)
+
+
+# abc115_c()
 
 
 def abc115_d():
@@ -1532,9 +5095,15 @@ def abc115_d():
     print(ans)
 
 
+# abc115_d()
+
+
 def caddi2018b_a():
     n = input()
     print(n.count("2"))
+
+
+# caddi2018b_a()
 
 
 def caddi2018b_b():
@@ -1548,8 +5117,12 @@ def caddi2018b_b():
     print(ans)
 
 
+# caddi2018b_b()
+
+
 def caddi2018b_c():
     from collections import Counter
+
     def prime_decomposition(num):
         i = 2
         table = []
@@ -1570,6 +5143,9 @@ def caddi2018b_c():
     print(ans)
 
 
+# caddi2018b_c()
+
+
 def caddi2018b_d():
     n = int(input())
     a = [int(input()) for _ in range(n)]
@@ -1578,6 +5154,9 @@ def caddi2018b_d():
             print("first")
             return 0
     print("second")
+
+
+# caddi2018b_d()
 
 
 def angle():
