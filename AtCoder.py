@@ -126,6 +126,69 @@ def agc024_a():
     print(ans)
 
 
+def agc030_a():
+    a, b, c = map(int, input().split())
+    if a + b >= (c - 1):
+        print(b + c)
+    else:
+        print(b + (a + b) + 1)
+
+
+# agc030_a()
+
+
+def agc030_b():
+    def right(a, b):
+        if b >= a:
+            return b - a
+        else:
+            return 10 - (a - b)
+
+    def left(a, b):
+        if b <= a:
+            return a - b
+        else:
+            return 10 - (b - a)
+
+    l, n = map(int, input().split())
+    x = [int(input()) for _ in range(n)]
+    d = 0
+    now = 0
+    while x:
+        if right(now, x[0]) > left(now, x[-1]):
+            d += right(now, x[0])
+            now = x[0]
+            del x[0]
+        else:
+            d += left(now, x[-1])
+            now = x[-1]
+            del x[-1]
+    print(d)
+
+
+# agc030_b()
+
+
+def agc030_c():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# agc030_c()
+
+
+def agc030_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# agc030_d()
+
+
 def arc094_c():
     abc = list(map(int, input().split()))
     abc.sort()
@@ -2578,30 +2641,39 @@ def abc061_d():
 
 
 def abc062_a():
-    n = int(input())
     x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = [1, 3, 5, 7, 8, 10, 12]
+    b = [4, 6, 9, 11]
+    c = [2]
+    if (x in a and y in a) or (x in b and y in b) or (x in c and y in c):
+        print("Yes")
+    else:
+        print("No")
 
 
 # abc062_a()
 
 
 def abc062_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    h, w = map(int, input().split())
+    a = [None] * (h + 2)
+    a[0] = a[-1] = ["#"] * (w + 2)
+    for i in range(1, h + 1):
+        a[i] = ["#"] + [input()] + ["#"]
+
+    for ln in a:
+        print("".join(ln))
 
 
 # abc062_b()
 
 
 def abc062_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    h, w = map(int, input().split())
+    if h % 3 == 0 or w % 3 == 0:
+        print(0)
+    else:
+        print(h, w)
 
 
 # abc062_c()
@@ -2618,70 +2690,101 @@ def abc062_d():
 
 
 def abc063_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b = map(int, input().split())
+    if a + b < 10:
+        print(a + b)
+    else:
+        print("error")
 
 
 # abc063_a()
 
 
 def abc063_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = list(input())
+    if len(s) == len(set(s)):
+        print("yes")
+    else:
+        print("no")
 
 
 # abc063_b()
 
 
 def abc063_c():
+    from itertools import combinations
+    import numpy as np
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = np.array([int(input()) for _ in range(n)])
+    score = 0
+    if sum(s % 10) == 0:
+        print(0)
+    else:
+        for i in range(n + 1, 0, -1):
+            for seq in combinations(s, i):
+                tmp = sum(seq)
+                if tmp % 10 and tmp > score:
+                    score = tmp
+            if score:
+                break
+        print(score)
 
 
 # abc063_c()
 
 
 def abc063_d():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    import numpy as np
+    n, a, b = map(int, input().split())
+    h = np.array([int(input()) for _ in range(n)])
+    diff = a - b
+    count = 0
+
+    while any(h > 0):
+        hmax_index = np.argmax(h)
+        h -= b
+        h[hmax_index] -= diff
+        h = h[h > 0]
+        count += 1
+
+    print(count)
 
 
 # abc063_d()
 
 
 def abc064_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    r, g, b = input().split()
+    if int(r + g + b) % 4 == 0:
+        print("YES")
+    else:
+        print("NO")
 
 
 # abc064_a()
 
 
 def abc064_b():
-    n = int(input())
-    x, y = map(int, input().split())
+    _ = int(input())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    print(max(a) - min(a))
 
 
 # abc064_b()
 
 
 def abc064_c():
-    n = int(input())
-    x, y = map(int, input().split())
+    _ = int(input())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    color = [False] * 8
+    higher = 0
+    for v in a:
+        if v >= 3200:
+            higher += 1
+        else:
+            color[v // 400] = True
+
+    print(max(1, sum(color)), sum(color) + higher)
 
 
 # abc064_c()
@@ -2698,10 +2801,13 @@ def abc064_d():
 
 
 def abc065_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x, a, b = map(int, input().split())
+    if b <= a:
+        print("delicious")
+    elif b <= a + x:
+        print("safe")
+    else:
+        print("dangerous")
 
 
 # abc065_a()
@@ -2709,19 +2815,30 @@ def abc065_a():
 
 def abc065_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = [int(input()) for _ in range(n)]
+    now = 1
+    count = 0
+    for i in range(n):
+        if now == 2:
+            print(count)
+            return None
+        now = a[now - 1]
+        count += 1
+    print(-1)
 
 
 # abc065_b()
 
 
 def abc065_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    from math import factorial
+    n, m = map(int, input().split())
+    if abs(n - m) >= 2:
+        print(0)
+    elif n == m:
+        print((2 * factorial(n) * factorial(m)) % (10 ** 9 + 7))
+    else:
+        print((factorial(n) * factorial(m)) % (10 ** 9 + 7))
 
 
 # abc065_c()
@@ -2738,20 +2855,20 @@ def abc065_d():
 
 
 def abc066_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = map(int, input().split())
+    print(a + b + c - max([a, b, c]))
 
 
 # abc066_a()
 
 
 def abc066_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input()
+    for i in range(len(s) // 2):
+        s = s[:-2]
+        if s[:len(s) // 2] == s[len(s) // 2:]:
+            print(len(s))
+            break
 
 
 # abc066_b()
@@ -2759,9 +2876,9 @@ def abc066_b():
 
 def abc066_c():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = input().split()
+    b = a[1::2][::-1] + a[::2]
+    print(" ".join(b[::(-1) ** (n % 2)]))
 
 
 # abc066_c()
@@ -2769,39 +2886,49 @@ def abc066_c():
 
 def abc066_d():
     n = int(input())
-    x, y = map(int, input().split())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    print(n, a)
+    for i in range(1, n + 2):
+        print()
 
 
 # abc066_d()
 
 
 def abc067_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b = map(int, input().split())
+    if a * b * (a + b) % 3 == 0:
+        print("Possible")
+    else:
+        print("Impossible")
 
 
 # abc067_a()
 
 
 def abc067_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    _, k = map(int, input().split())
+    ls = sorted(list(map(int, input().split())), reverse=True)
+    print(sum(ls[:k]))
 
 
 # abc067_b()
 
 
 def abc067_c():
-    n = int(input())
-    x, y = map(int, input().split())
+    _ = int(input())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x = a[0]
+    y = sum(a[1:])
+    del a[0]
+    del a[-1]
+    diff = abs(x - y)
+    for v in a:
+        x += v
+        y -= v
+        if abs(x - y) < diff:
+            diff = abs(x - y)
+    print(diff)
 
 
 # abc067_c()
@@ -2818,10 +2945,8 @@ def abc067_d():
 
 
 def abc068_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n = input()
+    print("ABC" + n)
 
 
 # abc068_a()
@@ -2829,19 +2954,41 @@ def abc068_a():
 
 def abc068_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    ans = 1
+    count = 0
+
+    for i in range(1, n + 1):
+        num = i
+        tmp_count = 0
+        while num % 2 == 0:
+            tmp_count += 1
+            num /= 2
+        if tmp_count > count:
+            ans = i
+            count = tmp_count
+
+    print(ans)
 
 
 # abc068_b()
 
 
 def abc068_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    from collections import Counter
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    candidates = []
+
+    for i in range(m):
+        if ab[i][0] == 1:
+            candidates.append(ab[i][1])
+        elif ab[i][1] == n:
+            candidates.append(ab[i][0])
+
+    if max(Counter(candidates).values()) >= 2:
+        print("POSSIBLE")
+    else:
+        print("IMPOSSIBLE")
 
 
 # abc068_c()
@@ -2858,20 +3005,16 @@ def abc068_d():
 
 
 def abc069_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, m = map(int, input().split())
+    print((n - 1) * (m - 1))
 
 
 # abc069_a()
 
 
 def abc069_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input()
+    print(s[0] + str(len(s) - 2) + s[-1])
 
 
 # abc069_b()
@@ -2879,49 +3022,74 @@ def abc069_b():
 
 def abc069_c():
     n = int(input())
-    x, y = map(int, input().split())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    two = 0
+    four = 0
+    odd = 0
+    for v in a:
+        if v % 2 == 0:
+            if v % 4 == 0:
+                four += 1
+            else:
+                two += 1
+        else:
+            odd += 1
+
+    if four >= odd or (four + odd == n and odd - four == 1):
+        print("Yes")
+    else:
+        print("No")
 
 
 # abc069_c()
 
 
 def abc069_d():
+    h, w = map(int, input().split())
     n = int(input())
-    x, y = map(int, input().split())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = []
+    for i in range(n):
+        s.extend([str(i + 1)] * a[i])
+
+    for i in range(h):
+        if i % 2 == 0:
+            print(" ".join(s[i * w:(i + 1) * w]))
+        else:
+            print(" ".join(s[i * w:(i + 1) * w][::-1]))
 
 
 # abc069_d()
 
 
 def abc070_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n = input()
+    if n[0] == n[2]:
+        print("Yes")
+    else:
+        print("No")
 
 
 # abc070_a()
 
 
 def abc070_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c, d = map(int, input().split())
+    print(max([0, min(b, d) - max(a, c)]))
 
 
 # abc070_b()
 
 
 def abc070_c():
+    from fractions import gcd
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    t = [int(input()) for _ in range(n)]
+    ans = t[0]
+    for v in t:
+        ans = ans * v // gcd(ans, v)
+
+    print(ans)
 
 
 # abc070_c()
@@ -2938,30 +3106,54 @@ def abc070_d():
 
 
 def abc071_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x, a, b = map(int, input().split())
+    if abs(x - a) < abs(x - b):
+        print("A")
+    else:
+        print("B")
 
 
 # abc071_a()
 
 
 def abc071_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input()
+    alpha = [chr(i) for i in range(ord("a"), ord("z") + 1)]
+    for char in set(s):
+        alpha.remove(char)
+
+    if alpha:
+        print(alpha[0])
+    else:
+        print("None")
 
 
 # abc071_b()
 
 
 def abc071_c():
-    n = int(input())
-    x, y = map(int, input().split())
+    from collections import Counter
+    _ = int(input())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a_count = Counter(a)
+    ans = 1
+
+    if len(a_count) == 1:
+        print(a[0] ** 2)
+    elif a_count.most_common()[1][1] < 2:
+        print(0)
+    else:
+        tmp = 0
+        for v in sorted(set(a), reverse=True):
+            if tmp == 2:
+                break
+            if tmp == 0 and a_count[v] >= 4:
+                ans = v ** 2
+                break
+            if a_count[v] >= 2:
+                ans *= v
+                tmp += 1
+        print(ans)
 
 
 # abc071_c()
@@ -2978,30 +3170,31 @@ def abc071_d():
 
 
 def abc072_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x, t = map(int, input().split())
+    print(max(x - t, 0))
 
 
 # abc072_a()
 
 
 def abc072_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input()
+    print("".join(s[::2]))
 
 
 # abc072_b()
 
 
 def abc072_c():
-    n = int(input())
-    x, y = map(int, input().split())
+    from collections import Counter
+
+    _ = int(input())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a_ex = []
+    for num in a:
+        a_ex.extend([num - 1, num, num + 1])
+
+    print(max(Counter(a_ex).values()))
 
 
 # abc072_c()
@@ -3018,10 +3211,7 @@ def abc072_d():
 
 
 def abc073_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    print(["No", "Yes"]["9" in input()])
 
 
 # abc073_a()
@@ -3029,19 +3219,27 @@ def abc073_a():
 
 def abc073_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    tot = 0
+    for _ in range(n):
+        l, r = map(int, input().split())
+        tot += (r - l) + 1
+    print(tot)
 
 
 # abc073_b()
 
 
 def abc073_c():
+    from collections import Counter
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = [int(input()) for _ in range(n)]
+    a_count = Counter(a)
+    ans = 0
+
+    for num in a_count:
+        if a_count[num] % 2:
+            ans += 1
+    print(ans)
 
 
 # abc073_c()
@@ -3059,9 +3257,8 @@ def abc073_d():
 
 def abc074_a():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = int(input())
+    print(n ** 2 - a)
 
 
 # abc074_a()
@@ -3069,19 +3266,34 @@ def abc074_a():
 
 def abc074_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    k = int(input())
+    x = list(map(int, input().split()))
+    d = 0
+    for i in range(n):
+        d += 2 * min(x[i], abs(k - x[i]))
+    print(d)
 
 
 # abc074_b()
 
 
 def abc074_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    from math import ceil
+    a, b, c, d, e, f = map(int, input().split())
+    ans_wat = 100 * a
+    ans_sug = 0
+
+    for i in range(ceil(f / (100 * a))):
+        for j in range(ceil((f - 100 * a * i) / (100 * b))):
+            for k in range((f - 100 * (a * i + b * j)) // c + 1):
+                for l in range((f - 100 * (a * i + b * j) - c * k) // d + 1):
+                    tmp_sug = c * k + d * l
+                    tmp_wat = 100 * (a * i + b * j)
+                    if tmp_wat and tmp_sug / tmp_wat <= e / 100 and \
+                            tmp_sug / (tmp_wat + tmp_sug) > ans_sug / (ans_wat + ans_sug):
+                        ans_sug = c * k + d * l
+                        ans_wat = 100 * (a * i + b * j)
+    print(ans_wat + ans_sug, ans_sug)
 
 
 # abc074_c()
@@ -3098,20 +3310,37 @@ def abc074_d():
 
 
 def abc075_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    else:
+        print(b)
 
 
 # abc075_a()
 
 
 def abc075_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    h, w = map(int, input().split())
+    s = [None] * (h + 2)
+    ans = [[None] * w for _ in range(h)]
+
+    s[0] = s[-1] = ["."] * (w + 2)
+    for i in range(1, h + 1):
+        s[i] = ["."] + list(input()) + ["."]
+
+    for i in range(1, h + 1):
+        for j in range(1, w + 1):
+            if s[i][j] == "#":
+                ans[i - 1][j - 1] = "#"
+            else:
+                ans[i - 1][j - 1] = str([s[i - 1][j - 1], s[i - 1][j], s[i - 1][j + 1], s[i][j - 1], s[i][j + 1],
+                                         s[i + 1][j - 1], s[i + 1][j], s[i + 1][j + 1]].count("#"))
+
+    for ln in ans:
+        print("".join(ln))
 
 
 # abc075_b()
@@ -3138,10 +3367,9 @@ def abc075_d():
 
 
 def abc076_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    r = int(input())
+    g = int(input())
+    print(r + 2 * (g - r))
 
 
 # abc076_a()
@@ -3149,19 +3377,34 @@ def abc076_a():
 
 def abc076_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    k = int(input())
+    ans = 1
+    for _ in range(n):
+        ans = min(ans * 2, ans + k)
+    print(ans)
 
 
 # abc076_b()
 
 
 def abc076_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input()
+    t = input()
+
+    if len(t) > len(s):
+        print("UNRESTORABLE")
+    else:
+        for i in range(len(t), len(s) + 1):
+            flag = False
+            for j in range(len(t)):
+                if t[j] not in ["?", s[-i + j]]:
+                    flag = True
+                    break
+            if not flag:
+                ans = s[:-i + 1] + t + s[-i + len(t)]
+                print(ans)
+                return 0
+        print("UNRESTORABLE")
 
 
 # abc076_c()
@@ -3178,10 +3421,11 @@ def abc076_d():
 
 
 def abc077_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    c = [list(input()) for _ in range(2)]
+    if c[0][0] == c[1][2] and c[0][1] == c[1][1] and c[0][2] == c[1][0]:
+        print("YES")
+    else:
+        print("NO")
 
 
 # abc077_a()
@@ -3189,9 +3433,7 @@ def abc077_a():
 
 def abc077_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    print(int(n ** 0.5) ** 2)
 
 
 # abc077_b()
@@ -3199,9 +3441,8 @@ def abc077_b():
 
 def abc077_c():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = [sorted(list(map(int, input().split()))) for _ in range(3)]
+    print(n, a, b, c)
 
 
 # abc077_c()
@@ -3218,50 +3459,50 @@ def abc077_d():
 
 
 def abc078_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x, y = input().split()
+    if ord(x) < ord(y):
+        print("<")
+    elif ord(x) > ord(y):
+        print(">")
+    else:
+        print("=")
 
 
 # abc078_a()
 
 
 def abc078_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    x, y, z = map(int, input().split())
+    print((x - z) // (y + z))
 
 
 # abc078_b()
 
 
 def abc078_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, m = map(int, input().split())
+    time1 = 1900 * m + 100 * (n - m)
+    print(time1 * 2 ** m)
 
 
 # abc078_c()
 
 
 def abc078_d():
-    n = int(input())
-    x, y = map(int, input().split())
+    n, z, w = map(int, input().split())
     a = list(map(int, input().split()))
-    print(n, x, y, a)
+    print(n, z, w, a)
 
 
 # abc078_d()
 
 
 def abc079_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n = input()
+    if int(n[1:]) % 111 == 0 or int(n[:-1]) % 111 == 0:
+        print("Yes")
+    else:
+        print("No")
 
 
 # abc079_a()
@@ -3269,19 +3510,32 @@ def abc079_a():
 
 def abc079_b():
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    if n == 1:
+        print(1)
+    else:
+        lucas = [0] * (n + 1)
+        lucas[0] = 2
+        lucas[1] = 1
+        for i in range(2, n + 1):
+            lucas[i] = lucas[i - 1] + lucas[i - 2]
+        print(lucas[n])
 
 
 # abc079_b()
 
 
 def abc079_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n = list(map(int, input()))
+    a = n[0]
+    for b in [n[1], -n[1]]:
+        for c in [n[2], -n[2]]:
+            for d in [n[3], -n[3]]:
+                if a + b + c + d == 7:
+                    op1 = ["+", "-"][b < 0]
+                    op2 = ["+", "-"][c < 0]
+                    op3 = ["+", "-"][d < 0]
+                    print(a, op1, abs(b), op2, abs(c), op3, abs(d), "=7", sep="")
+                    return 0
 
 
 # abc079_c()
@@ -5161,8 +5415,10 @@ def caddi2018b_d():
 
 def angle():
     import math
-    coordinate1 = list(map(float, input().split()))
-    coordinate2 = list(map(float, input().split()))
-    print(math.degrees(math.atan2(coordinate2[2] - coordinate1[2],
-                                  ((coordinate2[0] - coordinate1[0]) ** 2 + (
-                                          coordinate2[1] - coordinate1[1]) ** 2) ** 0.5)))
+    a, b, c = map(float, "7.68059 15.36119 26.22319".split())
+    x1, y1, z1 = map(float, input().split())
+    x2, y2, z2 = map(float, input().split())
+
+    print(math.degrees(math.atan2(c * abs(z2 - z1), ((a * (x2 - x1)) ** 2 + (b * (y2 - y1)) ** 2) ** 0.5)))
+
+# angle()
