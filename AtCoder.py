@@ -2441,100 +2441,155 @@ def abc056_d():
 
 
 def abc057_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b = map(int, input().split())
+    print((a + b) % 24)
 
 
 # abc057_a()
 
 
 def abc057_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    cd = [list(map(int, input().split())) for _ in range(m)]
+
+    for i in range(n):
+        tmp_index = 0
+        d = 10 ** 9
+        for j in range(m):
+            tmp_d = abs(ab[i][0] - cd[j][0]) + abs(ab[i][1] - cd[j][1])
+            if tmp_d < d:
+                tmp_index = j
+                d = tmp_d
+        print(tmp_index + 1)
 
 
 # abc057_b()
 
 
 def abc057_c():
+    from itertools import combinations
+
+    def prime_decomposition(num):
+        _i = 2
+        table = []
+        while _i * _i <= num:
+            while num % _i == 0:
+                num /= _i
+                table.append(_i)
+            _i += 1
+        if num > 1:
+            table.append(int(num))
+        return table
+
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    primes = prime_decomposition(n)
+    a = 1
+    b = n
+
+    for i in range(len(primes) // 2 + 1):
+        comb = set(combinations(primes, i))
+        for seq in comb:
+            tmp_a = 1
+            for v in seq:
+                tmp_a *= v
+            tmp_b = n // tmp_a
+            if max(tmp_a, tmp_b) < max(a, b):
+                a = tmp_a
+                b = tmp_b
+
+    ans = max(len(str(a)), len(str(b)))
+    print(ans)
 
 
 # abc057_c()
 
 
 def abc057_d():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    from collections import Counter
+
+    n, a, b = map(int, input().split())
+    v = list(map(int, input().split()))
+    v_count = Counter(v)
+    print(n, a, b, v_count)
 
 
 # abc057_d()
 
 
 def abc058_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = map(int, input().split())
+    if (b - a) == (c - b):
+        print("YES")
+    else:
+        print("NO")
 
 
 # abc058_a()
 
 
 def abc058_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    o = input()
+    e = input()
+    pw = [""] * (len(o) + len(e))
+    for i in range(len(o)):
+        pw[2 * i] = o[i]
+    for i in range(len(e)):
+        pw[2 * i + 1] = e[i]
+    print("".join(pw))
 
 
 # abc058_b()
 
 
 def abc058_c():
+    from collections import Counter
     n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = [list(input()) for _ in range(n)]
+    s_count = [Counter(s[i]) for i in range(n)]
+    ans_dict = {}
+    for i in range(ord("a"), ord("z") + 1):
+        ans_dict[chr(i)] = 50
+    for i in range(n):
+        for let in ans_dict:
+            ans_dict[let] = min(ans_dict[let], s_count[i][let])
+    ans = []
+    for let in ans_dict:
+        ans += ([let] * ans_dict[let])
+    print("".join(sorted(ans)))
 
 
 # abc058_c()
 
 
 def abc058_d():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+
+    print(n, m, x, y)
 
 
 # abc058_d()
 
 
 def abc059_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    s = input().split()
+    print((s[0][0] + s[1][0] + s[2][0]).upper())
 
 
 # abc059_a()
 
 
 def abc059_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a = int(input())
+    b = int(input())
+    if a > b:
+        print("GREATER")
+    elif a < b:
+        print("LESS")
+    else:
+        print("EQUAL")
 
 
 # abc059_b()
@@ -2561,70 +2616,111 @@ def abc059_d():
 
 
 def abc060_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = input().split()
+    if a[-1] == b[0] and b[-1] == c[0]:
+        print("YES")
+    else:
+        print("NO")
 
 
 # abc060_a()
 
 
 def abc060_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = map(int, input().split())
+    for i in range(1, 101):
+        if a * i % b == c:
+            print("YES")
+            return None
+    print("NO")
 
 
 # abc060_b()
 
 
 def abc060_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, T = map(int, input().split())
+    t = list(map(int, input().split()))
+    total = 0
+    for i in range(n - 1):
+        criteria = t[i + 1] - t[i]
+        if criteria < T:
+            total += criteria
+        else:
+            total += T
+    total += T
+    print(total)
 
 
 # abc060_c()
 
 
 def abc060_d():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    from itertools import combinations
+    n, w = map(int, input().split())
+    wv = [list(map(int, input().split())) for _ in range(n)]
+    value = 0
+    for i in range(1, n + 1):
+        criteria = value
+        for comb in combinations(wv, i):
+            tmp_w = 0
+            tmp_v = 0
+            for a in comb:
+                tmp_w += a[0]
+            if tmp_w > w:
+                continue
+            else:
+                for a in comb:
+                    tmp_v += a[1]
+                if tmp_v > criteria:
+                    criteria = tmp_v
+        if value > criteria:
+            print(value)
+            return None
+        else:
+            value = criteria
+    print(value)
 
 
 # abc060_d()
 
 
 def abc061_a():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    a, b, c = map(int, input().split())
+    if a <= c <= b:
+        print("Yes")
+    else:
+        print("No")
 
 
 # abc061_a()
 
 
 def abc061_b():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+
+    for i in range(n):
+        print(a.count(i + 1) + b.count(i + 1))
 
 
 # abc061_b()
 
 
 def abc061_c():
-    n = int(input())
-    x, y = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n, x, y, a)
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+
+    ab.sort()
+    count = 0
+    for v in ab:
+        count += v[1]
+        if count >= k:
+            print(v[0])
+            break
 
 
 # abc061_c()
@@ -2656,7 +2752,7 @@ def abc062_a():
 
 def abc062_b():
     h, w = map(int, input().split())
-    a = [None] * (h + 2)
+    a = [[""] for _ in range(h + 2)]
     a[0] = a[-1] = ["#"] * (w + 2)
     for i in range(1, h + 1):
         a[i] = ["#"] + [input()] + ["#"]
@@ -3082,7 +3178,9 @@ def abc070_b():
 
 
 def abc070_c():
-    from fractions import gcd
+    # from fractions import gcd
+    from math import gcd
+
     n = int(input())
     t = [int(input()) for _ in range(n)]
     ans = t[0]
@@ -3324,8 +3422,8 @@ def abc075_a():
 
 def abc075_b():
     h, w = map(int, input().split())
-    s = [None] * (h + 2)
-    ans = [[None] * w for _ in range(h)]
+    s = [[""] for _ in range(h + 2)]
+    ans = [[""] * w for _ in range(h)]
 
     s[0] = s[-1] = ["."] * (w + 2)
     for i in range(1, h + 1):
