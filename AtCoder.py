@@ -5511,12 +5511,83 @@ def caddi2018b_d():
 # caddi2018b_d()
 
 
+def aising2019_a():
+    n = int(input())
+    h = int(input())
+    w = int(input())
+
+    print((n - h + 1) * (n - w + 1))
+
+
+# aising2019_a()
+
+
+def aising2019_b():
+    _ = int(input())
+    a, b = map(int, input().split())
+    p = list(map(int, input().split()))
+    first = second = third = 0
+    for v in p:
+        if v <= a:
+            first += 1
+        elif v <= b:
+            second += 1
+        else:
+            third += 1
+    print(min([first, second, third]))
+
+
+# aising2019_b()
+
+
+def aising2019_c():
+    h, w = map(int, input().split())
+    s = [list(input()) for _ in range(h)]
+    print(h, w, "\n", s)
+
+
+# aising2019_c()
+
+
+def aising2019_d():
+    import numpy as np
+
+    n, q = map(int, input().split())
+    a = np.array(sorted(list(map(int, input().split()))))
+    x_list = [int(input()) for _ in range(q)]
+    for x in x_list:
+        score = 0
+        tmp_a = a.copy() - x
+        while len(tmp_a):
+            score += tmp_a[-1] + x
+            tmp_a = np.delete(tmp_a, -1)
+            if len(tmp_a):
+                tmp_a = np.delete(tmp_a, np.argmin(np.abs(tmp_a)))
+        print(score)
+
+
+# aising2019_d()
+
+
+def aising2019_e():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+
+# aising2019_e()
+
+
 def angle():
     import math
-    a, b, c = map(float, "7.68059 15.36119 26.22319".split())
-    x1, y1, z1 = map(float, input().split())
-    x2, y2, z2 = map(float, input().split())
+    a = 7.68059
+    b = 15.36119
+    c = 26.22319
+    x1, y1, z1 = map(float, input("x1 y1 z1: ").split())
+    x2, y2, z2 = map(float, input("x2 y2 z2: ").split())
 
-    print(math.degrees(math.atan2(c * abs(z2 - z1), ((a * (x2 - x1)) ** 2 + (b * (y2 - y1)) ** 2) ** 0.5)))
+    print("2D: ", math.degrees(math.atan2(c * abs(z2 - z1), b * abs(y2 - y1))))
+    print("3D: ", math.degrees(math.atan2(c * abs(z2 - z1), ((a * (x2 - x1)) ** 2 + (b * (y2 - y1)) ** 2) ** 0.5)))
 
 # angle()
