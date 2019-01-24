@@ -5579,15 +5579,53 @@ def aising2019_e():
 # aising2019_e()
 
 
-def angle():
-    import math
-    a = 7.68059
-    b = 15.36119
-    c = 26.22319
-    x1, y1, z1 = map(float, input("x1 y1 z1: ").split())
-    x2, y2, z2 = map(float, input("x2 y2 z2: ").split())
+def abc116_a():
+    a = sorted(list(map(int, input().split())))
+    print(a[0] * a[1] // 2)
 
-    print("2D: ", math.degrees(math.atan2(c * abs(z2 - z1), b * abs(y2 - y1))))
-    print("3D: ", math.degrees(math.atan2(c * abs(z2 - z1), ((a * (x2 - x1)) ** 2 + (b * (y2 - y1)) ** 2) ** 0.5)))
 
-# angle()
+# abc116_a()
+
+
+def abc116_b():
+    s = int(input())
+    a = [None] * 1000000
+    a[0] = s
+    for i in range(1, 1000000):
+        if a[i - 1] % 2:
+            a[i] = 3 * a[i - 1] + 1
+        else:
+            a[i] = a[i - 1] // 2
+        if a[i] in a[:i - 1]:
+            print(i + 1)
+            break
+
+
+# abc116_b()
+
+
+def abc116_c():
+    import numpy as np
+    n = int(input())
+    h = np.array(list(map(int, input().split())))
+    ans = min(h)
+    h -= min(h)
+    left = 0
+    for i in range(1, n - 1):
+        if h[i] < h[i - 1] and h[i] < h[i + 1]:
+            ans += max(h[left:i]) - h[i]
+            left = i
+    ans += max(h[left:])
+    print(ans)
+
+
+# abc116_c()
+
+
+def abc116_d():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n, x, y, a)
+
+# abc116_d()
